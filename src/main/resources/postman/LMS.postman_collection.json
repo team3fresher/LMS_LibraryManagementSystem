@@ -1,0 +1,92 @@
+{
+	"id": "222eec7f-8197-dcf6-56bd-3d177545f22d",
+	"name": "LMS",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "4a46861b-2a39-ff82-c7dd-88c660587ccb",
+			"name": "Staff",
+			"description": "",
+			"order": [
+				"199b8203-a2dd-a5c3-2d16-5f03849c0e29"
+			],
+			"owner": "1630242"
+		},
+		{
+			"id": "cb3ae36a-f249-93d1-6a84-db1d0a06aa41",
+			"name": "Test",
+			"description": "",
+			"order": [
+				"16c9e990-098d-065b-a91e-3fce8a5b68b9",
+				"82fdb5c9-a710-8662-b351-37df273273e4"
+			],
+			"owner": "1630242"
+		}
+	],
+	"timestamp": 0,
+	"owner": "1630242",
+	"public": false,
+	"requests": [
+		{
+			"id": "16c9e990-098d-065b-a91e-3fce8a5b68b9",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/test",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "222eec7f-8197-dcf6-56bd-3d177545f22d",
+			"data": null,
+			"dataMode": "params",
+			"name": "Test",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1488829589673,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"isFromCollection": true,
+			"collectionRequestId": "16c9e990-098d-065b-a91e-3fce8a5b68b9",
+			"folder": "cb3ae36a-f249-93d1-6a84-db1d0a06aa41"
+		},
+		{
+			"id": "199b8203-a2dd-a5c3-2d16-5f03849c0e29",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/staff",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488829557643,
+			"name": "Get All StaffInfo",
+			"description": "",
+			"collectionId": "222eec7f-8197-dcf6-56bd-3d177545f22d",
+			"responses": []
+		},
+		{
+			"id": "82fdb5c9-a710-8662-b351-37df273273e4",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/addBookToBookCategory",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1488837427690,
+			"name": "Add book with category",
+			"description": "",
+			"collectionId": "222eec7f-8197-dcf6-56bd-3d177545f22d",
+			"responses": []
+		}
+	]
+}

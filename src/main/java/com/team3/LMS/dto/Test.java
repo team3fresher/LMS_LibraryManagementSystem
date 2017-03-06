@@ -4,20 +4,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class User {
+@Table(name = "test")
+public class Test {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
 	private String name;
 	
-	public User() {
+	public Test() {
 		
 	}
 	
-	public User(String name) {
+	public Test(String name) {
 		this.name= name;
 	}
 
