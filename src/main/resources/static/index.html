@@ -4,29 +4,71 @@
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
+	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Library Management System</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/LMS/css/app.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	
 </head>
 <body>
-<h2><center>Homepage</center></h2>
-<div class="home-section">
-    <ul class="menu-list">
-        <li><a href="#/main">Main</a></li>
-    </ul>
-</div>
-<div ng-view></div>
-<script src="/LMS/js/lib/angular-1.4.9/angular.js"></script>
-<script src="/LMS/js/lib/angular-1.4.9/angular-resource.js"></script>
-<script src="/LMS/js/lib/angular-1.4.9/angular-route.js"></script>
+	<div class="container-fluid"  style="background-color:#2196F3;color:#fff;height:100px;">
+  		<h1>Library Management System</h1>
+  		<p>This is demo for LMS</p>
+ 	</div>
+ 	
+ 	<!-- Menu bar -->
+	<div>
+		<nav class="navbar navbar-inverse">
+  			<div class="container-fluid">
+    			<div class="navbar-header">
+      				<a class="navbar-brand" href="#/">Library Management System</a>
+    			</div>
+    			<ul class="nav navbar-nav">
+      				<li class="active"><a href="#/">Home</a></li>
+      				<li><a href="#/main">Book</a></li>
+      				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
+        				<ul class="dropdown-menu">
+         					<li><a href="#">Page 1-1</a></li>
+          					<li><a href="#">Page 1-2</a></li>
+          					<li><a href="#">Page 1-3</a></li>
+        				</ul>
+      				</li>
+      				<li><a href="#">Page 2</a></li>
+    			</ul>
+    			<ul class="nav navbar-nav navbar-right">
+      				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      				<li data-toggle="modal" data-target="#myModal"><a href="#"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+      				<li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+    			</ul>
+    			<form class="navbar-form navbar-left">
+      				<div class="form-group input-group">
+          				<input type="text" class="form-control" placeholder="Search..">
+          				<span class="input-group-btn">
+	            			<button class="btn btn-default" type="button">
+	             				<span class="glyphicon glyphicon-search"></span>
+	            			</button>
+          				</span>        
+        			</div>
+    			</form>
+  			</div>
+		</nav>
+	</div>
+	
+	<div ng-view></div>
+	<script src="/LMS/js/lib/angular-1.4.9/angular.js"></script>
+	<script src="/LMS/js/lib/angular-1.4.9/angular-resource.js"></script>
+	<script src="/LMS/js/lib/angular-1.4.9/angular-route.js"></script>
 
-<script src="/LMS/js/app.js"></script>
+	<script src="/LMS/js/app.js"></script>
 
-<script src="/LMS/js/controller/MainController.js"></script>
+	<script src="/LMS/js/controller/MainController.js"></script>
+	
+	<footer class="container-fluid text-center">
+  		<p>Team 3 Project</p>
+	</footer>
 
-<link rel="stylesheet" href="/LMS/css/bootstrap.css">
 </body>
 </html>
