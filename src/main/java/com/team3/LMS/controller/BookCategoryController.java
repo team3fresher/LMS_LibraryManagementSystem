@@ -30,8 +30,8 @@ public class BookCategoryController {
 	@RequestMapping("/category/findAll")
 	@ResponseBody
 	public Page<BookCategory> findAll(Pageable pageable) {
-		Page<BookCategory> books = service.findAll(pageable);
-		return books;
+		Page<BookCategory> categories = service.findAll(pageable);
+		return categories;
 	}
 
 	@RequestMapping(value = "/category/add", method = RequestMethod.POST)

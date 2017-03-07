@@ -27,7 +27,7 @@ public class BookCategoryService {
 		bookCategoryDao.save(bookCategory);
 	}
 
-	public void removeCategory(Integer id) {
+	public void removeCategory(int id) {
 		bookCategoryDao.delete(id);
 	}
 
