@@ -5,6 +5,10 @@ app.config(function($routeProvider){
             templateUrl: '/LMS/views/main.html',
             controller: 'MainController'
         })
+        .when('/book',{
+            templateUrl: '/LMS/views/book.html',
+            controller: 'MainController'
+        })
         .otherwise(
             { redirectTo: '/'}
         );
