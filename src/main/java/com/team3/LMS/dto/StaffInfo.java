@@ -3,24 +3,23 @@ package com.team3.LMS.dto;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the staff_info database table.
  * 
  */
 @Entity
-@Table(name="staff_info")
-@NamedQuery(name="StaffInfo.findAll", query="SELECT s FROM StaffInfo s")
-public class StaffInfo implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name = "staff_info")
+public class StaffInfo {
 
 	@Id
-	@Column(name="staff_id")
+	@Column(name = "staff_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int staffId;
-
+	
+	@Column(name = "pword")
 	private int pword;
 
-	@Column(name="staff_name")
+	@Column(name = "staff_name")
 	private String staffName;
 
 	public StaffInfo() {

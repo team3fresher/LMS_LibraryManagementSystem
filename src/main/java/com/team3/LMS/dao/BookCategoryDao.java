@@ -5,10 +5,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.team3.LMS.dto.StaffInfo;
-import com.team3.LMS.dto.Ticket;
+import com.team3.LMS.dto.BookCategory;
 
 @Repository
-public interface StaffInfoDao extends CrudRepository<StaffInfo, Integer> {
-	Page<StaffInfo> findAll(Pageable pageable);
+public interface BookCategoryDao extends CrudRepository<BookCategory, Integer> {
+	Page<BookCategory> findAll(Pageable pageable);
 }
