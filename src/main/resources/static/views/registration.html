@@ -39,7 +39,7 @@
 							<span class="input-group-addon"><i
 								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 								type="password" class="form-control" name="password" ng-model="password"
-								id="password" placeholder="Enter your Password"  required/>
+								id="password" placeholder="Enter your Password"  required />
 						</div>
 					</div>
 				</div>
@@ -51,9 +51,11 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-								type="password" class="form-control" name="confirm" id="confirm" ng-model="confim"
-								placeholder="Confirm your Password"  required/>
+								type="password" class="form-control" name="confirm" id="confirm" ng-model="confirm"
+								placeholder="Confirm your Password"  required compare-to="password"/>
 						</div>
+						<div ng-messages="registrationForm.confirmPassword.$error"
+     								 ng-messages-include="messages.html"></div>
 					</div>
 				</div>
 
@@ -118,9 +120,7 @@
 				</div>
 
 				<div class="form-group ">
-					<a href="#/">
 						<button type="submit" ng-disable="myForm.$invalid" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-					</a>
 				</div>
 
 			</form>
