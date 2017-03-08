@@ -29,3 +29,9 @@ footer {
 .carousel-caption {
 	display: none; 
 	}
+.css-form .ng-valid.ng-dirty{
+	background-color: green;
+}
+.css-form .ng-invalid.ng-dirty{
+	background-color: red;
+}

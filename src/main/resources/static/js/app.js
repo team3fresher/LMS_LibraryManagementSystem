@@ -5,6 +5,10 @@ app.config(function($routeProvider){
 	        templateUrl: '/LMS/views/home.html',
 	        controller: 'MainController'
 	    })
+	    .when('/register',{
+            templateUrl: '/LMS/views/registration.html',
+            controller: 'registerController'
+        })
         .when('/main',{
             templateUrl: '/LMS/views/main.html',
             controller: 'MainController'
@@ -13,7 +17,18 @@ app.config(function($routeProvider){
             templateUrl: '/LMS/views/book.html',
             controller: 'MainController'
         })
-        
+        .when('/bookdetail',{
+            templateUrl: '/LMS/views/bookdetail.html',
+            controller: 'bookDetailController'
+        })
+        .when('/author',{
+            templateUrl: '/LMS/views/author.html',
+            controller: 'MainController'
+        })
+        .when('/user',{
+            templateUrl: '/LMS/views/user.html',
+            controller: 'MainController'
+        })
         .otherwise(
             { redirectTo: '/'}
         );
