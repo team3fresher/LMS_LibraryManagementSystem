@@ -8,22 +8,22 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.team3.LMS.dao.BookCategoryDao;
-import com.team3.LMS.dto.BookCategory;
+import com.team3.LMS.dto.BookCategoryDetail;
 
 @Service
 public class BookCategoryService {
 	@Autowired
 	private BookCategoryDao bookCategoryDao;
 
-	public List<BookCategory> getCategoryList() {
-		return (List<BookCategory>) bookCategoryDao.findAll();
+	public List<BookCategoryDetail> getCategoryList() {
+		return (List<BookCategoryDetail>) bookCategoryDao.findAll();
 	}
 
-	public Page<BookCategory> findAll(Pageable pageable) {
+	public Page<BookCategoryDetail> findAll(Pageable pageable) {
 		return bookCategoryDao.findAll(pageable);
 	}
 
-	public void addCategory(BookCategory bookCategory) {
+	public void addCategory(BookCategoryDetail bookCategory) {
 		bookCategoryDao.save(bookCategory);
 	}
 
@@ -31,7 +31,7 @@ public class BookCategoryService {
 		bookCategoryDao.delete(id);
 	}
 
-	public BookCategory getCategory(int id) {
+	public BookCategoryDetail getCategory(int id) {
 		return bookCategoryDao.findOne(id);
 	}
 }

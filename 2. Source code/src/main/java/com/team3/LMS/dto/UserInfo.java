@@ -1,16 +1,15 @@
-package com.team3.LMS.dto;
+/*package com.team3.LMS.dto;
 
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
 
-/**
+*//**
  * The persistent class for the user_info database table.
  * 
- */
+ *//*
 @Entity
 @Table(name = "user_info")
-@NamedQuery(name = "UserInfo.findAll", query = "SELECT u FROM UserInfo u")
 public class UserInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -61,4 +60,4 @@ public class UserInfo implements Serializable {
 	public void setPayments(List<Payment> payments) {
 		this.payments = payments;
 	}
-}
+}*/

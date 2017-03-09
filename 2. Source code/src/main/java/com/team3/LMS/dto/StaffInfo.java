@@ -1,12 +1,12 @@
-package com.team3.LMS.dto;
+/*package com.team3.LMS.dto;
 
 import java.io.Serializable;
 import javax.persistence.*;
 
-/**
+*//**
  * The persistent class for the staff_info database table.
  * 
- */
+ *//*
 @Entity
 @Table(name = "staff_info")
 public class StaffInfo {
@@ -49,4 +49,4 @@ public class StaffInfo {
 		this.staffName = staffName;
 	}
 
-}
+}*/

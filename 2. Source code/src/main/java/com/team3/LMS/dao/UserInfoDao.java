@@ -1,4 +1,4 @@
-package com.team3.LMS.dao;
+/*package com.team3.LMS.dao;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,3 +11,4 @@ import com.team3.LMS.dto.UserInfo;
 public interface UserInfoDao extends CrudRepository<UserInfo, Integer> {
 	Page<UserInfo> findAll(Pageable pageable);
 }
+*/

@@ -13,16 +13,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "book_category_details")
-public class BookCategory {
+public class BookCategoryDetail {
 	private int id;
 	private String name;
 	private Set<Book> books;
 
-	public BookCategory() {
+	public BookCategoryDetail() {
 
 	}
 
-	public BookCategory(String name) {
+	public BookCategoryDetail(String name) {
 		this.name = name;
 	}
 
@@ -46,7 +46,7 @@ public class BookCategory {
 		this.name = name;
 	}
 
-	@OneToMany(mappedBy = "bookCategory", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "bookCategoryDetail", cascade = CascadeType.ALL)
 	public Set<Book> getBooks() {
 		return books;
 	}

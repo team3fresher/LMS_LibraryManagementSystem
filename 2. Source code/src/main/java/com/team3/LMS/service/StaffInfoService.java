@@ -1,4 +1,4 @@
-package com.team3.LMS.service;
+/*package com.team3.LMS.service;
 
 import java.util.List;
 
@@ -35,3 +35,4 @@ public class StaffInfoService {
 		return staffInfoDao.findOne(id);
 	}
 }
+*/
