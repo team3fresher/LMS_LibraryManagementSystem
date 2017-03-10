@@ -1,12 +1,16 @@
 package com.team3.LMS.dto;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,49 +19,64 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "book")
-public class Book {
-	@Id
-	private float isbn;
+public class Book implements Serializable {
 
+	@Id
+	@Column(name = "isbn")
+	private String isbn;
+	
+	@Column(name = "amount")
 	private int amount;
 
-	@Column(name="brw_tckt_nber")
+	@Column(name = "brw_tckt_nber")
 	private int brwTcktNber;
-
+	
+	@Column(name = "importance")
 	private int importance;
 
-	@Column(name="publishing_year")
+	@Temporal(TemporalType.DATE)
+	@Column(name = "publishing_year")
 	private Date publishingYear;
 
-	@Column(name="short_description")
+	@Column(name = "short_description")
 	private String shortDescription;
 
 	private String title;
 
-	@Column(name="valid_status")
+	@Column(name = "valid_status")
 	private byte validStatus;
 
+	// bi-directional many-to-many association to AuthorDetail
+	@ManyToMany(mappedBy = "books")
+	private List<AuthorDetail> authorDetails;
+
+	// bi-directional many-to-one association to BookCategoryDetail
 	@ManyToOne
-	@JoinColumn(name = "category_id")
+	@JoinColumn(name = "category_id", nullable=false)
 	private BookCategoryDetail bookCategoryDetail;
-	
+
+	// bi-directional many-to-one association to PublisherDetail
 	@ManyToOne
-	@JoinColumn(name="publisher_id")
+	@JoinColumn(name = "publisher_id")
 	private PublisherDetail publisherDetail;
+
+	// bi-directional many-to-one association to TicketBookUser
+	@OneToMany(mappedBy = "book")
+	private List<TicketBookUser> ticketBookUsers;
 
 	public Book() {
 	}
 
-	public float getIsbn() {
-		return isbn;
+	public String getIsbn() {
+		return this.isbn;
 	}
 
-	public void setIsbn(float isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 
 	public int getAmount() {
-		return amount;
+		return this.amount;
 	}
 
 	public void setAmount(int amount) {
@@ -65,7 +84,7 @@ public class Book {
 	}
 
 	public int getBrwTcktNber() {
-		return brwTcktNber;
+		return this.brwTcktNber;
 	}
 
 	public void setBrwTcktNber(int brwTcktNber) {
@@ -73,15 +92,15 @@ public class Book {
 	}
 
 	public int getImportance() {
-		return importance;
+		return this.importance;
 	}
 
 	public void setImportance(int importance) {
 		this.importance = importance;
 	}
 
-	public Object getPublishingYear() {
-		return publishingYear;
+	public Date getPublishingYear() {
+		return this.publishingYear;
 	}
 
 	public void setPublishingYear(Date publishingYear) {
@@ -89,7 +108,7 @@ public class Book {
 	}
 
 	public String getShortDescription() {
-		return shortDescription;
+		return this.shortDescription;
 	}
 
 	public void setShortDescription(String shortDescription) {
@@ -97,7 +116,7 @@ public class Book {
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public void setTitle(String title) {
@@ -105,7 +124,7 @@ public class Book {
 	}
 
 	public byte getValidStatus() {
-		return validStatus;
+		return this.validStatus;
 	}
 
 	public void setValidStatus(byte validStatus) {
@@ -113,20 +132,53 @@ public class Book {
 	}
 	
 	@JsonIgnore
-	public BookCategoryDetail getBookCategory() {
-		return bookCategoryDetail;
+	public List<AuthorDetail> getAuthorDetails() {
+		return this.authorDetails;
 	}
 
-	public void setBookCategory(BookCategoryDetail bookCategoryDetail) {
+	public void setAuthorDetails(List<AuthorDetail> authorDetails) {
+		this.authorDetails = authorDetails;
+	}
+	
+	@JsonIgnore
+	public BookCategoryDetail getBookCategoryDetail() {
+		return this.bookCategoryDetail;
+	}
+
+	public void setBookCategoryDetail(BookCategoryDetail bookCategoryDetail) {
 		this.bookCategoryDetail = bookCategoryDetail;
 	}
 	
 	@JsonIgnore
 	public PublisherDetail getPublisherDetail() {
-		return publisherDetail;
+		return this.publisherDetail;
 	}
 
 	public void setPublisherDetail(PublisherDetail publisherDetail) {
 		this.publisherDetail = publisherDetail;
 	}
+	
+	@JsonIgnore
+	public List<TicketBookUser> getTicketBookUsers() {
+		return this.ticketBookUsers;
+	}
+
+	public void setTicketBookUsers(List<TicketBookUser> ticketBookUsers) {
+		this.ticketBookUsers = ticketBookUsers;
+	}
+
+	public TicketBookUser addTicketBookUser(TicketBookUser ticketBookUser) {
+		getTicketBookUsers().add(ticketBookUser);
+		ticketBookUser.setBook(this);
+
+		return ticketBookUser;
+	}
+
+	public TicketBookUser removeTicketBookUser(TicketBookUser ticketBookUser) {
+		getTicketBookUsers().remove(ticketBookUser);
+		ticketBookUser.setBook(null);
+
+		return ticketBookUser;
+	}
+
 }

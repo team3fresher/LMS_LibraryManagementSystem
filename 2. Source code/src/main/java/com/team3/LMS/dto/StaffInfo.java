@@ -1,26 +1,33 @@
-/*package com.team3.LMS.dto;
+package com.team3.LMS.dto;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-*//**
- * The persistent class for the staff_info database table.
- * 
- *//*
 @Entity
 @Table(name = "staff_info")
 public class StaffInfo {
 
 	@Id
 	@Column(name = "staff_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int staffId;
-	
-	@Column(name = "pword")
+
+	private String address;
+
+	private String degree;
+
+	private String email;
+
+	@Column(name = "phone_number")
+	private int phoneNumber;
+
 	private int pword;
 
-	@Column(name = "staff_name")
-	private String staffName;
+	@Column(name = "real_name")
+	private String realName;
+
+	private byte sex;
 
 	public StaffInfo() {
 	}
@@ -33,6 +40,38 @@ public class StaffInfo {
 		this.staffId = staffId;
 	}
 
+	public String getAddress() {
+		return this.address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDegree() {
+		return this.degree;
+	}
+
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public int getPhoneNumber() {
+		return this.phoneNumber;
+	}
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
 	public int getPword() {
 		return this.pword;
 	}
@@ -41,12 +80,20 @@ public class StaffInfo {
 		this.pword = pword;
 	}
 
-	public String getStaffName() {
-		return this.staffName;
+	public String getRealName() {
+		return this.realName;
 	}
 
-	public void setStaffName(String staffName) {
-		this.staffName = staffName;
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 
-}*/
+	public byte getSex() {
+		return this.sex;
+	}
+
+	public void setSex(byte sex) {
+		this.sex = sex;
+	}
+
+}
