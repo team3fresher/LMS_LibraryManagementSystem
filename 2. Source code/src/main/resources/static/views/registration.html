@@ -1,0 +1,131 @@
+<link rel="stylesheet" href="/LMS/css/registration.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<div class="container">
+	<div class="row main">
+		<div class="main-login main-center">
+			<h5 algn="center">Please complete this form!</h5>
+			<form class="css-form" name="myForm" id="registerForm" method="post" ng-submit="AddUser()"
+				action="#">
+
+				<div class="form-group">
+					<label for="name" class="cols-sm-2 control-label">Your Name</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								name="name" id="name" ng-model="name"
+								placeholder="Enter your Name" required />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="username" class="cols-sm-2 control-label">Username</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								name="username" id="username" ng-model="username"
+								placeholder="Enter your id library"  required/>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="password" class="cols-sm-2 control-label">Password</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+								type="password" class="form-control" name="password" ng-model="password"
+								id="password" placeholder="Enter your Password"  required />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="confirm" class="cols-sm-2 control-label">Confirm
+						Password</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+								type="password" class="form-control" name="confirm" id="confirm" ng-model="confirm"
+								placeholder="Confirm your Password"  required compare-to="password"/>
+						</div>
+						<div ng-messages="registrationForm.confirmPassword.$error"
+     								 ng-messages-include="messages.html"></div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="gender" class="cols-sm-2 control-label">Gender</label>
+					<div class="cols-sm-10">
+						<label class="radio-inline"> <input type="radio"
+							name="optradio" ng-model="gender" value= "male">Male
+						</label> <label class="radio-inline"> <input type="radio"
+							name="optradio" ng-model="gender" value= "female">Female
+						</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="birthday" class="cols-sm-2 control-label">Birthday</label>
+					<div class="cols-sm-10">
+						<div class="form-group">
+							<div class='input-group date' id='datetimepicker1'>
+								<input type='date' class="form-control" ng-model="birthday" /> <span
+									class="input-group-addon"> <span
+									class="glyphicon glyphicon-calendar"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="email" class="cols-sm-2 control-label">Your
+						Email</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i
+								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+								type="email" class="form-control" name="email" id="email" ng-model="email"
+								placeholder="Enter your Email" />
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="address" class="cols-sm-2 control-label">Address</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								name="address" id="address" placeholder="Enter your address" ng-model="address"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="job" class="cols-sm-2 control-label">Job</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								name="job" id="job" placeholder="Enter your job" ng-model="job"/>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group ">
+						<button type="submit" ng-disable="myForm.$invalid" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>
+
+
