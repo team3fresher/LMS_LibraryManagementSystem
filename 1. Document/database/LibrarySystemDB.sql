@@ -1,7 +1,7 @@
 create database Library;
 use Library;
 create table BOOK(
-	isbn float primary key not null,
+	isbn bigint(13) primary key not null,
 	title varchar(50) not null,
     publisher_id int not null,
     publishing_year year not null,
@@ -18,7 +18,7 @@ create table AUTHOR_DETAILS(
 );
 create table BOOK_AUTHOR(
 	author_id int not null,
-    isbn float not null,
+    isbn bigint(13) not null,
     constraint pk_author_isbn_book_author primary key (author_id, isbn)
 );
 create table PUBLISHER_DETAILS(
@@ -30,13 +30,17 @@ create table BOOK_CATEGORY_DETAILS(
     category_name varchar(30) not null
 );
 create table TICKET(
-	user_id int not null,
-    isbn float not null,
     borrowed_date date not null,
     expired_date date not null,
     ticket_id int not null primary key auto_increment,
     borrow_number int not null,
     limition_number int
+);
+create table TICKET_BOOK_USER(
+	isbn bigint(13) not null,
+    user_id int not null,
+    ticket_id int not null,
+    primary key (isbn, user_id, ticket_id)
 );
 create table STAFF_INFO(
 	staff_id int not null primary key auto_increment,
@@ -44,7 +48,9 @@ create table STAFF_INFO(
     address varchar(30) not null,
     phone_number int(11) not null,
     email varchar(30),
-    pword int(20) not null
+    pword int(20) not null,
+    sex boolean not null,
+    degree varchar(30)
 );
 create table ROLE(
 	role_id int not null auto_increment primary key,
@@ -68,9 +74,6 @@ create table USER_ROLE(
 );
 create table RETURN_BOOK(
 	user_id int not null,
-    isbn float not null,
-    borrowed_date date not null,
-    expired_date date not null,
     returned_date date not null,
     fine int,
     return_book_id int not null primary key auto_increment
@@ -90,20 +93,20 @@ alter table BOOK_AUTHOR
 add constraint isbn_fk_on_book_author foreign key (author_id) references AUTHOR_DETAILS(author_id);
 alter table BOOK_AUTHOR
 add constraint author_id_fk_on_book_author foreign key (isbn) references BOOK(isbn);
-alter table TICKET
-add constraint user_id_fk_on_ticket foreign key (user_id) references USER_INFO(user_id);
-alter table TICKET
-add constraint isbn_fk_on_ticket foreign key (isbn) references BOOK(isbn);
-alter table RETURN_BOOK
-add constraint user_id_fk_on_return foreign key (user_id) references USER_INFO(user_id);
-alter table RETURN_BOOK
-add constraint isbn_fk_on_return foreign key (isbn) references BOOK(isbn);
 alter table PAYMENT
 add constraint user_id_fk_on_payment foreign key (user_id) references USER_INFO(user_id);
 alter table USER_ROLE
 add constraint user_id_fk_on_user_role foreign key (user_id) references USER_INFO(user_id);
 alter table USER_ROLE
 add constraint role_id_fk_on_user_role foreign key (role_id) references ROLE(role_id);
+alter table TICKET_BOOK_USER
+add constraint user_id_fk_on_ticket_book_user foreign key (user_id) references USER_INFO(user_id);
+alter table TICKET_BOOK_USER
+add constraint ticket_id_fk_on_ticket_book_user foreign key (ticket_id) references TICKET(ticket_id);
+alter table TICKET_BOOK_USER
+add constraint isbn_fk_on_ticket_book_user foreign key (isbn) references BOOK(isbn);
+alter table RETURN_BOOK
+add constraint user_id_fk_on_return foreign key (user_id) references TICKET_BOOK_USER(user_id);
 
 insert into role (role_name) value ("MEMBER_USER");
 insert into role (role_name) value ("ADMIN");
