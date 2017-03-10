@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import com.team3.LMS.dto.Book;
 
 @Repository
-public interface BookDao extends CrudRepository<Book, Integer> {
+public interface BookDao extends CrudRepository<Book, String> {
 	Page<Book> findAll(Pageable pageable);
 }

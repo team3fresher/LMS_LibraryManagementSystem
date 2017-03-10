@@ -1,5 +1,6 @@
 package com.team3.LMS.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,11 @@ public class BookService {
 		bookDao.save(book);
 	}
 
-	public void removeBook(int id) {
+	public void removeBook(String id) {
 		bookDao.delete(id);
 	}
 
-	public Book getBook(int isbn) {
+	public Book getBook(String isbn) {
 		return bookDao.findOne(isbn);
 	}
 }

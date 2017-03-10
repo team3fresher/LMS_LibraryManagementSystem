@@ -1,6 +1,7 @@
 package com.team3.LMS.dto;
 
 import java.io.Serializable;
+import java.time.Year;
 import java.util.Date;
 import java.util.List;
 
@@ -21,16 +22,18 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "book")
 public class Book implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "isbn")
 	private String isbn;
-	
+
 	@Column(name = "amount")
 	private int amount;
 
 	@Column(name = "brw_tckt_nber")
 	private int brwTcktNber;
-	
+
 	@Column(name = "importance")
 	private int importance;
 
@@ -52,7 +55,7 @@ public class Book implements Serializable {
 
 	// bi-directional many-to-one association to BookCategoryDetail
 	@ManyToOne
-	@JoinColumn(name = "category_id", nullable=false)
+	@JoinColumn(name = "category_id", nullable = false)
 	private BookCategoryDetail bookCategoryDetail;
 
 	// bi-directional many-to-one association to PublisherDetail
@@ -130,16 +133,16 @@ public class Book implements Serializable {
 	public void setValidStatus(byte validStatus) {
 		this.validStatus = validStatus;
 	}
-	
+
 	@JsonIgnore
 	public List<AuthorDetail> getAuthorDetails() {
-		return this.authorDetails;
+		return authorDetails;
 	}
 
 	public void setAuthorDetails(List<AuthorDetail> authorDetails) {
 		this.authorDetails = authorDetails;
 	}
-	
+
 	@JsonIgnore
 	public BookCategoryDetail getBookCategoryDetail() {
 		return this.bookCategoryDetail;
@@ -148,7 +151,7 @@ public class Book implements Serializable {
 	public void setBookCategoryDetail(BookCategoryDetail bookCategoryDetail) {
 		this.bookCategoryDetail = bookCategoryDetail;
 	}
-	
+
 	@JsonIgnore
 	public PublisherDetail getPublisherDetail() {
 		return this.publisherDetail;
@@ -157,7 +160,7 @@ public class Book implements Serializable {
 	public void setPublisherDetail(PublisherDetail publisherDetail) {
 		this.publisherDetail = publisherDetail;
 	}
-	
+
 	@JsonIgnore
 	public List<TicketBookUser> getTicketBookUsers() {
 		return this.ticketBookUsers;

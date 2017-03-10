@@ -1,5 +1,6 @@
 package com.team3.LMS.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,7 +14,9 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "return_book")
-public class ReturnBook {
+public class ReturnBook implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "return_book_id")
@@ -53,7 +56,7 @@ public class ReturnBook {
 	public Date getReturnDate() {
 		return returnDate;
 	}
-
+	
 	public void setReturnDate(Date returnDate) {
 		this.returnDate = returnDate;
 	}

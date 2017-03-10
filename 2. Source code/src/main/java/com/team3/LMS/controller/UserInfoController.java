@@ -1,4 +1,4 @@
-/*package com.team3.LMS.controller;
+package com.team3.LMS.controller;
 
 import java.util.List;
 
@@ -50,4 +50,3 @@ public class UserInfoController {
 		return service.getUserInfo(id);
 	}
 }
-*/
