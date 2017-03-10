@@ -118,7 +118,7 @@ insert into book_category_details(category_name) value ("Economics");
 insert into book_category_details(category_name) value ("Politics");
 insert into book_category_details(category_name) value ("Manga");
 insert into book_category_details(category_name) value ("Magazine");
-insert into book_category_details(category_name) value ("Fiction");
+insert into book_category_details(category_name) value ("Novel");
 insert into book_category_details(category_name) value ("Cookbook");
 insert into book_category_details(category_name) value ("Foreign Language");
 
@@ -145,6 +145,7 @@ insert into publisher_details(publisher_name) value ("Rodale Books");
 insert into publisher_details(publisher_name) value ("Smithsonian Books");
 insert into publisher_details(publisher_name) value ("Cambridge University Press");
 insert into publisher_details(publisher_name) value ("Haole Library");
+insert into publisher_details(publisher_name) value ("Scholastic Press");
 
 insert into author_details(author_name) value ("Winston Groom");
 insert into author_details(author_name) value ("Dominic Midgley");
@@ -191,6 +192,7 @@ insert into author_details(author_name) value ("Adolf Hitler");
 insert into author_details(author_name) value ("Thug Kitchen LLC");
 insert into author_details(author_name) value ("Darren Naish");
 insert into author_details(author_name) value ("Brett L. Walker");
+insert into author_details(author_name) value ("J. K. Rowling ");
 
 select * from book_category_details;
 select * from author_details;
@@ -201,7 +203,7 @@ values (9786045332641, "Schoolgirl",2,2015,2,"Essentially the start of Dazai's c
 insert into book_author(author_id, isbn) values (22,9786045332641);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9786049143132, "5 Centimeters per Second",1,2014,2,"Praise for the animated film by Makoto Shinkai",0,true,5,1);
+values (9786049143132, "5 Centimeters per Second",1,2014,10,"Praise for the animated film by Makoto Shinkai",0,true,5,1);
 insert into book_author(author_id, isbn) values (16,9786049143132);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
@@ -209,7 +211,7 @@ values (9786041092969, "A Silent Voice",8,2016,8,"LEARNING TO LISTEN",0,true,15,
 insert into book_author(author_id, isbn) values (37,9786041092969);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9780307947390, "Forrest Gump",18,2012,2,"The modern classic that inspired the beloved movie starring Tom Hanks",0,true,10,1);
+values (9780307947390, "Forrest Gump",18,2012,10,"The modern classic that inspired the beloved movie starring Tom Hanks",0,true,10,1);
 insert into book_author(author_id, isbn) values (1,9780307947390);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
@@ -232,3 +234,31 @@ insert into book_author(author_id, isbn) values (37,9781588345820);
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9780521178723, "A Concise History of Japan",21,2015,6,"A Concise History of Japan integrates the pageantry of Japanese history",0,true,12,2);
 insert into book_author(author_id, isbn) values (45,9780521178723);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876046456568, "SOUL 26",7,2017,1,"Japanese 2D cultural subject",0,true,30,1);
+insert into book_author(author_id, isbn) values (11,9876046456568);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876045635209, "Book of the end 1",3,2016,2,"Find the true meaning of life",0,true,10,1);
+insert into book_author(author_id, isbn) values (30,9876045635209);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876045636107, "Book of the end 2",3,2016,2,"What color is the first page?",0,true,10,1);
+insert into book_author(author_id, isbn) values (30,9876045636107);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9874045636763, "Book of the end 3",3,2016,2,"So, a new story begins",0,true,10,1);
+insert into book_author(author_id, isbn) values (30,9874045636763);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876045638088, "Book of the end 4",3,2016,2,"We are nearing the end",0,true,10,1);
+insert into book_author(author_id, isbn) values (30,9876045638088);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9780590353403, "Harry Potter And The Sorcerer's Stone",24,1998,2,"What did Harry Potter know about magic?",0,true,20,2);
+insert into book_author(author_id, isbn) values (46,9780590353403);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9780439064866, "Harry Potter and the Chamber of Secrets",24,1999,2,"In one of the most hotly anticipated sequel in memory",0,true,20,2);
+insert into book_author(author_id, isbn) values (46,9780439064866);
