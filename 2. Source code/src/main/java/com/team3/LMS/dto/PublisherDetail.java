@@ -1,14 +1,13 @@
 package com.team3.LMS.dto;
 
-import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-/**
- * The persistent class for the publisher_details database table.
- * 
- */
 @Entity
 @Table(name="publisher_details")
 public class PublisherDetail {

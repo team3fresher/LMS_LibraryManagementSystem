@@ -1,12 +1,9 @@
 package com.team3.LMS.dto;
 
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,56 +11,57 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "book_category_details")
 public class BookCategoryDetail {
-	private int id;
-	private String name;
-	private Set<Book> books;
 
-	public BookCategoryDetail() {
-
-	}
-
-	public BookCategoryDetail(String name) {
-		this.name = name;
-	}
-
-	@Id	
+	@Id
 	@Column(name = "category_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
+	private int categoryId;
 
 	@Column(name = "category_name")
-	public String getName() {
-		return name;
+	private String categoryName;
+
+	// bi-directional many-to-one association to Book
+	@OneToMany(mappedBy = "bookCategoryDetail")
+	private List<Book> books;
+
+	public BookCategoryDetail() {
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public int getCategoryId() {
+		return this.categoryId;
 	}
 
-	@OneToMany(mappedBy = "bookCategoryDetail", cascade = CascadeType.ALL)
-	public Set<Book> getBooks() {
-		return books;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
-	public void setBooks(Set<Book> books) {
+	public String getCategoryName() {
+		return this.categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
+	public List<Book> getBooks() {
+		return this.books;
+	}
+
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 
-	@Override
-	public String toString() {
-		String result = String.format("Category[id=%d, name='%s']%n", id, name);
-		if (books != null) {
-			for (Book book : books) {
-				result += String.format("Book[id=%d, name='%s']%n", book.getIsbn(), book.getTitle());
-			}
-		}
+	public Book addBook(Book book) {
+		getBooks().add(book);
+		book.setBookCategoryDetail(this);
 
-		return result;
+		return book;
 	}
+
+	public Book removeBook(Book book) {
+		getBooks().remove(book);
+		book.setBookCategoryDetail(null);
+
+		return book;
+	}
+
 }
