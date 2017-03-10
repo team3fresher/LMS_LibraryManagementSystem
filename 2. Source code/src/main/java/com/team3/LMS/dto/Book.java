@@ -17,39 +17,42 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "book")
 public class Book {
 	@Id
-	private int isbn;
+	private float isbn;
 
 	private int amount;
 
-	private String author;
-
-	@Column(name = "brw_tckt_nber")
+	@Column(name="brw_tckt_nber")
 	private int brwTcktNber;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "publishing_year")
+	private int importance;
+
+	@Column(name="publishing_year")
 	private Date publishingYear;
 
-	@Column(name = "short_description")
+	@Column(name="short_description")
 	private String shortDescription;
 
 	private String title;
 
-	@Column(name = "valid_status")
+	@Column(name="valid_status")
 	private byte validStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "category_id")
-	private BookCategory bookCategory;
+	private BookCategoryDetail bookCategoryDetail;
+	
+	@ManyToOne
+	@JoinColumn(name="publisher_id")
+	private PublisherDetail publisherDetail;
 
 	public Book() {
 	}
 
-	public int getIsbn() {
+	public float getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(float isbn) {
 		this.isbn = isbn;
 	}
 
@@ -61,14 +64,6 @@ public class Book {
 		this.amount = amount;
 	}
 
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
 	public int getBrwTcktNber() {
 		return brwTcktNber;
 	}
@@ -77,7 +72,15 @@ public class Book {
 		this.brwTcktNber = brwTcktNber;
 	}
 
-	public Date getPublishingYear() {
+	public int getImportance() {
+		return importance;
+	}
+
+	public void setImportance(int importance) {
+		this.importance = importance;
+	}
+
+	public Object getPublishingYear() {
 		return publishingYear;
 	}
 
@@ -108,13 +111,22 @@ public class Book {
 	public void setValidStatus(byte validStatus) {
 		this.validStatus = validStatus;
 	}
-
+	
 	@JsonIgnore
-	public BookCategory getBookCategory() {
-		return bookCategory;
+	public BookCategoryDetail getBookCategory() {
+		return bookCategoryDetail;
 	}
 
-	public void setBookCategory(BookCategory bookCategory) {
-		this.bookCategory = bookCategory;
+	public void setBookCategory(BookCategoryDetail bookCategoryDetail) {
+		this.bookCategoryDetail = bookCategoryDetail;
+	}
+	
+	@JsonIgnore
+	public PublisherDetail getPublisherDetail() {
+		return publisherDetail;
+	}
+
+	public void setPublisherDetail(PublisherDetail publisherDetail) {
+		this.publisherDetail = publisherDetail;
 	}
 }

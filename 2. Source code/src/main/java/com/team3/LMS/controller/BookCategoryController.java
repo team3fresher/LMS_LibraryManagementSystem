@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.team3.LMS.dto.BookCategory;
+import com.team3.LMS.dto.BookCategoryDetail;
 import com.team3.LMS.service.BookCategoryService;
 
 @Controller
@@ -23,19 +23,19 @@ public class BookCategoryController {
 
 	@RequestMapping(value = "/category/list", method = RequestMethod.GET)
 	@ResponseBody
-	public List<BookCategory> getBookList() {
+	public List<BookCategoryDetail> getBookList() {
 		return service.getCategoryList();
 	}
 
 	@RequestMapping("/category/findAll")
 	@ResponseBody
-	public Page<BookCategory> findAll(Pageable pageable) {
-		Page<BookCategory> categories = service.findAll(pageable);
+	public Page<BookCategoryDetail> findAll(Pageable pageable) {
+		Page<BookCategoryDetail> categories = service.findAll(pageable);
 		return categories;
 	}
 
 	@RequestMapping(value = "/category/add", method = RequestMethod.POST)
-	public void addCategory(@RequestBody BookCategory BookCategory) {
+	public void addCategory(@RequestBody BookCategoryDetail BookCategory) {
 		service.addCategory(BookCategory);
 	}
 
@@ -46,7 +46,7 @@ public class BookCategoryController {
 
 	@RequestMapping(value = "/category/get/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public BookCategory getCategory(@PathVariable int id) {
+	public BookCategoryDetail getCategory(@PathVariable int id) {
 		return service.getCategory(id);
 	}
 }

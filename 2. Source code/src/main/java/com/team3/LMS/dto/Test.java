@@ -1,4 +1,4 @@
-package com.team3.LMS.dto;
+/*package com.team3.LMS.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,3 +39,4 @@ public class Test {
 		this.name = name;
 	}
 }
+*/

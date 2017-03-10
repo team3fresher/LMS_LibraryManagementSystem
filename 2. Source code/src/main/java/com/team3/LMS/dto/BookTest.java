@@ -1,4 +1,4 @@
-package com.team3.LMS.dto;
+/*package com.team3.LMS.dto;
 
 import javax.persistence.*;
 
@@ -49,4 +49,4 @@ public class BookTest {
 	public void setBookCategory(BookTestCategory bookCategory) {
 		this.bookCategory = bookCategory;
 	}
-}
+}*/

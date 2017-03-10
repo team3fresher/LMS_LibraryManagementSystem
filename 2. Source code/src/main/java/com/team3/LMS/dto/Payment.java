@@ -1,4 +1,4 @@
-package com.team3.LMS.dto;
+/*package com.team3.LMS.dto;
 
 import java.util.Date;
 
@@ -15,10 +15,10 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
+*//**
  * The persistent class for the payment database table.
  * 
- */
+ *//*
 @Entity
 @Table(name = "payment")
 public class Payment {
@@ -87,4 +87,4 @@ public class Payment {
 		this.userInfo = userInfo;
 	}
 
-}
+}*/

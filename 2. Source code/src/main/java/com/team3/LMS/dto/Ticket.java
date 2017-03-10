@@ -1,4 +1,4 @@
-package com.team3.LMS.dto;
+/*package com.team3.LMS.dto;
 
 import java.util.Date;
 
@@ -15,10 +15,10 @@ import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
+*//**
  * The persistent class for the ticket database table.
  * 
- */
+ *//*
 @Entity
 @Table(name = "ticket")
 public class Ticket {
@@ -113,4 +113,4 @@ public class Ticket {
 		this.userInfo = userInfo;
 	}
 
-}
+}*/

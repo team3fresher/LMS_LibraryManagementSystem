@@ -1,4 +1,4 @@
-package com.team3.LMS.controller;
+/*package com.team3.LMS.controller;
 
 import java.util.Date;
 import java.util.HashSet;
@@ -18,7 +18,7 @@ import com.team3.LMS.dao.BookTestDao;
 import com.team3.LMS.dao.StaffInfoDao;
 import com.team3.LMS.dao.TestDao;
 import com.team3.LMS.dto.Book;
-import com.team3.LMS.dto.BookCategory;
+import com.team3.LMS.dto.BookCategoryDetail;
 import com.team3.LMS.dto.BookTest;
 import com.team3.LMS.dto.BookTestCategory;
 import com.team3.LMS.dto.StaffInfo;
@@ -88,7 +88,7 @@ public class TestController {
 	@RequestMapping(value = "/addBook", method = RequestMethod.GET)
 	@ResponseBody
 	public String addBook() {
-		BookCategory bookCategory = bookCategoryDao.findOne(1);
+		BookCategoryDetail bookCategory = bookCategoryDao.findOne(1);
 		List<Book> books = (List<Book>) bookDao.findAll();
 		Book add = new Book();
 		add.setIsbn(1234567);
@@ -105,3 +105,4 @@ public class TestController {
 		return books.toString();
 	}
 }
+*/
