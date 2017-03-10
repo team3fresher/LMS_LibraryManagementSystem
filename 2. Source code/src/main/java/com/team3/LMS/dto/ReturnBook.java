@@ -12,64 +12,54 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "payment")
-public class Payment {
+@Table(name = "return_book")
+public class ReturnBook {
 
 	@Id
-	@Column(name = "payment_id")
-	private int paymentId;
+	@Column(name = "return_book_id")
+	private int returnBookId;
 
+	@Column(name = "fine")
 	private int fine;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "pay_day")
-	private Date payDay;
-
-	@Column(name = "payment_amount")
-	private int paymentAmount;
+	@Column(name = "return_date")
+	private Date returnDate;
 
 	// bi-directional many-to-one association to UserInfo
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private UserInfo userInfo;
 
-	public Payment() {
+	public ReturnBook() {
 	}
 
-	public int getPaymentId() {
-		return this.paymentId;
+	public int getReturnBookId() {
+		return returnBookId;
 	}
 
-	public void setPaymentId(int paymentId) {
-		this.paymentId = paymentId;
+	public void setReturnBookId(int returnBookId) {
+		this.returnBookId = returnBookId;
 	}
 
 	public int getFine() {
-		return this.fine;
+		return fine;
 	}
 
 	public void setFine(int fine) {
 		this.fine = fine;
 	}
 
-	public Date getPayDay() {
-		return this.payDay;
+	public Date getReturnDate() {
+		return returnDate;
 	}
 
-	public void setPayDay(Date payDay) {
-		this.payDay = payDay;
-	}
-
-	public int getPaymentAmount() {
-		return this.paymentAmount;
-	}
-
-	public void setPaymentAmount(int paymentAmount) {
-		this.paymentAmount = paymentAmount;
+	public void setReturnDate(Date returnDate) {
+		this.returnDate = returnDate;
 	}
 
 	public UserInfo getUserInfo() {
-		return this.userInfo;
+		return userInfo;
 	}
 
 	public void setUserInfo(UserInfo userInfo) {

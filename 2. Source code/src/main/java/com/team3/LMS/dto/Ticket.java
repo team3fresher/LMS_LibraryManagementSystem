@@ -1,31 +1,23 @@
-/*package com.team3.LMS.dto;
+package com.team3.LMS.dto;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-*//**
- * The persistent class for the ticket database table.
- * 
- *//*
 @Entity
 @Table(name = "ticket")
-public class Ticket {
+public class Ticket implements Serializable {
 
 	@Id
 	@Column(name = "ticket_id")
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int ticketId;
 
 	@Column(name = "borrow_number")
@@ -42,17 +34,9 @@ public class Ticket {
 	@Column(name = "limition_number")
 	private int limitionNumber;
 
-	// bi-directional many-to-one association to Book
-	@ManyToOne
-	@JoinColumn(name = "isbn")
-	@JsonIgnore
-	private Book book;
-
-	// bi-directional many-to-one association to UserInfo
-	@ManyToOne
-	@JoinColumn(name = "user_id")
-	@JsonIgnore
-	private UserInfo userInfo;
+	// bi-directional many-to-one association to TicketBookUser
+	@OneToMany(mappedBy = "ticket")
+	private List<TicketBookUser> ticketBookUsers;
 
 	public Ticket() {
 	}
@@ -97,20 +81,26 @@ public class Ticket {
 		this.limitionNumber = limitionNumber;
 	}
 
-	public Book getBook() {
-		return this.book;
+	public List<TicketBookUser> getTicketBookUsers() {
+		return this.ticketBookUsers;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setTicketBookUsers(List<TicketBookUser> ticketBookUsers) {
+		this.ticketBookUsers = ticketBookUsers;
 	}
 
-	public UserInfo getUserInfo() {
-		return this.userInfo;
+	public TicketBookUser addTicketBookUser(TicketBookUser ticketBookUser) {
+		getTicketBookUsers().add(ticketBookUser);
+		ticketBookUser.setTicket(this);
+
+		return ticketBookUser;
 	}
 
-	public void setUserInfo(UserInfo userInfo) {
-		this.userInfo = userInfo;
+	public TicketBookUser removeTicketBookUser(TicketBookUser ticketBookUser) {
+		getTicketBookUsers().remove(ticketBookUser);
+		ticketBookUser.setTicket(null);
+
+		return ticketBookUser;
 	}
 
-}*/
+}
