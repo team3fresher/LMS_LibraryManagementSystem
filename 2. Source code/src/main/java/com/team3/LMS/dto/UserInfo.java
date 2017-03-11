@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -14,19 +16,19 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 /**
  * The persistent class for the user_info database table.
  * 
  */
 @Entity
-@Table(name="user_info")
-public class UserInfo implements Serializable  {
+@Table(name = "user_info")
+public class UserInfo implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="user_id")
+	@Column(name = "user_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
 
 	private String address;
@@ -37,39 +39,35 @@ public class UserInfo implements Serializable  {
 
 	private String job;
 
-	@Column(name="phone_number")
+	@Column(name = "phone_number")
 	private int phoneNumber;
 
 	private String pword;
 
-	@Column(name="real_name")
+	@Column(name = "real_name")
 	private String realName;
 
 	private byte sex;
+	
+	/*@Column(name = "active")
+	private byte active;*/
 
-	//bi-directional many-to-one association to Payment
-	@OneToMany(mappedBy="userInfo")
+	// bi-directional many-to-one association to Payment
+	@OneToMany(mappedBy = "userInfo")
 	private List<Payment> payments;
 
-	//bi-directional many-to-one association to ReturnBook
-	@OneToMany(mappedBy="userInfo")
+	// bi-directional many-to-one association to ReturnBook
+	@OneToMany(mappedBy = "userInfo")
 	private List<ReturnBook> returnBooks;
 
-	//bi-directional many-to-many association to Role
+	// bi-directional many-to-many association to Role
 	@ManyToMany
-	@JoinTable(
-		name="user_role"
-		, joinColumns={
-			@JoinColumn(name="user_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="role_id")
-			}
-		)
+	@JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "role_id") })
 	private List<Role> roles;
 
-	//bi-directional many-to-one association to TicketBookUser
-	@OneToMany(mappedBy="userInfo")
+	// bi-directional many-to-one association to TicketBookUser
+	@OneToMany(mappedBy = "userInfo")
 	private List<TicketBookUser> ticketBookUsers;
 
 	public UserInfo() {
@@ -146,7 +144,15 @@ public class UserInfo implements Serializable  {
 	public void setSex(byte sex) {
 		this.sex = sex;
 	}
-	
+
+	/*public byte getActive() {
+		return active;
+	}
+
+	public void setActive(byte active) {
+		this.active = active;
+	}*/
+
 	@JsonIgnore
 	public List<Payment> getPayments() {
 		return this.payments;
@@ -169,7 +175,7 @@ public class UserInfo implements Serializable  {
 
 		return payment;
 	}
-	
+
 	@JsonIgnore
 	public List<ReturnBook> getReturnBooks() {
 		return this.returnBooks;
@@ -192,7 +198,7 @@ public class UserInfo implements Serializable  {
 
 		return returnBook;
 	}
-	
+
 	@JsonIgnore
 	public List<Role> getRoles() {
 		return this.roles;
@@ -201,7 +207,7 @@ public class UserInfo implements Serializable  {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	
+
 	@JsonIgnore
 	public List<TicketBookUser> getTicketBookUsers() {
 		return this.ticketBookUsers;

@@ -68,7 +68,7 @@ public class TestController {
 		add.setBookCategoryDetail(bookCategoryDetailDao.findOne(1));
 		add.setBrwTcktNber(1);
 		add.setImportance(1);
-		//add.setPublishingYear();
+		add.setPublishingYear(1997);
 		add.setPublisherDetail(publisherDetailDao.findOne(1));
 		add.setShortDescription("test");
 		add.setTitle("test");
