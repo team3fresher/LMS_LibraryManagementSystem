@@ -1,5 +1,6 @@
 package com.team3.LMS.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,7 +11,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "book_category_details")
-public class BookCategoryDetail {
+public class BookCategoryDetail implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "category_id")

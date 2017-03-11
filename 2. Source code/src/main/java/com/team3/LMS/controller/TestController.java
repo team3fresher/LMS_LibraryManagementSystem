@@ -1,9 +1,8 @@
-/*package com.team3.LMS.controller;
+package com.team3.LMS.controller;
 
+import java.time.Year;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,48 +10,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.team3.LMS.dao.BookCategoryDao;
-import com.team3.LMS.dao.BookDao;
-import com.team3.LMS.dao.BookTestCategoryDao;
-import com.team3.LMS.dao.BookTestDao;
-import com.team3.LMS.dao.StaffInfoDao;
-import com.team3.LMS.dao.TestDao;
-import com.team3.LMS.dto.Book;
-import com.team3.LMS.dto.BookCategoryDetail;
-import com.team3.LMS.dto.BookTest;
-import com.team3.LMS.dto.BookTestCategory;
-import com.team3.LMS.dto.StaffInfo;
-import com.team3.LMS.dto.Test;
+import com.team3.LMS.dao.*;
+import com.team3.LMS.dto.*;
 
 @RestController
 public class TestController {
-
-	@Autowired
-	public TestDao userDao;
-	@Autowired
-	public StaffInfoDao staffDao;
-	@Autowired
-	public BookTestDao bookTestDao;
-	@Autowired
-	public BookTestCategoryDao bookTestCategoryDao;
 	@Autowired
 	public BookDao bookDao;
 	@Autowired
-	public BookCategoryDao bookCategoryDao;
-
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Test> getUser() {
-		List<Test> users = (List<Test>) userDao.findAll();
-		return users;
-	}
-
-	@RequestMapping(value = "/staff", method = RequestMethod.GET)
-	@ResponseBody
-	public List<StaffInfo> getStaffInfo() {
-		List<StaffInfo> staffs = (List<StaffInfo>) staffDao.findAll();
-		return staffs;
-	}
+	public AuthorDetailDao authorDetailDao;
+	@Autowired
+	public BookCategoryDetailDao bookCategoryDetailDao;
+	@Autowired
+	public TicketBookUserDao ticketBookUserDao;
+	@Autowired
+	public PublisherDetailDao publisherDetailDao;
 
 	@RequestMapping(value = "/listbook", method = RequestMethod.GET)
 	@ResponseBody
@@ -68,7 +40,7 @@ public class TestController {
 		return temp.toString();
 	}
 
-	@RequestMapping(value = "/addBookToBookCategory", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/addBookToBookCategory", method = RequestMethod.GET)
 	@ResponseBody
 	public String getBookInfo() {
 		BookTestCategory categoryA = new BookTestCategory("Category A");
@@ -83,26 +55,27 @@ public class TestController {
 		bookTestCategoryDao.save(categoryA);
 		String temp = bookTestCategoryDao.findAll().toString();
 		return temp;
-	}
+	}*/
 
 	@RequestMapping(value = "/addBook", method = RequestMethod.GET)
 	@ResponseBody
 	public String addBook() {
-		BookCategoryDetail bookCategory = bookCategoryDao.findOne(1);
 		List<Book> books = (List<Book>) bookDao.findAll();
 		Book add = new Book();
-		add.setIsbn(1234567);
-		add.setAmount(123);
-		add.setAuthor("author");
-		add.setBrwTcktNber(3);
-		add.setPublishingYear(new Date());
-		add.setShortDescription("short");
-		add.setTitle("Book 1");
+		add.setIsbn("1234567");
+		add.setAmount(1);
+		add.setAuthorDetails((List<AuthorDetail>) authorDetailDao.findAll());
+		add.setBookCategoryDetail(bookCategoryDetailDao.findOne(1));
+		add.setBrwTcktNber(1);
+		add.setImportance(1);
+		//add.setPublishingYear();
+		add.setPublisherDetail(publisherDetailDao.findOne(1));
+		add.setShortDescription("test");
+		add.setTitle("test");
 		add.setValidStatus((byte) 1);
-		add.setBookCategory(bookCategory);
-
+		add.setTicketBookUsers((List<TicketBookUser>) ticketBookUserDao.findAll());
+		
 		bookDao.save(add);
 		return books.toString();
 	}
 }
-*/

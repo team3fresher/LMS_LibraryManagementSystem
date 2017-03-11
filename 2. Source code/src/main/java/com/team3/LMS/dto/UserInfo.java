@@ -1,8 +1,18 @@
 package com.team3.LMS.dto;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -11,7 +21,8 @@ import java.util.List;
  */
 @Entity
 @Table(name="user_info")
-public class UserInfo implements Serializable {
+public class UserInfo implements Serializable  {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -135,7 +146,8 @@ public class UserInfo implements Serializable {
 	public void setSex(byte sex) {
 		this.sex = sex;
 	}
-
+	
+	@JsonIgnore
 	public List<Payment> getPayments() {
 		return this.payments;
 	}
@@ -157,7 +169,8 @@ public class UserInfo implements Serializable {
 
 		return payment;
 	}
-
+	
+	@JsonIgnore
 	public List<ReturnBook> getReturnBooks() {
 		return this.returnBooks;
 	}
@@ -180,6 +193,7 @@ public class UserInfo implements Serializable {
 		return returnBook;
 	}
 	
+	@JsonIgnore
 	public List<Role> getRoles() {
 		return this.roles;
 	}
@@ -187,7 +201,8 @@ public class UserInfo implements Serializable {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-
+	
+	@JsonIgnore
 	public List<TicketBookUser> getTicketBookUsers() {
 		return this.ticketBookUsers;
 	}
