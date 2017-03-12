@@ -1,431 +1,201 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" ng-app="myAdmin">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title> Admin Home </title>
+<title>Admin Home</title>
+<!-- jQuery -->
+<script src="/LMS/js/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/LMS/js/bootstrap.min.js"></script>
 
-	<link href="/LMS/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="/LMS/css/admin/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="/LMS/css/admin/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="/LMS/css/admin/green.css" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="/LMS/css/admin/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="/LMS/css/admin/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="/LMS/css/admin/daterangepicker.css" rel="stylesheet">
+<link href="/LMS/css/app.css" rel="stylesheet" >
+<link href="/LMS/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom Theme Style -->
-    <link href="/LMS/css/admin/custom.min.css" rel="stylesheet">
-  </head>
+<!-- Font Awesome -->
+<link href="/LMS/css/admin/font-awesome.min.css" rel="stylesheet">
+<!-- NProgress -->
+<link href="/LMS/css/admin/nprogress.css" rel="stylesheet">
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span> LMS</span></a>
-            </div>
+<!-- bootstrap-progressbar -->
+<link href="/LMS/css/admin/bootstrap-progressbar-3.3.4.min.css"
+	rel="stylesheet">
+<!-- JQVMap -->
+<link href="/LMS/css/admin/jqvmap.min.css" rel="stylesheet">
+<!-- bootstrap-daterangepicker -->
+<link href="/LMS/css/admin/daterangepicker.css" rel="stylesheet">
+<link href="/LMS/css/admin/flat.css" rel="stylesheet">
 
-            <div class="clearfix"></div>
+<!-- iCheck -->
+<link href="/LMS/css/admin/skins/flat/green.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="/LMS/css/admin/custom.min.css" rel="stylesheet">
 
-            <!-- menu profile quick info -->
-            <div class="profile clearfix">
-              <div class="profile_pic">
-                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-              </div>
-              <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>Tan To</h2>
-              </div>
-            </div>
-            <!-- /menu profile quick info -->
+</head>
 
-            <br />
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+							<span> LMS</span></a>
+					</div>
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>General</h3>
-                <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Dashboard </a> 
-                  </li>
-                  <li><a><i class="fa fa-tasks"></i> Management <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#"> Books </a></li>
-                      <li><a href="#"> Tickets </a></li>
-                      <li><a href="#"> Categories </a></li>
-                      <li><a href="#"> Authors </a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-exchange"></i> Transaction <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="#"> Issue Book </a></li>
-                      <li><a href="#"> Return Book </a></li>
-                      
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-tag"></i> Rules and Regulations </a>
-				  <li><a><i class="fa fa-exclamation-triangle"></i> Blacklist </a>
-                  <li><a><i class="fa fa-bar-chart"></i> Reports </a> 
-                </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+					<div class="clearfix"></div>
 
-            <!-- /menu footer buttons -->
-            
-            <!-- /menu footer buttons -->
-          </div>
-        </div>
+					<!-- menu profile quick info -->
+					<div class="profile clearfix">
+						<div class="profile_pic">
+							<img src="images/img.jpg" alt="..."
+								class="img-circle profile_img">
+						</div>
+						<div class="profile_info">
+							<span>Welcome,</span>
+							<h2>Tan To</h2>
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-              </div>
+					<br />
 
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="images/img.jpg" alt="">Tan To
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span class="badge bg-red pull-right">50%</span>
-                        <span>Settings</span>
-                      </a>
-                    </li>
-                    <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-        <!-- /top navigation -->
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<h3>General</h3>
+							<ul class="nav side-menu">
+								<li><a href="#/"><i class="fa fa-home"></i>
+										Dashboard </a></li>
+								<li><a><i class="fa fa-tasks"></i> Management <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="#/booksManage"> Books </a></li>
+										<li><a href="#/ticketsManage"> Tickets </a></li>
+										<li><a href="#/categoryManage"> Categories </a></li>
+										<li><a href="#/authorManage"> Authors </a></li>
+										<li><a href="#/userManage"> Users </a></li>
+									</ul></li>
+								<li><a><i class="fa fa-exchange"></i> Transaction <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="#/borrowBook"> Issue Book </a></li>
+										<li><a href="#/returnBook"> Return Book </a></li>
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <!-- top tiles -->
-          <div class="row tile_count">
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-              <div class="count">2500</div>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-              <div class="count green">1,000</div>
-            </div>
-            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
-              <div class="count">1,500</div>
-            </div>
-          </div>
-          <!-- /top tiles -->
+									</ul></li>
+								<li><a href="#/rules"><i class="fa fa-tag"></i> Rules
+										and Regulations </a>
+								<li><a href="#/blacklist"><i
+										class="fa fa-exclamation-triangle"></i> Blacklist </a>
+								<li><a href="#/reports"><i class="fa fa-bar-chart"></i>
+										Reports </a>
+							</ul>
+						</div>
+					</div>
+					<!-- /sidebar menu -->
 
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="dashboard_graph">
+					<!-- /menu footer buttons -->
 
-                <div class="row x_title">
-                  <div class="col-md-6">
-                    <h3>Tickets</h3>
-                  </div>
-                  <div class="col-md-6">
-                    <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                      <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                    </div>
-                  </div>
-                </div>
+					<!-- /menu footer buttons -->
+				</div>
+			</div>
 
-                <div class="col-md-9 col-sm-9 col-xs-12">
-                  <div id="chart_plot_01" class="demo-placeholder"></div>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
-                  <div class="x_title">
-                    <h2>Top Member</h2>
-                    <div class="clearfix"></div>
-                  </div>
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
 
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Niccolo Machiavelli</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Geoffrey Chaucer</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="60"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12 col-sm-12 col-xs-6">
-                    <div>
-                      <p>Horace Walpole</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="40"></div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <p>Brothers Grimm</p>
-                      <div class="">
-                        <div class="progress progress_sm" style="width: 76%;">
-                          <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="50"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+						<ul class="nav navbar-nav navbar-right">
+							<li class=""><a href="javascript:;"
+								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								aria-expanded="false"> <img src="images/img.jpg" alt="">Tan
+									To <span class=" fa fa-angle-down"></span>
+							</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a href="javascript:;"> Profile</a></li>
+									<li><a href="javascript:;"> <span
+											class="badge bg-red pull-right">50%</span> <span>Settings</span>
+									</a></li>
+									<li><a href="javascript:;">Help</a></li>
+									<li><a href="login.html"><i
+											class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
 
-                </div>
+		</div>
+		<div ng-view></div>
 
-                <div class="clearfix"></div>
-              </div>
-            </div>
+	</div>
+	<div>
+		<!-- footer content -->
+		<footer>
+			<div class="col-md-12">
+				<p align="center">Team 3 &copy 2017</p>
+			</div>
+			<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>
 
-          </div>
-          <br />
-
-          <div class="row">
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <div class="x_panel tile">
-                <div class="x_title">
-                  <h2>Top rating</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <h4>Books</h4>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>In Search of Lost Time by Marcel Proust</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>123k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Don Quixote by Miguel de Cervantes</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>53k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Ulysses by James Joyce</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>23k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Hamlet by William Shakespeare</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>3k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>Moby Dick by Herman Melville</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>1k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <div class="x_panel tile overflow_hidden">
-                <div class="x_title">
-                  <h2>Total number books</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <table class="" style="width:100%">
-                    <tr>
-                      <th style="width:37%;">
-                        <p>Top 4</p>
-                      </th>
-                      <th>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                          <p class="">By Categories</p>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <canvas class="canvasDoughnut" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                      </td>
-                      <td>
-                        <table class="tile_info">
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square blue"></i>Science fiction </p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square green"></i>Horror </p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square purple"></i>Mystery </p>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square red"></i>Others </p>
-                            </td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
+	<!-- FastClick -->
+	<script src="/LMS/js/lib/admin/fastclick.js"></script>
+	<!-- NProgress -->
+	<script src="/LMS/js/lib/admin/nprogress.js"></script>
+	<!-- Chart.js -->
+	<script src="/LMS/js/lib/admin/Chart.min.js"></script>
+	<!-- gauge.js -->
+	<script src="/LMS/js/lib/admin/gauge.min.js"></script>
+	<!-- bootstrap-progressbar -->
+	<script src="/LMS/js/lib/admin/bootstrap-progressbar.min.js"></script>
+	<!-- iCheck -->
+	<script src="/LMS/js/lib/admin/icheck.min.js"></script>
+	<!-- Skycons -->
+	<script src="/LMS/js/lib/admin/skycons.js"></script>
+	<!-- Flot -->
+	<script src="/LMS/js/lib/admin/jquery.flot.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.flot.pie.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.flot.time.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.flot.stack.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.flot.resize.js"></script>
+	<!-- Flot plugins -->
+	<script src="/LMS/js/lib/admin/jquery.flot.orderBars.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.flot.spline.min.js"></script>
+	<script src="/LMS/js/lib/admin/curvedLines.js"></script>
+	<!-- DateJS -->
+	<script src="/LMS/js/lib/admin/date.js"></script>
+	<!-- JQVMap -->
+	<script src="/LMS/js/lib/admin/jquery.vmap.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.vmap.world.js"></script>
+	<script src="/LMS/js/lib/admin/jquery.vmap.sampledata.js"></script>
+	<!-- bootstrap-daterangepicker -->
+	<script src="/LMS/js/lib/admin/moment.min.js"></script>
+	<script src="/LMS/js/lib/admin/daterangepicker.js"></script>
+	<script src="/LMS/js/lib/admin/custom.min.js"></script>
 
 
 
-          </div>
-        </div>
-        <!-- /page content -->
 
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-          &copy 2017
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
-    </div>
+	<script src="/LMS/js/lib/angular-1.4.9/angular.js"></script>
+	<script src="/LMS/js/lib/angular-1.4.9/angular-resource.js"></script>
+	<script src="/LMS/js/lib/angular-1.4.9/angular-route.js"></script>
 
-    <script src="/LMS/js/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="/LMS/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="/LMS/js/lib/admin/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="/LMS/js/lib/admin/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="/LMS/js/lib/admin/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="/LMS/js/lib/admin/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="/LMS/js/lib/admin/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="/LMS/js/lib/admin/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="/LMS/js/lib/admin/skycons.js"></script>
-    <!-- Flot -->
-    <script src="/LMS/js/lib/admin/jquery.flot.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.flot.pie.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.flot.time.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.flot.stack.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="/LMS/js/lib/admin/jquery.flot.orderBars.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.flot.spline.min.js"></script>
-    <script src="/LMS/js/lib/admin/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="/LMS/js/lib/admin/date.js"></script>
-    <!-- JQVMap -->
-    <script src="/LMS/js/lib/admin/jquery.vmap.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.vmap.world.js"></script>
-    <script src="/LMS/js/lib/admin/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="/LMS/js/lib/admin/moment.min.js"></script>
-    <script src="/LMS/js/lib/admin/daterangepicker.js"></script>
+	<script src="/LMS/js/admin.js"></script>
+	<script src="/LMS/js/controller/AdminController.js"></script>
+	<script src="/LMS/js/controller/BookController.js"></script>
+	<script src="/LMS/js/controller/CategoryController.js"></script>
+	<!-- Custom Theme Scripts -->
 
-    <!-- Custom Theme Scripts -->
-    <script src="/LMS/js/lib/admin/custom.min.js"></script>
-	
-  </body>
+</body>
 </html>

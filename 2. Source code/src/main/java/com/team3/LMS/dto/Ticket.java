@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 @Table(name = "ticket")
 public class Ticket implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "ticket_id")
 	private int ticketId;
@@ -30,8 +32,8 @@ public class Ticket implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "expired_date")
 	private Date expiredDate;
-
-	@Column(name = "limition_number")
+	
+	@Column(name = "limition_number", nullable = false)
 	private int limitionNumber;
 
 	// bi-directional many-to-one association to TicketBookUser
