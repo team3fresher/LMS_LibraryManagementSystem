@@ -48,8 +48,8 @@
 											<tr class="headings">
 												<th><input type="checkbox" id="check-all" class="flat">
 												</th>
-												<th class="column-title">Category id</th>
-												<th class="column-title">Category name</th>
+												<th class="column-title" ng-click="orderByMe('categoryId')">Category id</th>
+												<th class="column-title" ng-click="orderByMe('categoryName')" >Category name</th>
 												<th class="column-title">Description</th>
 												<th class="column-title no-link last"><span
 													class="nobr">Action</span></th>
@@ -59,28 +59,19 @@
 														class="fa fa-chevron-down"></i></a></th>
 											</tr>
 										</thead>
-
+										<div ng-repeat="category in category">
 										<tbody>
 											<tr class="even pointer">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
-												<td class="">121000040</td>
-												<td class=" ">Category 1</td>
+												<td class="">{{categoryId}}</td>
+												<td class=" ">{{categoryName}}</td>
 												<td class=" ">Category 1</td>
 												<td class=" last"><a
 													href="#/categoryManage/updatecategory">Update</a></td>
-											</tr>
-											<tr class="odd pointer">
-												<td class="a-center "><input type="checkbox"
-													class="flat" name="table_records"></td>
-												<td class="">121000040</td>
-												<td class=" ">Category 2</td>
-												<td class=" ">Category 2</td>
-												<td class=" last"><a href="update_category.html">Update</a>
-												</td>
-											</tr>
 
 										</tbody>
+										</div>
 									</table>
 								</div>
 
