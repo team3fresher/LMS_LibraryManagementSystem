@@ -7,15 +7,15 @@ app.config(function($routeProvider){
 	    })
 	    .when('/booksManage',{
 	        templateUrl: '/LMS/views/admin/book_management.html',
-	        controller: 'AdminController'
+	        controller: 'BookController'
 	    })
 	    .when('/booksManage/addbook',{
 	        templateUrl: '/LMS/views/admin/add_book.html',
-	        controller: 'AdminController'
+	        controller: 'BookController'
 	    })
 	    .when('/booksManage/updatebook',{
 	        templateUrl: '/LMS/views/admin/update_book.html',
-	        controller: 'AdminController'
+	        controller: 'BookController'
 	    })
 	    .when('/ticketsManage',{
 	        templateUrl: '/LMS/views/admin/ticket_detail.html',
@@ -23,15 +23,15 @@ app.config(function($routeProvider){
 	    })
 	    .when('/categoryManage',{
 	        templateUrl: '/LMS/views/admin/category_management.html',
-	        controller: 'AdminController'
+	        controller: 'CategoryController'
 	    })
 	    .when('/categoryManage/addcategory',{
 	        templateUrl: '/LMS/views/admin/add_category.html',
-	        controller: 'AdminController'
+	        controller: 'CategoryController'
 	    })
 	    .when('/categoryManage/updatecategory',{
 	        templateUrl: '/LMS/views/admin/update_category.html',
-	        controller: 'AdminController'
+	        controller: 'CategoryController'
 	    })
 	    .when('/authorManage',{
 	        templateUrl: '/LMS/views/admin/author_management.html',
