@@ -12,42 +12,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.team3.LMS.dto.AuthorDetail;
-import com.team3.LMS.service.AuthorDetailService;
+import com.team3.LMS.dto.PublisherDetail;
+import com.team3.LMS.service.PublisherDetailService;
 
 @Controller
-@RequestMapping(value = "/author")
-public class AuthorDetailController {
+@RequestMapping(value = "/publisher")
+public class PublisherDetailController {
 
 	@Autowired
-	AuthorDetailService service;
+	PublisherDetailService service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
-	public List<AuthorDetail> getTicketList() {
-		return service.getAuthorDetailList();
+	public List<PublisherDetail> getTicketList() {
+		return service.getPublisherDetailList();
 	}
 
 	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	@ResponseBody
-	public Page<AuthorDetail> findAll(Pageable pageable) {
-		Page<AuthorDetail> authors = service.findAll(pageable);
-		return authors;
+	public Page<PublisherDetail> findAll(Pageable pageable) {
+		Page<PublisherDetail> publishers = service.findAll(pageable);
+		return publishers;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void addAuthorDetail(@RequestBody AuthorDetail authorDetail) {
-		service.addAuthorDetail(authorDetail);
+	public void addPublisherDetail(@RequestBody PublisherDetail publisherDetail) {
+		service.addPublisherDetail(publisherDetail);
 	}
 	
 	@RequestMapping("/remove/{id}")
-	public void removeAuthorDetail(@PathVariable int id) {
-		service.removeAuthorDetail(id);
+	public void removePublisherDetail(@PathVariable int id) {
+		service.removePublisherDetail(id);
 	}
 	
 	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public AuthorDetail getAuthorDetail(@PathVariable int id) {
-		return service.getAuthorDetail(id);
+	public PublisherDetail getPublisherDetail(@PathVariable int id) {
+		return service.getPublisherDetail(id);
 	}
 }
