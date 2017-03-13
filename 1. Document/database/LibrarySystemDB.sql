@@ -67,7 +67,7 @@ create table USER_INFO(
     job varchar(30),
     degree varchar(30),
     valid boolean,
-    dayofbirth date();
+    dayofbirth date;
 );
 create table USER_ROLE(
 	user_id int not null,
