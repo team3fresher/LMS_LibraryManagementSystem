@@ -41,7 +41,7 @@ public class UserInfoController {
 	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public void addUserInfo(@RequestBody UserInfo userInfo, @PathVariable int id) {
+	public void editUserInfo(@RequestBody UserInfo userInfo, @PathVariable int id) {
 		userInfo.setUserId(id);
 		service.addUserInfo(userInfo);
 	}

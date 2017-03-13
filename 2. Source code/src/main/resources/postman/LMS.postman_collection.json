@@ -23,6 +23,7 @@
 			"description": "+ Add",
 			"order": [
 				"c1cc1940-34d3-4a7a-7a75-3cac4c2a6361",
+				"b2b80c91-9084-8105-d835-30d9f5ad3d9c",
 				"70b840ed-6050-7bbf-126a-528d57ffe79f",
 				"a6634f05-a47f-68c7-a239-e63cb22716e1",
 				"f7c8dcbc-8a35-41f5-3284-11e5d6dd06f5"
@@ -37,12 +38,13 @@
 			"description": "+ Add",
 			"order": [
 				"59347098-1ceb-3e6f-2851-3495ac05636e",
+				"4a1093f7-8a10-babc-bf97-f05a77b87dd5",
 				"35bf3605-69e5-0d39-5264-bee410ed0f36",
 				"223e2721-cd76-f52d-fe0c-683659b3d1b2",
 				"6fb200f1-a550-1558-23a7-dabebb4bf230"
 			],
 			"owner": "1630242",
-			"collectionId": "67ef0169-c58c-a0ef-af44-d9e6a614e13d"
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
 		},
 		{
 			"id": "3394a39d-587b-4746-ae08-aa7c2b40ddbf",
@@ -81,7 +83,8 @@
 				"f914999e-da97-72c4-fd8c-ccf55d05650e",
 				"a285089d-6768-ccf2-d263-a23ee572185a"
 			],
-			"owner": "1630242"
+			"owner": "1630242",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
 		},
 		{
 			"id": "529115ca-780f-5d5d-be1a-dbbf31432b6d",
@@ -205,12 +208,11 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488915773099,
+			"time": 1489436669505,
 			"name": "Remove category",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
-			"responses": [],
-			"folder": "d84105ba-67ce-f045-e6aa-d032ce4598fc"
+			"responses": []
 		},
 		{
 			"id": "2a4cd2a5-4537-2001-a055-fb03fb89b0e6",
@@ -290,6 +292,26 @@
 			"folder": "d84105ba-67ce-f045-e6aa-d032ce4598fc"
 		},
 		{
+			"id": "4a1093f7-8a10-babc-bf97-f05a77b87dd5",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/LMS/category/add",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489436906593,
+			"name": "Edit category",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"categoryId\": 1,\n\t\"categoryName\": \"Magazine\",\n\t\"categoryDescription\":\"Description\",\n\t\"books\": []\n}"
+		},
+		{
 			"id": "59347098-1ceb-3e6f-2851-3495ac05636e",
 			"headers": "Content-Type: application/json\n",
 			"url": "http://localhost:9000/LMS/category/add",
@@ -302,12 +324,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489172822170,
+			"time": 1489436634442,
 			"name": "Add category",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"categoryName\": \"Category test\",\n\t\"books\": []\n}"
+			"rawModeData": "{\n\t\"categoryName\": \"Category test\",\n\t\"categoryDescription\":\"Description\",\n\t\"books\": []\n}"
 		},
 		{
 			"id": "6ebb9ff0-fe22-d7b8-4b90-e7c72ef8382a",
@@ -586,6 +608,25 @@
 			"folder": "529115ca-780f-5d5d-be1a-dbbf31432b6d"
 		},
 		{
+			"id": "b2b80c91-9084-8105-d835-30d9f5ad3d9c",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/LMS/book/edit/12345678",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489436595638,
+			"name": "Edit book",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"isbn\": \"12345678\",\n\t\"amount\": 12,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 2015,\n\t\"shortDescription\": \"A Concise History of Japan integrates the pageantry of Japanese history\",\n\t\"title\": \"A Concise History of Japan\",\n\t\"validStatus\": 1,\n\t\"authorDetails\":[],\n\t\"bookCategoryDetail\":{},\n\t\"publisherDetail\":{}\n}"
+		},
+		{
 			"id": "b2de7250-ac0e-631b-83f7-bcfdf123efe6",
 			"headers": "",
 			"url": "http://localhost:9000/LMS/publisher/get/24",
@@ -632,16 +673,16 @@
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
-			"dataMode": "binary",
+			"dataMode": "raw",
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489433262142,
+			"time": 1489434744130,
 			"name": "Add book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": ""
+			"rawModeData": "{\n\t\"isbn\": \"12345678\",\n\t\"amount\": 12,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 2015,\n\t\"shortDescription\": \"A Concise History of Japan integrates the pageantry of Japanese history\",\n\t\"title\": \"A Concise History of Japan\",\n\t\"validStatus\": 1,\n\t\"authorDetails\":[],\n\t\"bookCategoryDetail\":{},\n\t\"publisherDetail\":{}\n}"
 		},
 		{
 			"id": "c600a19f-30dc-1570-6cc4-5cf043bba1a0",
