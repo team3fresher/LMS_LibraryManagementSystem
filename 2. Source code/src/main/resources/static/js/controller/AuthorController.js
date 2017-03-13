@@ -3,9 +3,10 @@ app.controller("AuthorController", function($scope, $http){
 		
 	$scope.AddAuthor = function(){
 		$scope.author = {
+			"authorName": $scope.author.name,
 			
 		};
-			$http.post("http://localhost:9000/LMS/author/add",$scope.book)
+			$http.post("http://localhost:9000/LMS/author/add",$scope.author)
 			.success(function(data, status, headers, config){
 				getData();
 			})

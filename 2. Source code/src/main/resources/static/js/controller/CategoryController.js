@@ -3,7 +3,8 @@ app.controller("CategoryController", function($scope, $http){
 		
 	$scope.AddCategory = function(){
 		$scope.category= {
-			
+			"categoryName":$scope.category.name,
+			"categoryDescription":$scope.category.description,
 		};
 			$http.post("http://localhost:9000/LMS/category/add",$scope.category)
 			.success(function(data, status, headers, config){
