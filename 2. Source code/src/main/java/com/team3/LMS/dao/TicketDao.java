@@ -1,4 +1,4 @@
-/*package com.team3.LMS.dao;
+package com.team3.LMS.dao;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,4 +11,3 @@ import com.team3.LMS.dto.Ticket;
 public interface TicketDao extends CrudRepository<Ticket, Integer> {
 	Page<Ticket> findAll(Pageable pageable);
 }
-*/
