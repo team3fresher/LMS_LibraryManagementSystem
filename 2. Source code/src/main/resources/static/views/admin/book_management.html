@@ -61,24 +61,22 @@
 														class="fa fa-chevron-down"></i></a></th>
 											</tr>
 										</thead>
-										<div ng-repeat="book in book">
 										<tbody>
-											<tr class="even pointer">
+											<tr class="even pointer" ng-repeat="book in books | filter : text_filter | orderBy:myOrderBy">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
-												<td class="">{{isbn}}</td>
-												<td class=" ">{{title}}</td>
-												<td class=" ">{{brwTcktNber}} <i
+												<td >{{book.isbn}}</td>
+												<td >{{book.title}}</td>
+												<td >{{book.brwTcktNber}} <i
 													class="success fa fa-long-arrow-up"></i></td>
-												<td class=" ">{{validStatus}} L</td>
-												<td class=" ">{{publishingYear}}</td>
-												<td class="a-right a-right ">{{amount}}</td>
+												<td >{{book.validStatus}} L</td>
+												<td >{{book.publishingYear}}</td>
+												<td class="a-right a-right ">{{book.amount}}</td>
 												<td class=" last"><a href="#/booksManage/updatebook">Update</a>
 												</td>
 											</tr>
 
 										</tbody>
-										</div>
 									</table>
 								</div>
 

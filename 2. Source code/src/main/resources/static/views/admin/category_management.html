@@ -1,6 +1,7 @@
-<!-- iCheck -->
+<!--
 <link href="/LMS/css/admin/skins/flat/green.css" rel="stylesheet">
 <script src="/LMS/js/lib/admin/custom.min.js"></script>
+-->
 <div class="container body">
 	<div class="main_container">
 
@@ -59,19 +60,17 @@
 														class="fa fa-chevron-down"></i></a></th>
 											</tr>
 										</thead>
-										<div ng-repeat="category in category">
 										<tbody>
-											<tr class="even pointer">
+											<tr class="even pointer" ng-repeat="category in categories | filter : text_filter | orderBy:myOrderBy">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
-												<td class="">{{categoryId}}</td>
-												<td class=" ">{{categoryName}}</td>
+												<td class="">{{category.categoryId}}</td>
+												<td class=" ">{{category.categoryName}}</td>
 												<td class=" ">Category 1</td>
 												<td class=" last"><a
 													href="#/categoryManage/updatecategory">Update</a></td>
 
 										</tbody>
-										</div>
 									</table>
 								</div>
 
