@@ -49,8 +49,9 @@ create table STAFF_INFO(
     phone_number int(11) not null,
     email varchar(30),
     pword int(20) not null,
-    sex boolean not null,
-    degree varchar(30)
+    sex varchar(6) not null,
+    degree varchar(30),
+    dayofbirth date
 );
 create table ROLE(
 	role_id int not null auto_increment primary key,
@@ -63,11 +64,11 @@ create table USER_INFO(
     phone_number int(11) not null,
     email varchar(30) not null,
     pword varchar(20) not null,
-    sex boolean not null,
+    sex varchar(6) not null,
     job varchar(30),
     degree varchar(30),
     valid boolean,
-    dayofbirth date;
+    dayofbirth date
 );
 create table USER_ROLE(
 	user_id int not null,
