@@ -26,6 +26,9 @@ public class BookCategoryDetail implements Serializable {
 
 	@Column(name = "category_name")
 	private String categoryName;
+	
+	@Column(name = "category_description")
+	private String categoryDescription;
 
 	// bi-directional many-to-one association to Book
 	@OneToMany(mappedBy = "bookCategoryDetail")
@@ -48,6 +51,14 @@ public class BookCategoryDetail implements Serializable {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
 	}
 
 	public List<Book> getBooks() {
