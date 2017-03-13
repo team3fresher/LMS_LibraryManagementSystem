@@ -35,34 +35,42 @@ app.config(function($routeProvider){
 	    })
 	    .when('/authorManage',{
 	        templateUrl: '/LMS/views/admin/author_management.html',
-	        controller: 'AdminController'
+	        controller: 'AuthorController'
 	    })
 	    .when('/authorManage/addauthor',{
 	        templateUrl: '/LMS/views/admin/add_author.html',
-	        controller: 'AdminController'
+	        controller: 'AuthorController'
 	    })
 	    .when('/authorManage/updateauthor',{
 	        templateUrl: '/LMS/views/admin/update_author.html',
-	        controller: 'AdminController'
+	        controller: 'AuthorController'
 	    })
 	    .when('/userManage',{
 	        templateUrl: '/LMS/views/admin/user_management.html',
-	        controller: 'AdminController'
+	        controller: 'UserController'
 	    })
 	    .when('/userManage/adduser',{
 	        templateUrl: '/LMS/views/admin/add_user.html',
-	        controller: 'AdminController'
+	        controller: 'UserController'
 	    })
 	    .when('/userManage/updateuser',{
 	        templateUrl: '/LMS/views/admin/update_user.html',
-	        controller: 'AdminController'
+	        controller: 'UserController'
 	    })
 	    .when('/borrowBook',{
 	        templateUrl: '/LMS/views/admin/borrow_book.html',
 	        controller: 'AdminController'
 	    })
+	    .when('/borrowBook/ticketDetail',{
+	        templateUrl: '/LMS/views/admin/ticket_detail.html',
+	        controller: 'AdminController'
+	    })
 	    .when('/returnBook',{
 	        templateUrl: '/LMS/views/admin/return_book.html',
+	        controller: 'AdminController'
+	    })
+	    .when('/returnBook/ticketDetail',{
+	        templateUrl: '/LMS/views/admin/ticket_detail.html',
 	        controller: 'AdminController'
 	    })
 	    .when('/rules',{

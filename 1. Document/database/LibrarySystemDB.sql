@@ -65,7 +65,9 @@ create table USER_INFO(
     pword varchar(20) not null,
     sex boolean not null,
     job varchar(30),
-    degree varchar(30)
+    degree varchar(30),
+    valid boolean,
+    dayofbirth date();
 );
 create table USER_ROLE(
 	user_id int not null,
@@ -210,7 +212,7 @@ values (9786049143132, "5 Centimeters per Second",1,2014,10,"Praise for the anim
 insert into book_author(author_id, isbn) values (16,9786049143132);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9786041092969, "A Silent Voice",8,2016,8,"LEARNING TO LISTEN",0,true,15,1);
+values (9786041092969, "A Silent Voice 1",8,2016,8,"LEARNING TO LISTEN",0,true,15,1);
 insert into book_author(author_id, isbn) values (37,9786041092969);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)

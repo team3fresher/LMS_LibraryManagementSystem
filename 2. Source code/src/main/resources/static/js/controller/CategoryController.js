@@ -1,5 +1,5 @@
 var app = angular.module('myAdmin');
-app.controller("CategoryControler", function($scope, $http){
+app.controller("CategoryController", function($scope, $http){
 		
 	$scope.AddCategory = function(){
 		$scope.category= {
@@ -21,7 +21,7 @@ app.controller("CategoryControler", function($scope, $http){
 			method: 'get',
 			url: "http://localhost:9000/LMS/category/list"
 		}).success(function(data, status, headers, config){
-			$scope.book = data;
+			$scope.categories = data;
 		})
 		.error(function(data, status, headers, config){});
 	}

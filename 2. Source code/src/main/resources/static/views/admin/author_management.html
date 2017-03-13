@@ -1,7 +1,7 @@
-
-<!-- iCheck -->
+<!--
 <link href="/LMS/css/admin/skins/flat/green.css" rel="stylesheet">
-<script src="/LMS/js/lib/admin/custom.min.js"></script>
+<script src="/LMS/js/lib/admin/custom.min.js"></script> 
+-->
 <div class="container body">
 	<div class="main_container">
 		<!-- page content -->
@@ -47,8 +47,8 @@
 											<tr class="headings">
 												<th><input type="checkbox" id="check-all" class="flat">
 												</th>
-												<th class="column-title">Author Id</th>
-												<th class="column-title">Full Name</th>
+												<th class="column-title" ng-click="orderByMe('authorId')">Author Id</th>
+												<th class="column-title" ng-click="orderByMe('authorName')">Full Name</th>
 												<th class="column-title">Birthday</th>
 												<th class="column-title">Country</th>
 												<th class="column-title no-link last"><span
@@ -61,39 +61,15 @@
 										</thead>
 
 										<tbody>
-											<tr class="even pointer">
+											<tr class="even pointer" ng-repeat="author in authors | filter : text_filter | orderBy:myOrderBy">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
-												<td class="">121000040</td>
-												<td class=" ">May 23, 2014 11:47:56 PM</td>
-												<td class=" ">121000210 <i
+												<td class="">{{author.authorId}}</td>
+												<td class=" ">{{author.authorName}}</td>
+												<td class=" ">Birthday<i
 													class="success fa fa-long-arrow-up"></i></td>
-												<td class=" ">John Blank L</td>
+												<td class=" ">Country</td>
 												<td class=" last"><a href="#/authorManage/updateauthor">Update</a>
-												</td>
-											</tr>
-											<tr class="odd pointer">
-												<td class="a-center "><input type="checkbox"
-													class="flat" name="table_records"></td>
-												<td class="">121000040</td>
-												<td class=" ">May 23, 2014 11:30:12 PM</td>
-												<td class=" ">121000208 <i
-													class="success fa fa-long-arrow-up"></i>
-												</td>
-												<td class=" ">John Blank L</td>
-												<td class=" last"><a href="update_author.html">Update</a>
-												</td>
-											</tr>
-											<tr class="even pointer">
-												<td class="a-center "><input type="checkbox"
-													class="flat" name="table_records"></td>
-												<td class="">121000040</td>
-												<td class=" ">May 24, 2014 10:55:33 PM</td>
-												<td class=" ">121000203 <i
-													class="success fa fa-long-arrow-up"></i>
-												</td>
-												<td class=" ">Mike Smith</td>
-												<td class=" last"><a href="update_book.html">Update</a>
 												</td>
 											</tr>
 										</tbody>
