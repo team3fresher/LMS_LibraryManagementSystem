@@ -73,7 +73,7 @@ public class TestController {
 		add.setShortDescription("test");
 		add.setTitle("test");
 		add.setValidStatus((byte) 1);
-		add.setTicketBookUsers((List<TicketBookUser>) ticketBookUserDao.findAll());
+		//add.setTicketBookUsers((List<TicketBookUser>) ticketBookUserDao.findAll());
 		
 		bookDao.save(add);
 		return books.toString();

@@ -35,6 +35,7 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/book/add", method = RequestMethod.POST)
+	@ResponseBody
 	public void addBook(@RequestBody Book book) {
 		service.addBook(book);
 	}

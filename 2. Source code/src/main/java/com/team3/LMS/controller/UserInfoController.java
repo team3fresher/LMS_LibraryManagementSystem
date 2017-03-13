@@ -16,35 +16,42 @@ import com.team3.LMS.dto.UserInfo;
 import com.team3.LMS.service.UserInfoService;
 
 @Controller
+@RequestMapping(value = "/userInfo")
 public class UserInfoController {
 
 	@Autowired
 	UserInfoService service;
 
-	@RequestMapping(value = "/userInfo/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<UserInfo> getUserInfoList() {
 		return service.getUserInfoList();
 	}
 
-	@RequestMapping(value = "/userInfo/findAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	@ResponseBody
 	public Page<UserInfo> findAll(Pageable pageable) {
 		Page<UserInfo> userInfos = service.findAll(pageable);
 		return userInfos;
 	}
 
-	@RequestMapping(value = "/userInfo/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void addUserInfo(@RequestBody UserInfo userInfo) {
 		service.addUserInfo(userInfo);
 	}
 	
-	@RequestMapping("/userInfo/remove/{id}")
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public void addUserInfo(@RequestBody UserInfo userInfo, @PathVariable int id) {
+		userInfo.setUserId(id);
+		service.addUserInfo(userInfo);
+	}
+	
+	@RequestMapping("/remove/{id}")
 	public void removeUserInfo(@PathVariable int id) {
 		service.removeUserInfo(id);
 	}
 	
-	@RequestMapping(value = "/userInfo/get/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public UserInfo getUserInfo(@PathVariable int id) {
 		return service.getUserInfo(id);

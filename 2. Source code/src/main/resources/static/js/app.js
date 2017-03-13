@@ -29,6 +29,10 @@ app.config(function($routeProvider){
             templateUrl: '/LMS/views/user.html',
             controller: 'MainController'
         })
+        .when('/cart',{
+            templateUrl: '/LMS/views/cart.html',
+            controller: 'MainController'
+        })
         .when('/admin',{
             templateUrl: '/LMS/indexAdmin.html',
             controller: 'MainController'
