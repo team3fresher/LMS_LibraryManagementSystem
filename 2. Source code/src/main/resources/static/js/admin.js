@@ -88,7 +88,7 @@ app.config(function($routeProvider){
 	    .when('/test',{
 	        templateUrl: '/LMS/book_management.html',
 	        controller: 'AdminController'
-	    })
+	    })	    
         .otherwise(
             { redirectTo: '/'}
         );
