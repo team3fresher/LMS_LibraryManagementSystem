@@ -1,11 +1,11 @@
 var app = angular.module('myAdmin');
-app.controller("BookController", function($scope, $http){
+app.controller("AuthorController", function($scope, $http){
 		
-	$scope.AddBook = function(){
-		$scope.book = {
+	$scope.AddAuthor = function(){
+		$scope.author = {
 			
 		};
-			$http.post("http://localhost:9000/LMS/book/add",$scope.book)
+			$http.post("http://localhost:9000/LMS/author/add",$scope.book)
 			.success(function(data, status, headers, config){
 				getData();
 			})
@@ -19,9 +19,9 @@ app.controller("BookController", function($scope, $http){
 	function getData() { 
 		$http({
 			method: 'get',
-			url: "http://localhost:9000/LMS/book/list"
+			url: "http://localhost:9000/LMS/author/list"
 		}).success(function(data, status, headers, config){
-			$scope.books = data;
+			$scope.authors = data;
 		})
 		.error(function(data, status, headers, config){});
 	}
