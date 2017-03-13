@@ -5,9 +5,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.team3.LMS.dto.BookCategoryDetail;
+import com.team3.LMS.dto.PublisherDetail;
 
 @Repository
-public interface BookCategoryDao extends CrudRepository<BookCategoryDetail, Integer> {
-	Page<BookCategoryDetail> findAll(Pageable pageable);
+public interface PublisherDetailDao extends CrudRepository<PublisherDetail, Integer> {
+	Page<PublisherDetail> findAll(Pageable pageable);
 }

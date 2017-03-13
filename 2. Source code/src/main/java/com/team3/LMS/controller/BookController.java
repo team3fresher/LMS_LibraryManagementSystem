@@ -40,13 +40,13 @@ public class BookController {
 	}
 	
 	@RequestMapping("/book/remove/{id}")
-	public void removeBook(@PathVariable int id) {
+	public void removeBook(@PathVariable String id) {
 		service.removeBook(id);
 	}
 	
 	@RequestMapping(value = "/book/get/{isbn}", method = RequestMethod.GET)
 	@ResponseBody
-	public Book getBook(@PathVariable int isbn) {
+	public Book getBook(@PathVariable String isbn) {
 		return service.getBook(isbn);
 	}
 }

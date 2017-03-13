@@ -1,16 +1,23 @@
 package com.team3.LMS.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "staff_info")
-public class StaffInfo {
+public class StaffInfo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "staff_id")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int staffId;
 
 	private String address;

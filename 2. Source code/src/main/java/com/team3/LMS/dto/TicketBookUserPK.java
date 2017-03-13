@@ -8,6 +8,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class TicketBookUserPK implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	@Column(name = "isbn", insertable = false, updatable = false)
 	private String isbn;
 
