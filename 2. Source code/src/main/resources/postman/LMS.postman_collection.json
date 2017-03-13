@@ -14,7 +14,8 @@
 				"fd1dbcbc-ef37-45cc-38b0-161d17e35f11",
 				"d26f165f-2709-7ab2-968e-f354eef35ab6"
 			],
-			"owner": "1630242"
+			"owner": "1630242",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
 		},
 		{
 			"id": "6d0c6c83-6b53-2519-5567-65939fdfcb18",
@@ -57,11 +58,25 @@
 			"collectionId": "67ef0169-c58c-a0ef-af44-d9e6a614e13d"
 		},
 		{
+			"id": "1049196e-f087-381d-aa64-50a5ec007cc1",
+			"name": "Publisher Detail",
+			"description": "",
+			"order": [
+				"156aa280-e80b-7287-ff63-f1ad5ae2847a",
+				"0c64723f-5cf9-26e0-7650-2a175dbaa62f",
+				"2ee4ed3e-cc09-7859-dc42-bd07823d43a4",
+				"b2de7250-ac0e-631b-83f7-bcfdf123efe6"
+			],
+			"owner": "1630242",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
+		},
+		{
 			"id": "23072fd7-b244-b40a-97a5-6bea227881b5",
 			"name": "Staff Info",
 			"description": "",
 			"order": [
 				"80b26239-f5c7-9f99-34fd-aaaa2d9a86e0",
+				"2a4cd2a5-4537-2001-a055-fb03fb89b0e6",
 				"b4a17335-40d4-edc3-1923-f486ac4cf92d",
 				"f914999e-da97-72c4-fd8c-ccf55d05650e",
 				"a285089d-6768-ccf2-d263-a23ee572185a"
@@ -87,17 +102,57 @@
 			"description": "",
 			"order": [
 				"329a5868-904c-d25c-0284-1432841e96ef",
+				"77383def-7872-bc51-7a91-d77d66c4a979",
 				"f06547b3-a07e-e15f-a1b3-dce22d5d0102",
 				"90deab06-dbe4-4d1c-ae6f-4fef532b7171",
 				"9481ce84-cdc7-5ad2-8e98-e69aa2cca535"
 			],
-			"owner": "1630242"
+			"owner": "1630242",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
 		}
 	],
 	"timestamp": 0,
 	"owner": "1630242",
 	"public": false,
 	"requests": [
+		{
+			"id": "0c64723f-5cf9-26e0-7650-2a175dbaa62f",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/publisher/list",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489420300115,
+			"name": "Get all publisher detail",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": []
+		},
+		{
+			"id": "156aa280-e80b-7287-ff63-f1ad5ae2847a",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/LMS/publisher/add",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489420476713,
+			"name": "Add publisher detail",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": [],
+			"rawModeData": "{\n    \"publisherName\": \"Test\",\n    \"books\": []\n}"
+		},
 		{
 			"id": "1707b576-4bdc-07ab-d7a0-07ad70ec832f",
 			"headers": "",
@@ -158,6 +213,44 @@
 			"folder": "d84105ba-67ce-f045-e6aa-d032ce4598fc"
 		},
 		{
+			"id": "2a4cd2a5-4537-2001-a055-fb03fb89b0e6",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/LMS/staffInfo/edit/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489433991777,
+			"name": "Edit staff info",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"staffId\": 1,\n\t\"address\": \"edit\",\n\t\"degree\": null,\n\t\"email\": \"222@mail.com\",\n\t\"phoneNumber\": 22222,\n\t\"pword\": 22222,\n\t\"realName\": \"edit\",\n\t\"sex\": \"female\",\n\t\"dayOfBirth\": \"2012-03-04\"\n}"
+		},
+		{
+			"id": "2ee4ed3e-cc09-7859-dc42-bd07823d43a4",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/publisher/remove/25",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489420516921,
+			"name": "Remove publisher detail",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": []
+		},
+		{
 			"id": "329a5868-904c-d25c-0284-1432841e96ef",
 			"headers": "Content-Type: application/json\n",
 			"url": "http://localhost:9000/LMS/userInfo/add",
@@ -168,15 +261,13 @@
 			"dataMode": "raw",
 			"tests": "",
 			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"time": 1488922832146,
+			"helperAttributes": {},
+			"time": 1489433166418,
 			"name": "Add user info",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n  \"address\": \"District 3\",\n  \"degree\": null,\n  \"email\": \"test@mail.com\",\n  \"job\": null,\n  \"phoneNumber\": 123456789,\n  \"pword\": \"test\",\n  \"realName\": \"test\",\n  \"sex\": 0\n}",
-			"folder": "e907e5eb-a351-857a-844f-32d162fb2b13",
-			"descriptionFormat": null
+			"rawModeData": "{\n\t\"address\": \"test\",\n\t\"degree\": \"1232\",\n\t\"email\": \"1232@dasldf\",\n\t\"job\": \"123\",\n\t\"phoneNumber\": 12312312,\n\t\"pword\": \"1232134\",\n\t\"realName\": \"1111111\",\n\t\"sex\": \"male\",\n\t\"valid\": true,\n\t\"dayOfBirth\": \"2017-03-23\"\n}"
 		},
 		{
 			"id": "35bf3605-69e5-0d39-5264-bee410ed0f36",
@@ -296,6 +387,25 @@
 			"rawModeData": "{\n\t\"fine\": 2,\n\t\"payDay\": \"2017-03-07\",\n\t\"paymentAmount\": 144\n}"
 		},
 		{
+			"id": "77383def-7872-bc51-7a91-d77d66c4a979",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/LMS/userInfo/edit/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489433367841,
+			"name": "Edit user info",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"userId\": 1,\n\t\"address\": \"edit\",\n\t\"degree\": \"1232\",\n\t\"email\": \"edit@dasldf\",\n\t\"job\": \"123\",\n\t\"phoneNumber\": 12312312,\n\t\"pword\": \"1232134\",\n\t\"realName\": \"edit\",\n\t\"sex\": \"male\",\n\t\"valid\": true,\n\t\"dayOfBirth\": \"2017-03-23\"\n}"
+		},
+		{
 			"id": "7e5d1636-438d-a14c-52f6-45a8744bde7c",
 			"headers": "",
 			"url": "http://localhost:9000/LMS/payment/list",
@@ -327,13 +437,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488923809242,
+			"time": 1489433947378,
 			"name": "Add staff info",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"pword\": 1,\n\t\"staffName\": \"name 1\"\n}",
-			"folder": "23072fd7-b244-b40a-97a5-6bea227881b5"
+			"rawModeData": "{\n\t\"address\": \"2222\",\n\t\"degree\": null,\n\t\"email\": \"222@mail.com\",\n\t\"phoneNumber\": 22222,\n\t\"pword\": 22222,\n\t\"realName\": \"22222\",\n\t\"sex\": \"female\",\n\t\"dayOfBirth\": \"2012-03-04\"\n}"
 		},
 		{
 			"id": "8aa01e59-58d8-4173-323e-ad45d52032cc",
@@ -477,6 +586,25 @@
 			"folder": "529115ca-780f-5d5d-be1a-dbbf31432b6d"
 		},
 		{
+			"id": "b2de7250-ac0e-631b-83f7-bcfdf123efe6",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/publisher/get/24",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1489420509378,
+			"name": "Get publisher detail by Id",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": []
+		},
+		{
 			"id": "b4a17335-40d4-edc3-1923-f486ac4cf92d",
 			"headers": "",
 			"url": "http://localhost:9000/LMS/staffInfo/list",
@@ -504,16 +632,16 @@
 			"pathVariables": {},
 			"method": "POST",
 			"data": [],
-			"dataMode": "raw",
+			"dataMode": "binary",
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489175593395,
+			"time": 1489433262142,
 			"name": "Add book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"isbn\": \"9780307947391\",\n\t\"amount\": 10,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 1,\n\t\"publishingYear\": \"2012-01-01\",\n\t\"shortDescription\": \"test\",\n\t\"title\": \"test\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": 1,\n\t\"bookCategoryDetail\": {\n\t\t\"categoryId\": 1,\n\t\t\"categoryName\": \"Magazine\"\n\t},\n\t\"publisherDetail\": {\n\t\t\"publisherId\": 1,\n\t\t\"publisherName\": \"Van hoc\"\n\t}\n}"
+			"rawModeData": ""
 		},
 		{
 			"id": "c600a19f-30dc-1570-6cc4-5cf043bba1a0",

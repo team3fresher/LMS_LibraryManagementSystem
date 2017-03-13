@@ -13,38 +13,46 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.team3.LMS.dto.StaffInfo;
+import com.team3.LMS.dto.UserInfo;
 import com.team3.LMS.service.StaffInfoService;
 
 @Controller
+@RequestMapping(value = "/staffInfo")
 public class StaffInfoController {
 
 	@Autowired
 	StaffInfoService service;
 
-	@RequestMapping(value = "/staffInfo/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<StaffInfo> getStaffInfoList() {
 		return service.getStaffInfoList();
 	}
 
-	@RequestMapping(value = "/staffInfo/findAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	@ResponseBody
 	public Page<StaffInfo> findAll(Pageable pageable) {
 		Page<StaffInfo> staffInfos = service.findAll(pageable);
 		return staffInfos;
 	}
 
-	@RequestMapping(value = "/staffInfo/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void addStaffInfo(@RequestBody StaffInfo staffInfo) {
 		service.addStaffInfo(staffInfo);
 	}
 	
-	@RequestMapping("/staffInfo/remove/{id}")
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public void addStaffInfo(@RequestBody StaffInfo staffInfo, @PathVariable int id) {
+		staffInfo.setStaffId(id);
+		service.addStaffInfo(staffInfo);
+	}
+	
+	@RequestMapping("/remove/{id}")
 	public void removeStaffInfo(@PathVariable int id) {
 		service.removeStaffInfo(id);
 	}
 	
-	@RequestMapping(value = "/staffInfo/get/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public StaffInfo getStaffInfo(@PathVariable int id) {
 		return service.getStaffInfo(id);
