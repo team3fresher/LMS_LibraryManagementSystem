@@ -1,6 +1,7 @@
 package com.team3.LMS.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,6 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -47,10 +50,13 @@ public class UserInfo implements Serializable {
 	@Column(name = "real_name")
 	private String realName;
 
-	private byte sex;
+	private String sex;
 	
-	/*@Column(name = "active")
-	private byte active;*/
+	private boolean valid;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dayofbirth")
+	private Date dayOfBirth;
 
 	// bi-directional many-to-one association to Payment
 	@OneToMany(mappedBy = "userInfo")
@@ -137,21 +143,29 @@ public class UserInfo implements Serializable {
 		this.realName = realName;
 	}
 
-	public byte getSex() {
+	public String getSex() {
 		return this.sex;
 	}
 
-	public void setSex(byte sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
+	}	
+	
+	public boolean isValid() {
+		return valid;
 	}
 
-	/*public byte getActive() {
-		return active;
+	public void setValid(boolean valid) {
+		this.valid = valid;
 	}
 
-	public void setActive(byte active) {
-		this.active = active;
-	}*/
+	public Date getDayOfBirth() {
+		return dayOfBirth;
+	}
+
+	public void setDayOfBirth(Date dayOfBirth) {
+		this.dayOfBirth = dayOfBirth;
+	}
 
 	@JsonIgnore
 	public List<Payment> getPayments() {

@@ -1,6 +1,7 @@
 package com.team3.LMS.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "staff_info")
@@ -34,7 +37,11 @@ public class StaffInfo implements Serializable {
 	@Column(name = "real_name")
 	private String realName;
 
-	private byte sex;
+	private String sex;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "dayofbirth")
+	private Date dayOfBirth;
 
 	public StaffInfo() {
 	}
@@ -95,12 +102,20 @@ public class StaffInfo implements Serializable {
 		this.realName = realName;
 	}
 
-	public byte getSex() {
+	public String getSex() {
 		return this.sex;
 	}
 
-	public void setSex(byte sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
+	public Date getDayOfBirth() {
+		return dayOfBirth;
+	}
+
+	public void setDayOfBirth(Date dayOfBirth) {
+		this.dayOfBirth = dayOfBirth;
+	}
+	
 }
