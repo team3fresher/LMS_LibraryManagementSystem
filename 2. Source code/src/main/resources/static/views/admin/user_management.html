@@ -18,7 +18,7 @@
 							class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
 							<div class="input-group">
 								<input type="text" class="form-control"
-									placeholder="Search for..."> <span
+									placeholder="Search for..." ng-model="search"> <span
 									class="input-group-btn">
 									<button class="btn btn-default" type="button">Go!</button>
 								</span>
@@ -40,7 +40,6 @@
 								<div class="nav navbar-right panel_toolbox">
 									<a href="#/userManage/adduser"><button class="btn btn-primary"
 											type="button">Add new</button></a>
-									<button class="btn btn-danger" type="button">Delete</button>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -48,19 +47,20 @@
 							<div class="x_content">
 								<div class="table-responsive">
 									<table class="table table-striped jambo_table bulk_action">
-										<thead>
-											<tr class="headings">
+										<thead >
+											<tr class="headings" style="text-align:center">
 												<th><input type="checkbox" id="check-all" class="flat">
 												</th>
-												<th class="column-title" ng-click="orderByMe('userId')">User id</th>
+												<th class="column-title">STT</th>
+												<th class="column-title" ng-click="orderByMe('userId')">User's Account</th>
 												<th class="column-title" ng-click="orderByMe('realName')">Full name</th>
 												<th class="column-title" ng-click="orderByMe('day')">Day of birth</th>
 												<th class="column-title" ng-click="orderByMe('sex')">Gender</th>
 												<th class="column-title" ng-click="orderByMe('address')">Address</th>
 												<th class="column-title" ng-click="orderByMe('job')">Job</th>
-												<th class="column-title no-link last"><span
+												<th class="column-title no-link last" ><span
 													class="nobr">Action</span></th>
-												<th class="bulk-actions" colspan="7"><a class="antoo"
+												<th class="bulk-actions" colspan="7" ><a class="antoo"
 													style="color: #fff; font-weight: 500;">Bulk Actions ( <span
 														class="action-cnt"> </span> ) <i
 														class="fa fa-chevron-down"></i></a></th>
@@ -68,17 +68,19 @@
 										</thead>
 
 										<tbody>
-											<tr class="even pointer" ng-repeat="user in users | filter : text_filter | orderBy:myOrderBy">
+											<tr class="even pointer" ng-repeat="user in users | filter : text_filter | filter : search | orderBy:myOrderBy">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
-												<td class="">{{user.userId}}</td>
+												<td class="">{{$index+1}}</td>
+												<td class="">{{user.email}}</td>
 												<td class=" ">{{user.realName}}</td>
 												<td class=" ">{{user.day}} <i
 													class="success fa fa-long-arrow-up"></i></td>
 												<td class=" ">{{user.sex}}</td>
 												<td class=" ">{{user.address}}</td>
 												<td class="a-right a-right ">{{user.job}}</td>
-												<td class=" last"><a href="#/userManage/updateuser">Update</a>
+												<td class=" last"><button><a href="#/userManage/updateuser/{{user.userId}}">Block</a> </button>
+												<button ng-click="removeUser(user.userId)">Delete</button>
 												</td>
 											</tr>
 											

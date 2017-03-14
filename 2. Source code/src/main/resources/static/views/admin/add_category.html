@@ -17,25 +17,38 @@
                   <div class="x_title">                  
                   <div class="x_content">
                     <br />
-                    <form id="update_category_form" data-parsley-validate class="form-horizontal form-label-left">
+                    <form id="update_category_form" data-parsley-validate class="form-horizontal form-label-left" ng-submit="AddCategory()" novalidate>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
+
                           <input type="text" id="category-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="category.categoryName">
+
+                          <input type="text" id="category-name" ng-modle="category.name" required="required" class="form-control col-md-7 col-xs-12">
+
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
+
                           <input type="text" id="description" class="form-control col-md-7 col-xs-12" ng-model="category.categoryDescription">
+
+                          <input type="text" id="description" ng-modle="category.description" required="required" class="form-control col-md-7 col-xs-12">
+
                         </div>
                       </div>
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
                           <button class="btn btn-primary" type="button">Cancel</button>
                           <button type="submit" class="btn btn-success" ng-click="AddCategory(category)">Add</button>
+
+                          <a href="#/categoryManage"><button class="btn btn-primary" type="button">Cancel</button></a>
+                          <button type="submit"  class="btn btn-success" ng-disabled="myForm.$invalid">Add</button>
+
                         </div>
                       </div>
                     </form>

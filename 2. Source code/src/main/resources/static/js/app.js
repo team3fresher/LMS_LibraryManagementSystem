@@ -17,7 +17,11 @@ app.config(function($routeProvider){
             templateUrl: '/LMS/views/book.html',
             controller: 'MainController'
         })
-        .when('/bookdetail',{
+        .when('/book/bookdetail',{
+            templateUrl: '/LMS/views/bookdetail.html',
+            controller: 'bookDetailController'
+        })
+        .when('/book/bookdetail/:id',{
             templateUrl: '/LMS/views/bookdetail.html',
             controller: 'bookDetailController'
         })
@@ -31,10 +35,6 @@ app.config(function($routeProvider){
         })
         .when('/cart',{
             templateUrl: '/LMS/views/cart.html',
-            controller: 'MainController'
-        })
-        .when('/admin',{
-            templateUrl: '/LMS/indexAdmin.html',
             controller: 'MainController'
         })
         .otherwise(
