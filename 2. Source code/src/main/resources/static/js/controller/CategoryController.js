@@ -1,6 +1,8 @@
 var app = angular.module('myAdmin');
 app.controller("CategoryController", function($scope, $http){
-		
+	$scope.AddCategory = function(category){		
+			$http.post("http://localhost:9000/LMS/category/add",category)
+			.success(function(data, status, headers, config){				
 	$scope.AddCategory = function(){
 		$scope.category= {
 			"categoryName":$scope.category.name,
@@ -10,8 +12,9 @@ app.controller("CategoryController", function($scope, $http){
 			.success(function(data, status, headers, config){
 				getData();
 			})
-			.error(function(data, status, headers, config){});
-		
+			.error(function(data, status, headers, config){				
+			});			
+			$scope.category={categoryName:" ", categoryDescription:""};
 	}
 	$scope.orderByMe = function(x){
 		$scope.myOrderBy = x;
@@ -26,7 +29,5 @@ app.controller("CategoryController", function($scope, $http){
 		})
 		.error(function(data, status, headers, config){});
 	}
-	getData();
-	
-	
+	getData();		
 })

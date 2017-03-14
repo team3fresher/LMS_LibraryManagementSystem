@@ -6,16 +6,20 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "book")
@@ -54,7 +58,7 @@ public class Book implements Serializable {
 	private List<AuthorDetail> authorDetails;
 
 	// bi-directional many-to-one association to BookCategoryDetail
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", nullable = false)
 	private BookCategoryDetail bookCategoryDetail;
 
@@ -65,7 +69,6 @@ public class Book implements Serializable {
 
 	// bi-directional many-to-one association to TicketBookUser
 	@OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
-
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<TicketBookUser> ticketBookUsers;
 
@@ -146,6 +149,9 @@ public class Book implements Serializable {
 	}
 
 	@JsonIgnore
+	//@XmlTransient
+	//@JsonInclude
+	//@JsonIgnoreProperties({ "createdBy", "lastModifiedBy" })
 	public BookCategoryDetail getBookCategoryDetail() {
 		return this.bookCategoryDetail;
 	}

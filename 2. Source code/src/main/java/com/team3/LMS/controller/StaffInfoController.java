@@ -42,7 +42,7 @@ public class StaffInfoController {
 	}
 	
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public void addStaffInfo(@RequestBody StaffInfo staffInfo, @PathVariable int id) {
+	public void editStaffInfo(@RequestBody StaffInfo staffInfo, @PathVariable int id) {
 		staffInfo.setStaffId(id);
 		service.addStaffInfo(staffInfo);
 	}

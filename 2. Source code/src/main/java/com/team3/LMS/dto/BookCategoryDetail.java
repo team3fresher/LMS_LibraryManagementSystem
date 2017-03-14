@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,9 +27,12 @@ public class BookCategoryDetail implements Serializable {
 
 	@Column(name = "category_name")
 	private String categoryName;
+	
+	@Column(name = "category_description")
+	private String categoryDescription;
 
 	// bi-directional many-to-one association to Book
-	@OneToMany(mappedBy = "bookCategoryDetail")
+	@OneToMany(mappedBy = "bookCategoryDetail", fetch = FetchType.LAZY)
 	private List<Book> books;
 
 	public BookCategoryDetail() {
@@ -48,6 +52,14 @@ public class BookCategoryDetail implements Serializable {
 
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	public String getCategoryDescription() {
+		return categoryDescription;
+	}
+
+	public void setCategoryDescription(String categoryDescription) {
+		this.categoryDescription = categoryDescription;
 	}
 
 	public List<Book> getBooks() {
