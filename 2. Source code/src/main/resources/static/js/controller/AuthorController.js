@@ -1,9 +1,10 @@
 var app = angular.module('myAdmin');
-app.controller("AuthorController", function($scope, $http){
+app.controller("AuthorController",function($scope, $http){
 		
+	var size=10;	
+
 	$scope.AddAuthor = function(){
-		$scope.author = {
-			
+		$scope.author = {			
 		};
 			$http.post("http://localhost:9000/LMS/author/add",$scope.book)
 			.success(function(data, status, headers, config){
@@ -19,13 +20,47 @@ app.controller("AuthorController", function($scope, $http){
 	function getData() { 
 		$http({
 			method: 'get',
-			url: "http://localhost:9000/LMS/author/list"
+			url: "http://localhost:9000/LMS/author/findAll?page=0&size="+size
 		}).success(function(data, status, headers, config){
-			$scope.authors = data;
+			$scope.authors = data.content;			
+			$scope.currentPage = 1;
+			$scope.totalPages = data.totalPages;
 		})
 		.error(function(data, status, headers, config){});
 	}
-	getData();
+	getData();			
+
+	//Start Paging
+	$scope.incPaging = function(currentPage){
+		if(currentPage == 5){
+			
+		}else{
+			pageNumb = parseInt(currentPage)+1;
+			$scope.currentPage = pageNumb;	
+			$http({
+				method: 'get',
+				url: "http://localhost:9000/LMS/author/findAll?page="+(pageNumb-1)+"&size="+size
+			}).success(function(data, status, headers, config){
+				$scope.authors = data.content;			
+			})
+			.error(function(data, status, headers, config){});
+		}	
+	}
 	
-	
+	$scope.desPaging = function(currentPage){
+		if(currentPage == 1){
+			
+		}else{
+			pageNumb = parseInt(currentPage)-1;
+			$scope.currentPage = pageNumb;	
+			$http({
+				method: 'get',
+				url: "http://localhost:9000/LMS/author/findAll?page="+(pageNumb-1)+"&size="+size
+			}).success(function(data, status, headers, config){
+				$scope.authors = data.content;			
+			})
+			.error(function(data, status, headers, config){});
+		}		
+	}
+	//end Paging
 })
