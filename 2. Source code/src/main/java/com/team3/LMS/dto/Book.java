@@ -13,13 +13,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "book")
@@ -139,7 +137,7 @@ public class Book implements Serializable {
 		this.validStatus = validStatus;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public List<AuthorDetail> getAuthorDetails() {
 		return authorDetails;
 	}
@@ -148,10 +146,7 @@ public class Book implements Serializable {
 		this.authorDetails = authorDetails;
 	}
 
-	@JsonIgnore
-	//@XmlTransient
-	//@JsonInclude
-	//@JsonIgnoreProperties({ "createdBy", "lastModifiedBy" })
+	@JsonIgnoreProperties({"books"})
 	public BookCategoryDetail getBookCategoryDetail() {
 		return this.bookCategoryDetail;
 	}
@@ -160,7 +155,7 @@ public class Book implements Serializable {
 		this.bookCategoryDetail = bookCategoryDetail;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public PublisherDetail getPublisherDetail() {
 		return this.publisherDetail;
 	}
@@ -169,7 +164,7 @@ public class Book implements Serializable {
 		this.publisherDetail = publisherDetail;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public List<TicketBookUser> getTicketBookUsers() {
 		return this.ticketBookUsers;
 	}
