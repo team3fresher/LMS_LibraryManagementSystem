@@ -15,7 +15,7 @@ app.config(function($routeProvider){
         })
         .when('/book',{
             templateUrl: '/LMS/views/book.html',
-            controller: 'MainController'
+            controller: 'BookUserController'
         })
         .when('/book/bookdetail',{
             templateUrl: '/LMS/views/bookdetail.html',

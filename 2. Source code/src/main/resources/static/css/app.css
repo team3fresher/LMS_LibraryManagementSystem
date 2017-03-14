@@ -16,7 +16,7 @@
 /* Add a gray background color and some padding to the footer */
 footer {
 	background-color: #f2f2f2;
-	position: fixed;
+	position: inherit;
     height: 50px;
     bottom: 0;
     width: 100%;
@@ -42,10 +42,14 @@ footer {
 .thumbnail
 {
     margin-bottom: 20px;
-    padding: 0px;
+    margin-left: 10px;
+    margin-left: 10px;
+    padding: 7px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     border-radius: 0px;
+    
+    height: 368px;
 }
 
 .item.list-group-item
@@ -94,4 +98,15 @@ footer {
 .list-group-item-text
 {
     margin: 0 0 11px;
+}
+
+.list-image
+{
+	width: 218px;
+	height: 238px !important;
+}
+
+.btn-paging
+{
+	margin: 5px;	
 }
