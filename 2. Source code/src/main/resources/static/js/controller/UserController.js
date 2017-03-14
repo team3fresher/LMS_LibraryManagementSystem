@@ -14,15 +14,13 @@ app.controller("UserController", function($scope, $http){
 			"valid": "true",
 			"dayOfBirth":$scope.user.day,
 		};
-		console.log($scope.user.gender);
-		console.log($scope.user)
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
 			.success(function(data, status, headers, config){
-				alert("Add user success!!");
+				//alert("Add user success!!");
 				
 			})
 			.error(function(data, status, headers, config){
-				alert("Add user error!!");
+				//alert("Add user error!!");
 
 			});
 		
