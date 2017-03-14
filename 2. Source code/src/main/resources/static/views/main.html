@@ -3,11 +3,17 @@
     <div class="well well-sm">
         <strong>Display</strong>
         <div class="btn-group">
-            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+            <a href="#/main" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>List</a> <a href="#/main" id="grid" class="btn btn-default btn-sm"><span
                 class="glyphicon glyphicon-th"></span>Grid</a>
         </div>
     </div>
+    <script type="text/javascript"> 
+    $(document).ready(function() {
+        $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+        $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+    });
+    </script>
     <div id="products" class="row list-group">
         <div class="item  col-xs-4 col-lg-4">
             <div class="thumbnail">

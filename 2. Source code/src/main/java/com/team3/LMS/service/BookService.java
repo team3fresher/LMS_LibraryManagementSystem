@@ -1,6 +1,5 @@
 package com.team3.LMS.service;
 
-import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.team3.LMS.dao.BookDao;
 import com.team3.LMS.dto.Book;
+import com.team3.LMS.dto.BookCategoryDetail;
 
 @Service
 public class BookService {
@@ -18,6 +18,10 @@ public class BookService {
 
 	public List<Book> getBookList() {
 		return (List<Book>) bookDao.findAll();
+	}
+	
+	public List<BookCategoryDetail> getBookCategoryDetail() {
+		return bookDao.findBookCategoryDetail();
 	}
 
 	public Page<Book> findAll(Pageable pageable) {

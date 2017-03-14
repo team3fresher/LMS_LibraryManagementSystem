@@ -49,10 +49,11 @@
 												</th>
 												<th class="column-title"  ng-click="orderByMe('isbn')">ISBN</th>
 												<th class="column-title"  ng-click="orderByMe('title')">Title</th>
-												<th class="column-title"  ng-click="orderByMe('category')">Category</th>
-												<th class="column-title"  ng-click="orderByMe('author')">Author</th>
 												<th class="column-title"  ng-click="orderByMe('publishingYear')">Publisher</th>
+												<th class="column-title"  ng-click="orderByMe('importance')">Importance</th>
 												<th class="column-title"  ng-click="orderByMe('amount')">Amount</th>
+												<th class="column-title"  ng-click="orderByMe('author')">Borrow Number</th>
+												
 												<th class="column-title no-link last"><span
 													class="nobr">Action</span></th>
 												<th class="bulk-actions" colspan="7"><a class="antoo"
@@ -67,11 +68,12 @@
 													class="flat" name="table_records"></td>
 												<td >{{book.isbn}}</td>
 												<td >{{book.title}}</td>
-												<td >{{book.brwTcktNber}} <i
-													class="success fa fa-long-arrow-up"></i></td>
-												<td >{{book.validStatus}} L</td>
 												<td >{{book.publishingYear}}</td>
+												<td >{{book.importance}} </td>
 												<td class="a-right a-right ">{{book.amount}}</td>
+												<td >{{book.brwTcktNber}} </td>
+												
+												
 												<td class=" last"><a href="#/booksManage/updatebook">Update</a>
 												</td>
 											</tr>

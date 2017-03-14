@@ -19,21 +19,21 @@
 							<div class="x_title">
 								<div class="x_content">
 									<br />
-									<form id="demo-form2" data-parsley-validate
+									<form id="demo-form2" data-parsley-validate ng-submit="AddBook()" novalidate
 										class="form-horizontal form-label-left">
 
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="first-name">Title <span class="required">*</span>
+												for="title">Title <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="first-name" required="required"
+												<input type="text" id="title" ng-model="book.title" required="required"
 													class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="first-name">Image <span class="required">*</span>
+												for="title">Image <span class="required">*</span>
 											</label>
 											<div class="btn-group col-md-6 col-sm-6 col-xs-12">
 												<img src="images/picture.jpg"> <input type="file"
@@ -43,29 +43,29 @@
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name"> Author <span class="required">*</span>
+												for="author"> Author <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="author"  ng-model="book.author"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name"> Year of publish <span
+												for="publish"> Year of publish <span
 												class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="last-name" name="last-name"
+												<input type="text" id="publish" ng-model="book.publish"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name"> isbn <span class="required">*</span>
+												for="isbn"> ISBN <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="number" id="last-name" name="last-name"
+												<input type="number" id="isbn" ng-model="book.isbn"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
@@ -73,9 +73,9 @@
 											<label for="middle-name"
 												class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input id="middle-name"
-													class="form-control col-md-7 col-xs-12" type="text"
-													name="middle-name">
+												<input id="category"
+													class="form-control col-md-7 col-xs-12" type="text" ng-model="book.category"
+													>
 											</div>
 										</div>
 										<div class="form-group">
@@ -83,35 +83,44 @@
 												<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input id="birthday"
-													class="date-picker form-control col-md-7 col-xs-12"
+												<input id="publisher"
+													class="date-picker form-control col-md-7 col-xs-12" ng-model="book.publisher"
 													required="required" type="text">
 											</div>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="last-name">Amount <span class="required">*</span>
+												for="amount">Amount <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="number" id="last-name" name="last-name"
+												<input type="number" id="amount"  ng-model="book.amount"
+													required="required" class="form-control col-md-7 col-xs-12">
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+												for="importance">Importance <span class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" id="importance"  ng-model="book.importance"
 													required="required" class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="item form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
-												for="textarea">Note <span class="required">*</span>
+												for="textarea">Short description <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<textarea id="textarea" required="required" name="textarea"
+												<textarea id="note" ng-model="book.note" required="required" name="textarea"
 													class="form-control col-md-7 col-xs-12"></textarea>
 											</div>
 										</div>
 										<div class="ln_solid"></div>
 										<div class="form-group">
 											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-												<button class="btn btn-primary" type="button">Cancel</button>
+												<a href="#/booksManage"><button class="btn btn-primary" type="button">Cancel</button> </a>
 												<button class="btn btn-primary" type="reset">Reset</button>
-												<button type="submit" class="btn btn-success">Add</button>
+												<button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid" >Add book</button>
 											</div>
 										</div>
 

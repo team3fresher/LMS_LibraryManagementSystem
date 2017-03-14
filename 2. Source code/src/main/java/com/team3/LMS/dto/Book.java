@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "book")
@@ -54,7 +56,7 @@ public class Book implements Serializable {
 	private List<AuthorDetail> authorDetails;
 
 	// bi-directional many-to-one association to BookCategoryDetail
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "category_id", nullable = false)
 	private BookCategoryDetail bookCategoryDetail;
 
@@ -65,7 +67,6 @@ public class Book implements Serializable {
 
 	// bi-directional many-to-one association to TicketBookUser
 	@OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
-
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<TicketBookUser> ticketBookUsers;
 
@@ -136,7 +137,7 @@ public class Book implements Serializable {
 		this.validStatus = validStatus;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public List<AuthorDetail> getAuthorDetails() {
 		return authorDetails;
 	}
@@ -145,7 +146,7 @@ public class Book implements Serializable {
 		this.authorDetails = authorDetails;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public BookCategoryDetail getBookCategoryDetail() {
 		return this.bookCategoryDetail;
 	}
@@ -154,7 +155,7 @@ public class Book implements Serializable {
 		this.bookCategoryDetail = bookCategoryDetail;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public PublisherDetail getPublisherDetail() {
 		return this.publisherDetail;
 	}
@@ -163,7 +164,7 @@ public class Book implements Serializable {
 		this.publisherDetail = publisherDetail;
 	}
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"books"})
 	public List<TicketBookUser> getTicketBookUsers() {
 		return this.ticketBookUsers;
 	}
