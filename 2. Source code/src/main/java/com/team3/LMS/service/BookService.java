@@ -16,8 +16,6 @@ import org.springframework.stereotype.Service;
 import com.team3.LMS.dao.BookDao;
 import com.team3.LMS.dao.PublisherDetailDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.team3.LMS.dao.AuthorDetailDao;
 import com.team3.LMS.dao.BookCategoryDetailDao;
 import com.team3.LMS.dto.AuthorDetail;
