@@ -1,8 +1,5 @@
 var app = angular.module('myAdmin');
 app.controller("BookController", function($scope, $http){
-		
-	$scope.AddBook = function(){
-app.controller("BookController", function($scope, $http) {
 	$scope.authors = [];
 	$scope.categories = [];
 	$scope.publishers = [];
@@ -25,14 +22,6 @@ app.controller("BookController", function($scope, $http) {
 	
 	$scope.AddBook = function() {
 		$scope.book = {
-				"isbn": $scope.book.isbn,
-			    "amount": $scope.book.amount,
-			    "brwTcktNber": 0,
-			    "importance": $scope.book.importance,
-			    "publishingYear": $scope.book.publish,
-			    "shortDescription": $scope.book.note,
-			    "title": $scope.book.title,
-			    "validStatus": 1
 			"isbn" : $scope.book.isbn,
 			"amount" : $scope.book.amount,
 			"brwTcktNber" : 0,
@@ -64,7 +53,6 @@ app.controller("BookController", function($scope, $http) {
 		});
 
 	}
-	$scope.orderByMe = function(x){
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
 	}
@@ -78,37 +66,15 @@ app.controller("BookController", function($scope, $http) {
 	}
 
 	function getData() { 
-	function getData() {
 		$http({
-			method: 'get',
-			url: "http://localhost:9000/LMS/book/list"
-		}).success(function(data, status, headers, config){
 			method : 'get',
 			url : "http://localhost:9000/LMS/book/list"
 		}).success(function(data, status, headers, config) {
 			$scope.books = data;
 		})
 		.error(function(data, status, headers, config){});
-		}).error(function(data, status, headers, config) {
-		});
 	}
 	getData();
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	function getAuthorData() {
 		$http({
@@ -155,9 +121,9 @@ app.controller("BookController", function($scope, $http) {
 				obj.name = value.categoryName;
 				temp.push(obj);
 			});
-			//console.log(temp);
+			// console.log(temp);
 			$scope.categoryData.availableOptions = temp;
-			//console.log($scope.categoryData.availableOptions);
+			// console.log($scope.categoryData.availableOptions);
 		}).error(function(data, status, headers, config) {
 		});
 	}
@@ -179,9 +145,9 @@ app.controller("BookController", function($scope, $http) {
 				obj.name = value.publisherName;
 				temp.push(obj);
 			});
-			//console.log(temp);
+			// console.log(temp);
 			$scope.publisherData.availableOptions = temp;
-			//console.log($scope.publisherData.availableOptions);
+			// console.log($scope.publisherData.availableOptions);
 		}).error(function(data, status, headers, config) {
 		});
 	}
