@@ -324,7 +324,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489436634442,
+			"time": 1489437968730,
 			"name": "Add category",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
@@ -571,7 +571,7 @@
 		{
 			"id": "a6634f05-a47f-68c7-a239-e63cb22716e1",
 			"headers": "",
-			"url": "http://localhost:9000/LMS/book/remove/9780307947390",
+			"url": "http://localhost:9000/LMS/book/remove/1234567",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -581,7 +581,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489173365337,
+			"time": 1489504546865,
 			"name": "Remove book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
@@ -610,7 +610,7 @@
 		{
 			"id": "b2b80c91-9084-8105-d835-30d9f5ad3d9c",
 			"headers": "Content-Type: application/json\n",
-			"url": "http://localhost:9000/LMS/book/edit/12345678",
+			"url": "http://localhost:9000/LMS/book/edit",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "POST",
@@ -619,12 +619,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489436595638,
+			"time": 1489504971249,
 			"name": "Edit book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"isbn\": \"12345678\",\n\t\"amount\": 12,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 2015,\n\t\"shortDescription\": \"A Concise History of Japan integrates the pageantry of Japanese history\",\n\t\"title\": \"A Concise History of Japan\",\n\t\"validStatus\": 1,\n\t\"authorDetails\":[],\n\t\"bookCategoryDetail\":{},\n\t\"publisherDetail\":{}\n}"
+			"rawModeData": "{\n\t\"isbn\": \"12345678\",\n\t\"amount\": 11,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 1,\n\t\"publishingYear\": 1999,\n\t\"shortDescription\": \"TEst\",\n\t\"title\": \"TEst Gump\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 10,\n\t  \"categoryName\": \"Novel\",\n\t  \"categoryDescription\": null\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 18,\n\t  \"publisherName\": \"Vintage\"\n\t},\n\t\"ticketBookUsers\": []\n}"
 		},
 		{
 			"id": "b2de7250-ac0e-631b-83f7-bcfdf123efe6",
@@ -677,12 +677,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489434744130,
+			"time": 1489504161785,
 			"name": "Add book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"isbn\": \"12345678\",\n\t\"amount\": 12,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 2015,\n\t\"shortDescription\": \"A Concise History of Japan integrates the pageantry of Japanese history\",\n\t\"title\": \"A Concise History of Japan\",\n\t\"validStatus\": 1,\n\t\"authorDetails\":[],\n\t\"bookCategoryDetail\":{},\n\t\"publisherDetail\":{}\n}"
+			"rawModeData": "{\n\t\"isbn\": \"123\",\n\t\"amount\": 10,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 1,\n\t\"publishingYear\": 2012,\n\t\"shortDescription\": \"The modern classic that inspired the beloved movie starring Tom Hanks\",\n\t\"title\": \"Forrest Gump\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [\n\t  {\n\t    \"authorId\": 1,\n\t    \"authorName\": \"Winston Groom\"\n\t  }\n\t],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 10,\n\t  \"categoryName\": \"Novel\",\n\t  \"categoryDescription\": null\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 18,\n\t  \"publisherName\": \"Vintage\"\n\t},\n\t\"ticketBookUsers\": []\n}"
 		},
 		{
 			"id": "c600a19f-30dc-1570-6cc4-5cf043bba1a0",
