@@ -10,9 +10,9 @@ app.controller("UserController", function($scope, $http){
 			"phoneNumber": $scope.user.phone,
 			"pword": "test",
 			"realName": $scope.user.name,
-			"sex": "male",
+			"sex": $scope.user.gender,
 			"valid": "true",
-			"dayOfBirth":$scope.user.day,
+			"dayOfBirth":$scope.user.dayOfBirth,
 		};
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
 			.success(function(data, status, headers, config){
@@ -23,6 +23,7 @@ app.controller("UserController", function($scope, $http){
 				//alert("Add user error!!");
 
 			});
+			alert("Registration Success!!");
 		
 	}
 	$scope.removeUser = function(x){
