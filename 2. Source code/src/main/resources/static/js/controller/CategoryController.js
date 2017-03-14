@@ -1,8 +1,5 @@
 var app = angular.module('myAdmin');
-app.controller("CategoryController", function($scope, $http){
-	$scope.AddCategory = function(category){		
-			$http.post("http://localhost:9000/LMS/category/add",category)
-			.success(function(data, status, headers, config){				
+app.controller("CategoryController", function($scope, $http){			
 	$scope.AddCategory = function(){
 		$scope.category= {
 			"categoryName":$scope.category.name,
