@@ -49,22 +49,9 @@ public class BookController {
 		service.addBook(book);
 	}
 	
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	@ResponseBody
-	public void editBook(@RequestBody Book book, @PathVariable String id) {
-		book.setIsbn(id);
-		/*// authorDetail list
-		List authorDetailList = new ArrayList();
-		for (AuthorDetail authorDetail : book.getAuthorDetails()) {
-			authorDetail.getAuthorId();
-		}*/
-		//clear existing authorDetail list so that they are removed from database
-		book.getAuthorDetails().clear();
-		//add the new authorDetail list created above to the existing list
-		book.getAuthorDetails().addAll(book.getAuthorDetails());
-		
-		book.setBookCategoryDetail(book.getBookCategoryDetail());
-		book.setPublisherDetail(book.getPublisherDetail());
+	public void editBook(@RequestBody Book book) {
 		service.addBook(book);
 	}
 	
