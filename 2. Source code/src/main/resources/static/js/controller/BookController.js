@@ -1,5 +1,7 @@
 var app = angular.module('myAdmin');
-app.controller("BookController", function($scope, $http){
+app.controller("BookController", function($scope, $http, $routeParams) {
+	$scope.updatebook = {};
+	$scope.isbn = $routeParams.isbn;
 	$scope.authors = [];
 	$scope.categories = [];
 	$scope.publishers = [];
@@ -16,10 +18,12 @@ app.controller("BookController", function($scope, $http){
 		model : null,
 		availableOptions : []
 	};
+
 	getAuthorData();
 	getCategoryData();
 	getPublisherData();
-	
+
+	getBookDataByISBN($scope.isbn);
 	$scope.AddBook = function() {
 		$scope.book = {
 			"isbn" : $scope.book.isbn,
@@ -39,12 +43,7 @@ app.controller("BookController", function($scope, $http){
 			},
 			"ticketBookUsers" : []
 		};
-			$http.post("http://localhost:9000/LMS/book/add",$scope.book)
-			.success(function(data, status, headers, config){
-				getData();
-			})
-			.error(function(data, status, headers, config){});
-		
+
 		$http.post("http://localhost:9000/LMS/book/add", $scope.book).success(
 				function(data, status, headers, config) {
 					getData();
@@ -53,28 +52,73 @@ app.controller("BookController", function($scope, $http){
 		});
 
 	}
+
+	$scope.UpdateBook = function(isbn) {
+		$scope.updatebook = {
+			"isbn" : isbn,
+			"amount" : $scope.updatebook.amount,
+			"brwTcktNber" : 0,
+			"importance" : $scope.updatebook.importance,
+			"publishingYear" : $scope.updatebook.publishingYear,
+			"shortDescription" : $scope.updatebook.shortDescription,
+			"title" : $scope.updatebook.title,
+			"validStatus" : $scope.updatebook.validStatus,
+			"authorDetails" : toObjectArray($scope.authorData.model),
+			"bookCategoryDetail" : {
+				'categoryId' : $scope.categoryData.model
+			},
+			"publisherDetail" : {
+				'publisherId' : $scope.publisherData.model
+			},
+			"ticketBookUsers" : []
+		};
+
+		$http.post("http://localhost:9000/LMS/book/edit", $scope.book).success(
+				function(data, status, headers, config) {
+					getData();
+					console.log('edit book OK');
+				}).error(function(data, status, headers, config) {
+		});
+	}
+
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
 	}
-	
+
 	function toObjectArray(data) {
 		var output = [];
-		for(var i = 0; i < data.length; i++) {
-			output[i] = {'authorId':data[i]};
+		for (var i = 0; i < data.length; i++) {
+			output[i] = {
+				'authorId' : data[i]
+			};
 		}
 		return output;
 	}
 
-	function getData() { 
+	function getData() {
 		$http({
 			method : 'get',
 			url : "http://localhost:9000/LMS/book/list"
 		}).success(function(data, status, headers, config) {
 			$scope.books = data;
-		})
-		.error(function(data, status, headers, config){});
+
+		}).error(function(data, status, headers, config) {
+		});
 	}
 	getData();
+
+	function getBookDataByISBN(isbn) {
+		$http({
+			method : 'get',
+			url : "http://localhost:9000/LMS/book/get/" + isbn
+		}).success(function(data, status, headers, config) {
+			$scope.updatebook = data;
+			console.log("load book by isbn: ok");
+			console.log($scope.updatebook);
+		}).error(function(data, status, headers, config) {
+			console.log("Load book by isbn: fail");
+		});
+	}
 
 	function getAuthorData() {
 		$http({

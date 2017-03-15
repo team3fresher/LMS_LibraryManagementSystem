@@ -3,6 +3,7 @@ package com.team3.LMS.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,9 +32,9 @@ public class AuthorDetail implements Serializable {
 	private String authorName;
 
 	// bi-directional many-to-many association to Book
-	@ManyToMany
-	@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "author_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "isbn") })
+	@ManyToMany(mappedBy = "authorDetails")
+	/*@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "author_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "isbn") })*/
 	private List<Book> books;
 
 	public AuthorDetail() {

@@ -78,8 +78,8 @@
 												<td class=" ">{{user.sex}}</td>
 												<td class=" ">{{user.address}}</td>
 												<td class="a-right a-right ">{{user.job}}</td>
-												<td class=" last"><button><a href="#/userManage/updateuser/{{user.userId}}">Block</a> </button>
-												<button ng-click="removeUser(user.userId)">Delete</button>
+												<td class=" last"><button type="button" class="btn btn-warning" ><a href="#/userManage/updateuser/{{user.userId}}">Block</a> </button>
+												<button type="button" class="btn btn-danger" ng-click="removeUser(user.userId)">Delete</button>
 												</td>
 											</tr>
 											

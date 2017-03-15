@@ -1,67 +1,73 @@
 
-    <div class="container body">
-      <div class="main_container">
-        
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Add Category Information</h3>
-              </div>            
-            </div>
-            <div class="clearfix"></div>
-            <div class="row">
-              <div class="col-md-12 col-sm-12 col-xs-12">
-                <div class="x_panel">
-                  <div class="x_title">                  
-                  <div class="x_content">
-                    <br />
-                    <form id="update_category_form" data-parsley-validate class="form-horizontal form-label-left" ng-submit="AddCategory()" novalidate>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="category-name">Category name <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+<div class="container body">
+	<div class="main_container">
 
-                          <input type="text" id="category-name" required="required" class="form-control col-md-7 col-xs-12" ng-model="category.categoryName">
+		<!-- page content -->
+		<div class="right_col" role="main">
+			<div class="">
+				<div class="page-title">
+					<div class="title_left">
+						<h3>Add Category Information</h3>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="row">
+					<div class="col-md-12 col-sm-12 col-xs-12">
+						<div class="x_panel">
+							<div class="x_title">
+								<div class="x_content">
+									<br />
+									<form id="update_category_form" name="myForm" action="#/categoryManage"
+										data-parsley-validate class="form-horizontal form-label-left"
+										ng-submit="AddCategory()" novalidate>
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+												for="category-name">Category name <span
+												class="required">*</span>
+											</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
 
-                          <input type="text" id="category-name" ng-modle="category.name" required="required" class="form-control col-md-7 col-xs-12">
+												<input type="text" id="category-name" name="name" required="required"
+													class="form-control col-md-7 col-xs-12"
+													ng-model="category.categoryName">
+											</div>
+											<span
+												ng-show="myForm.name.$dirty && myForm.name.$error.required"
+												class="help-block">Category's name is required</span>
+										</div>
+										<div class="form-group">
+											<label class="control-label col-md-3 col-sm-3 col-xs-12"
+												for="description">Description</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
 
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+												<input type="text" id="description"
+													class="form-control col-md-7 col-xs-12"
+													ng-model="category.categoryDescription">
+											</div>
+											
+										</div>
+										<div class="ln_solid"></div>
+										<div class="form-group">
+											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+												<a href="#/categoryManage"><button
+														class="btn btn-primary" type="button">Cancel</button></a>
+												<button class="btn btn-primary" type="reset">Reset</button>
+												<button type="submit" class="btn btn-success"
+													ng-disabled="myForm.$invalid">Add</button>
 
-                          <input type="text" id="description" class="form-control col-md-7 col-xs-12" ng-model="category.categoryDescription">
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /page content -->
 
-                          <input type="text" id="description" ng-modle="category.description" required="required" class="form-control col-md-7 col-xs-12">
+			</div>
+		</div>
+	</div>
+</div>
 
-                        </div>
-                      </div>
-                      <div class="ln_solid"></div>
-                      <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-
-                          <button class="btn btn-primary" type="button">Cancel</button>
-                          <button type="submit" class="btn btn-success" ng-click="AddCategory(category)">Add</button>
-
-                          <a href="#/categoryManage"><button class="btn btn-primary" type="button">Cancel</button></a>
-                          <button type="submit"  class="btn btn-success" ng-disabled="myForm.$invalid">Add</button>
-
-                        </div>
-                      </div>
-                    </form>
-                  </div>
-                  </div>
-                </div>                  
-              </div>
-            </div>
-        <!-- /page content -->
-
-      </div>
-    </div>
-    </div>
-    </div>
-    
 

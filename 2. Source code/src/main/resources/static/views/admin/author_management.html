@@ -16,7 +16,7 @@
 							class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
 							<div class="input-group">
 								<input type="text" class="form-control"
-									placeholder="Search for..."> <span
+									placeholder="Search for..." ng-model="search"> <span
 									class="input-group-btn">
 									<button class="btn btn-default" type="button">
 										<i class="fa fa-search"></i>
@@ -35,7 +35,6 @@
 								<div class="nav navbar-right panel_toolbox">
 									<a href="#/authorManage/addauthor"><button
 											class="btn btn-primary" type="button">Add new</button></a>
-									<button class="btn btn-danger" type="button">Delete</button>
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -61,14 +60,15 @@
 										</thead>
 
 										<tbody>
-											<tr class="even pointer" ng-repeat="author in authors | filter : text_filter | orderBy:myOrderBy">
+											<tr class="even pointer" ng-repeat="author in authors | filter : search | orderBy:myOrderBy">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
 												<td class="">{{author.authorId}}</td>
 												<td class=" ">{{author.authorName}}</td>
 												<td class=" ">Birthday</td>
 												<td class=" ">Country</td>
-												<td class=" last"><a href="#/authorManage/updateauthor">Update</a>
+												<td class=" last"><a href="#/authorManage/updateauthor/{{author.authorId}}"><button class="btn btn-info" type="button">Update</button></a>
+												<button class="btn btn-danger" type="button" ng-click="removeAuthor(author.authorId)" >Delete</button>
 												</td>
 											</tr>
 										</tbody>

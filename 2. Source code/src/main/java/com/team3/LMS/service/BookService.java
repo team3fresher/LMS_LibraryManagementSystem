@@ -1,5 +1,6 @@
 package com.team3.LMS.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,16 +8,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.team3.LMS.dao.AuthorDetailDao;
 import com.team3.LMS.dao.BookDao;
 import com.team3.LMS.dto.AuthorDetail;
 import com.team3.LMS.dto.Book;
 import com.team3.LMS.dto.BookCategoryDetail;
 import com.team3.LMS.dto.PublisherDetail;
+import com.team3.LMS.util.Isbn;
 
 @Service
 public class BookService {
 	@Autowired
 	private BookDao bookDao;
+	@Autowired
+	private AuthorDetailDao authorDetailDao;
 
 	public List<Book> getBookList() {
 		return (List<Book>) bookDao.findAll();
@@ -31,6 +36,16 @@ public class BookService {
 	}
 
 	public void addBook(Book book) {
+		List<AuthorDetail> list = book.getAuthorDetails();
+		List<AuthorDetail> authorDetails = new ArrayList<AuthorDetail>();
+		for (AuthorDetail ele : list) {
+			AuthorDetail temp = authorDetailDao.findOne(ele.getAuthorId());
+			temp.setAuthorName("test11");
+			authorDetails.add(authorDetailDao.findOne(ele.getAuthorId()));
+		}
+		
+		book.getAuthorDetails().clear();
+		book.getAuthorDetails().addAll(authorDetails);
 		bookDao.save(book);
 	}
 	
@@ -48,5 +63,8 @@ public class BookService {
 
 	public Book getBook(String isbn) {
 		return bookDao.findOne(isbn);
+	}
+	public boolean checkISBN(String isbn) {
+		return Isbn.isValid(isbn);
 	}
 }
