@@ -18,13 +18,13 @@
 								<div class="x_content">
 									<br />
 									<form id="demo-form" data-parsley-validate
-										class="form-horizontal form-label-left">
+										class="form-horizontal form-label-left" name="myForm" action="#/authorManage" ng-submit="EditAuthor()" novalidate>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
 												for="full-name"> Full Name <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="full-name" required="required"
+												<input type="text" id="full-name" ng-model="name" required="required"
 													class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
@@ -49,9 +49,8 @@
 										<div class="ln_solid"></div>
 										<div class="form-group">
 											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-												<button class="btn btn-primary" type="button">Cancel</button>
-												<button class="btn btn-primary" type="reset">Reset</button>
-												<button type="submit" class="btn btn-success">Add</button>
+												<a href="#/authorManage"><button class="btn btn-primary" type="button">Cancel</button></a>
+												<button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid">Update</button>
 											</div>
 										</div>
 

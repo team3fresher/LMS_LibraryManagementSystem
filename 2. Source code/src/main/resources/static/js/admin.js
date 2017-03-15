@@ -29,9 +29,9 @@ app.config(function($routeProvider){
 	        templateUrl: '/LMS/views/admin/add_category.html',
 	        controller: 'CategoryController'
 	    })
-	    .when('/categoryManage/updatecategory',{
+	    .when('/categoryManage/updatecategory/:id',{
 	        templateUrl: '/LMS/views/admin/update_category.html',
-	        controller: 'CategoryController'
+	        controller: 'categoryDetailCtr'
 	    })
 	    .when('/authorManage',{
 	        templateUrl: '/LMS/views/admin/author_management.html',
@@ -41,9 +41,9 @@ app.config(function($routeProvider){
 	        templateUrl: '/LMS/views/admin/add_author.html',
 	        controller: 'AuthorController'
 	    })
-	    .when('/authorManage/updateauthor',{
+	    .when('/authorManage/updateauthor/:id',{
 	        templateUrl: '/LMS/views/admin/update_author.html',
-	        controller: 'AuthorController'
+	        controller: 'authorDetailCtr'
 	    })
 	    .when('/userManage',{
 	        templateUrl: '/LMS/views/admin/user_management.html',
