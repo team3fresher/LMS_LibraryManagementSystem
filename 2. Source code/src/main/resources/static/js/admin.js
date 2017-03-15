@@ -13,9 +13,9 @@ app.config(function($routeProvider){
 	        templateUrl: '/LMS/views/admin/add_book.html',
 	        controller: 'BookController'
 	    })
-	    .when('/booksManage/updatebook/:id',{
+	    .when('/booksManage/updatebook/:isbn',{
 	        templateUrl: '/LMS/views/admin/update_book.html',
-	        controller: 'bookDetailCtr'
+	        controller: 'BookController'
 	    })
 	    .when('/ticketsManage',{
 	        templateUrl: '/LMS/views/admin/ticket_detail.html',

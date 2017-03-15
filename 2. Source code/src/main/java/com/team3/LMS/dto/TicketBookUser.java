@@ -18,17 +18,17 @@ public class TicketBookUser implements Serializable {
 	private TicketBookUserPK id;
 
 	// bi-directional many-to-one association to Book
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "isbn", insertable = false, updatable = false)
 	private Book book;
 
 	// bi-directional many-to-one association to Ticket
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "ticket_id", insertable = false, updatable = false)
 	private Ticket ticket;
 
 	// bi-directional many-to-one association to UserInfo
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "user_id", insertable = false, updatable = false)
 	private UserInfo userInfo;
 

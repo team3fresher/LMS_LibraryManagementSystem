@@ -65,4 +65,10 @@ public class BookController {
 	public Book getBook(@PathVariable String isbn) {
 		return service.getBook(isbn);
 	}
+	
+	@RequestMapping(value = "/check/{isbn}", method = RequestMethod.GET)
+	@ResponseBody
+	public boolean checkISBN(@PathVariable String isbn) {
+		return service.checkISBN(isbn);
+	}
 }
