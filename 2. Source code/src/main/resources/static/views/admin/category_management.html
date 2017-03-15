@@ -18,7 +18,7 @@
 							class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
 							<div class="input-group">
 								<input type="text" class="form-control"
-									placeholder="Search for..."> <span
+									placeholder="Search for..." ng-model="search"> <span
 									class="input-group-btn">
 									<button class="btn btn-default" type="button">
 										<i class="fa fa-search"></i>
@@ -37,7 +37,7 @@
 								<div class="nav navbar-right panel_toolbox">
 									<a href="#/categoryManage/addcategory"><button
 											class="btn btn-primary" type="button">Add new</button></a>
-									<button class="btn btn-danger" type="button">Delete</button>
+
 								</div>
 								<div class="clearfix"></div>
 							</div>
@@ -49,43 +49,44 @@
 											<tr class="headings">
 												<th><input type="checkbox" id="check-all" class="flat">
 												</th>
-												<th class="column-title" ng-click="orderByMe('categoryId')">Category code</th>
-												<th class="column-title" ng-click="orderByMe('categoryName')" >Category name</th>
+												<th class="column-title" ng-click="orderByMe('categoryId')">Category
+													code</th>
+												<th class="column-title"
+													ng-click="orderByMe('categoryName')">Category name</th>
 												<th class="column-title">Description</th>
 												<th class="column-title no-link last"><span
 													class="nobr">Action</span></th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr class="even pointer" ng-repeat="category in categories | filter : text_filter | orderBy:myOrderBy">
+											<tr class="even pointer"
+												ng-repeat="category in categories | filter : search | orderBy:myOrderBy">
 												<td class="a-center "><input type="checkbox"
 													class="flat" name="table_records"></td>
 												<td class="">{{category.categoryId}}</td>
 												<td class=" ">{{category.categoryName}}</td>
 												<td class=" ">{{category.categoryDescription}}</td>
 												<td class=" last"><a
-													href="#/categoryManage/updatecategory">Update</a></td>
-
+													href="#/categoryManage/updatecategory/{{category.categoryId}}"><button
+															class="btn btn-info" type="button">Update</button></a>
+													<button class="btn btn-danger" type="button" ng-click="removeCategory(category.categoryId)">Delete</button>
+												</td>
 										</tbody>
 									</table>
 								</div>
 								<div class="form-group" ng-show="pagingShow">
-									<div class="col-xs-12 col-md-offset-5">										
+									<div class="col-xs-12 col-md-offset-5">
 										<ul class="pagination pagination">
-											<li ng-click="desPaging(currentPage)">
-										      <a class="btn" aria-label="Previous">
-										        <span aria-hidden="true">&laquo;</span>
-										      </a>
-										    </li>
-										    <li ng-model="page"><a class="btn" >{{currentPage}}/{{totalPages}}</a></li>								  
-											<li ng-click="incPaging(currentPage)">
-										      <a class="btn" aria-label="Next">
-										        <span aria-hidden="true">&raquo;</span>
-										      </a>
-										    </li>
-										</ul>													
+											<li ng-click="desPaging(currentPage)"><a class="btn"
+												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											</a></li>
+											<li ng-model="page"><a class="btn">{{currentPage}}/{{totalPages}}</a></li>
+											<li ng-click="incPaging(currentPage)"><a class="btn"
+												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											</a></li>
+										</ul>
 									</div>
-								</div>	
+								</div>
 							</div>
 						</div>
 					</div>

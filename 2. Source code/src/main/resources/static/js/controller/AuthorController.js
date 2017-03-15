@@ -15,6 +15,20 @@ app.controller("AuthorController",function($scope, $http){
 			.error(function(data, status, headers, config){});
 		
 	}
+	$scope.removeAuthor = function(x){
+		//$scope.users.splice(x, 1);
+		$http({
+			method: 'get',
+			url: "http://localhost:9000/LMS/author/remove/"+x
+		}).success(function(data, status, headers, config){
+			$scope.authors = data;
+			getData();
+		})
+		.error(function(data, status, headers, config){
+			getData();
+		});
+		
+	}
 	$scope.orderByMe = function(x){
 		$scope.myOrderBy = x;
 	}
