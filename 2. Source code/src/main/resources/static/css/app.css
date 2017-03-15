@@ -110,3 +110,9 @@ footer {
 {
 	margin: 5px;	
 }
+div {
+    font-family:Times New Roman;
+}
+p{
+	font-size:120%;
+}
