@@ -5,8 +5,8 @@ app.controller("CategoryController", function($scope, $http){
 	
 	$scope.AddCategory = function(){
 		$scope.category= {
-			"categoryName":$scope.category.name,
-			"categoryDescription":$scope.category.description,
+			"categoryName":$scope.category.categoryName,
+			"categoryDescription":$scope.category.categoryDescription,
 		};
 			$http.post("http://localhost:9000/LMS/category/add",$scope.category)
 			.success(function(data, status, headers, config){
@@ -14,7 +14,20 @@ app.controller("CategoryController", function($scope, $http){
 			})
 			.error(function(data, status, headers, config){				
 			});			
-			$scope.category={categoryName:" ", categoryDescription:""};
+	}
+	$scope.removeCategory = function(x){
+		//$scope.users.splice(x, 1);
+		$http({
+			method: 'get',
+			url: "http://localhost:9000/LMS/category/remove/"+x
+		}).success(function(data, status, headers, config){
+			$scope.users = data;
+			getData();
+		})
+		.error(function(data, status, headers, config){
+			getData();
+		});
+		
 	}
 	$scope.orderByMe = function(x){
 		$scope.myOrderBy = x;

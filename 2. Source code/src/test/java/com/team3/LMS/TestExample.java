@@ -14,8 +14,8 @@ public class TestExample {
 	public void testGetLimitTime() {
 		TicketController t = new TicketController();
 		int expectedValue = 50;
-		int actualValue = t.getLimitTimeByBook("HHHHHH");
-		
+		//int actualValue = t.getLimitTimeByBook("HHHHHH");
+		int actualValue = 30;
 		//Assert.assertEquals(expectedValue, actualValue);
 		
 		assertEquals(expectedValue, actualValue);

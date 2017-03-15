@@ -17,8 +17,8 @@
 							<div class="x_title">
 								<div class="x_content">
 									<br />
-									<form id="update_user_form" data-parsley-validate
-										class="form-horizontal form-label-left">
+									<form id="update_user_form" data-parsley-validate name="myForm" action="#/categoryManage"
+										class="form-horizontal form-label-left" ng-submit="EditCategory()" novalidate>
 
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -26,25 +26,27 @@
 												class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="category-name" required="required"
+												<input type="text" id="category-name" name="name" ng-model="name" required="required"
 													class="form-control col-md-7 col-xs-12">
 											</div>
+											<span
+												ng-show="myForm.name.$dirty && myForm.name.$error.required"
+												class="help-block">Category's name is required</span>
 										</div>
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
 												for="description">Description <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="description" required="required"
+												<input type="text" id="description" ng-model="description" required="required"
 													class="form-control col-md-7 col-xs-12">
 											</div>
 										</div>
 										<div class="ln_solid"></div>
 										<div class="form-group">
 											<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-												<button class="btn btn-primary" type="button">Cancel</button>
-												<button class="btn btn-primary" type="reset">Reset</button>
-												<button type="submit" class="btn btn-success">Update</button>
+												<a href="#/userManage"><button class="btn btn-primary" type="button">Cancel</button></a>
+												<button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid">Update</button>
 											</div>
 										</div>
 
