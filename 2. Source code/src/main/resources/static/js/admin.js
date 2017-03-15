@@ -1,4 +1,4 @@
-var app = angular.module('myAdmin', ['ngRoute','ngResource']);
+var app = angular.module('myAdmin', ['ngRoute','ngResource', 'ng-fusioncharts']);
 app.config(function($routeProvider){
     $routeProvider
 	    .when('/',{
@@ -83,7 +83,7 @@ app.config(function($routeProvider){
 	    })
 	    .when('/reports',{
 	        templateUrl: '/LMS/views/admin/reports.html',
-	        controller: 'AdminController'
+	        controller: 'AdminReportController'
 	    })
 	    .when('/test',{
 	        templateUrl: '/LMS/book_management.html',
