@@ -74,7 +74,7 @@ app.controller("UserController", function($scope, $http){
 				method: 'get',
 				url: "http://localhost:9000/LMS/userInfo/findAll?page="+(pageNumb-1)+"&size="+size
 			}).success(function(data, status, headers, config){
-				$scope.books = data.content;			
+				$scope.users = data.content;			
 			})
 			.error(function(data, status, headers, config){});
 		}	
@@ -90,7 +90,7 @@ app.controller("UserController", function($scope, $http){
 				method: 'get',
 				url: "http://localhost:9000/LMS/userInfo/findAll?page="+(pageNumb-1)+"&size="+size
 			}).success(function(data, status, headers, config){
-				$scope.books = data.content;			
+				$scope.users = data.content;			
 			})
 			.error(function(data, status, headers, config){});
 		}		
