@@ -1,12 +1,11 @@
 <link rel="stylesheet" href="/LMS/css/registration.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<div class="container">
-	<div class="row main">
+<div class="container" >
+	<div class="row main" >
 		<div class="main-login main-center">
 			<h5 algn="center">Please complete this form!</h5>
-			<form class="css-form" name="myForm" id="registerForm" method="post" ng-submit="AddUser()"
-				action="#">
+			<form class="css-form" name="myForm" id="registerForm" ng-submit="AddUser()"  novalidate>
 
 				<div class="form-group">
 					<label for="name" class="cols-sm-2 control-label">Your Name</label>
@@ -14,21 +13,24 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user fa"
 								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="name" id="name" ng-model="name"
+								name="name" id="name" ng-model="user.name"
 								placeholder="Enter your Name" required />
 						</div>
+						<span ng-show="myForm.name.$dirty && myForm.name.$error.required" class="help-block">Name is required</span>
 					</div>
 				</div>
-
+				
 				<div class="form-group">
-					<label for="username" class="cols-sm-2 control-label">Username</label>
+					<label for="email" class="cols-sm-2 control-label">Your
+						Email (using as Username)</label>
 					<div class="cols-sm-10">
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="username" id="username" ng-model="username"
-								placeholder="Enter your id library"  required/>
+							<span class="input-group-addon"><i
+								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+								type="email" class="form-control" name="email" id="email" ng-model="user.email"
+								placeholder="Enter your Email" required/>
 						</div>
+						<span ng-show="myForm.email.$dirty && myForm.email.$error.required" class="help-block">Email is required</span>
 					</div>
 				</div>
 
@@ -38,9 +40,10 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i
 								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-								type="password" class="form-control" name="password" ng-model="password"
-								id="password" placeholder="Enter your Password"  required />
+								type="password" class="form-control" name="password" ng-model="user.password"
+								id="password" placeholder="Enter your Password"  required />	
 						</div>
+						<span ng-show="myForm.password.$dirty && myForm.password.$error.required" class="help-block">Password is required</span>
 					</div>
 				</div>
 
@@ -52,7 +55,7 @@
 							<span class="input-group-addon"><i
 								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 								type="password" class="form-control" name="confirm" id="confirm" ng-model="confirm"
-								placeholder="Confirm your Password"  required compare-to="password"/>
+								placeholder="Confirm your Password"  required compare-to="user.password"/>
 						</div>
 						<div ng-messages="registrationForm.confirmPassword.$error"
      								 ng-messages-include="messages.html"></div>
@@ -63,9 +66,9 @@
 					<label for="gender" class="cols-sm-2 control-label">Gender</label>
 					<div class="cols-sm-10">
 						<label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="gender" value= "male">Male
+							name="optradio" ng-model="user.gender" value= "male">Male
 						</label> <label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="gender" value= "female" checked>Female
+							name="optradio" ng-model="user.gender" value= "female" >Female
 						</label>
 					</div>
 				</div>
@@ -75,7 +78,7 @@
 					<div class="cols-sm-10">
 						<div class="form-group">
 							<div class='input-group date' id='datetimepicker1'>
-								<input type='date' class="form-control" ng-model="birthday" /> <span
+								<input type='date' class="form-control" ng-model="user.birthday" /> <span
 									class="input-group-addon"> <span
 									class="glyphicon glyphicon-calendar"></span>
 								</span>
@@ -84,18 +87,7 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="email" class="cols-sm-2 control-label">Your
-						Email</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-								type="email" class="form-control" name="email" id="email" ng-model="email"
-								placeholder="Enter your Email" />
-						</div>
-					</div>
-				</div>
+				
 
 				<div class="form-group">
 					<label for="address" class="cols-sm-2 control-label">Address</label>
@@ -103,8 +95,20 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-users fa"
 								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="address" id="address" placeholder="Enter your address" ng-model="address"/>
+								name="address" id="address" placeholder="Enter your address" ng-model="user.address" required/>
 						</div>
+						<span ng-show="myForm.address.$dirty && myForm.address.$error.required" class="help-block">Address is required</span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="address" class="cols-sm-2 control-label">Phone number</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa"
+								aria-hidden="true"></i></span> <input type="number" class="form-control"
+								name="phone" id="phone" placeholder="Enter your phone" ng-model="user.phone" required/>
+						</div>
+						<span ng-show="myForm.phone.$dirty && myForm.phone.$error.required" class="help-block">Phone number is required</span>
 					</div>
 				</div>
 
@@ -114,13 +118,22 @@
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-users fa"
 								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="job" id="job" placeholder="Enter your job" ng-model="job"/>
+								name="job" id="job" placeholder="Enter your job" ng-model="user.job"/>
 						</div>
 					</div>
 				</div>
-
+				<div class="form-group">
+					<label for="job" class="cols-sm-2 control-label">Degree</label>
+					<div class="cols-sm-10">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-users fa"
+								aria-hidden="true"></i></span> <input type="text" class="form-control"
+								name="degree" id="degree" placeholder="Enter your job" ng-model="user.degree"/>
+						</div>
+					</div>
+				</div>
 				<div class="form-group ">
-						<button type="submit" ng-disable="myForm.$invalid" class="btn btn-primary btn-lg btn-block login-button">Register</button>
+						<button type="submit" ng-disabled="myForm.$invalid" class="btn btn-primary btn-lg btn-block login-button">Register</button>
 				</div>
 
 			</form>

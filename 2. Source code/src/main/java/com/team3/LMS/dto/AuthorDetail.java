@@ -13,6 +13,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "author_details")
 public class AuthorDetail implements Serializable {
@@ -51,11 +54,12 @@ public class AuthorDetail implements Serializable {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-
+	
+	@JsonIgnoreProperties({"authorDetails"})
 	public List<Book> getBooks() {
 		return this.books;
 	}
-
+	
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}

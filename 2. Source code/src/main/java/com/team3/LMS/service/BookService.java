@@ -8,8 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.team3.LMS.dao.BookDao;
+import com.team3.LMS.dto.AuthorDetail;
 import com.team3.LMS.dto.Book;
 import com.team3.LMS.dto.BookCategoryDetail;
+import com.team3.LMS.dto.PublisherDetail;
 
 @Service
 public class BookService {
@@ -29,6 +31,14 @@ public class BookService {
 	}
 
 	public void addBook(Book book) {
+		bookDao.save(book);
+	}
+	
+	public void editBook(Book book) {
+		BookCategoryDetail bookCategoryDetail = book.getBookCategoryDetail();
+		PublisherDetail publisherDetail = book.getPublisherDetail();
+		List<AuthorDetail> list = book.getAuthorDetails();
+		book.setAuthorDetails(list);
 		bookDao.save(book);
 	}
 
