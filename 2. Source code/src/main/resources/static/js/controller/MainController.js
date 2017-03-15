@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 
-app.controller('MainController', function($scope, $http, $routeParams) {
+app.controller('MainController', function($scope, $http, $routeParams, productService, $rootScope) {
 	getData();
 	function getData() { 
 		$http({
@@ -12,6 +12,21 @@ app.controller('MainController', function($scope, $http, $routeParams) {
 		})
 		.error(function(data, status, headers, config){});
 	}
-
-
 });
+app.service('productService', function() {
+	  var productList = [];
+
+	  var addProduct = function(newObj) {
+	      productList.push(newObj);
+	  };
+
+	  var getProducts = function(){
+	      return productList;
+	  };
+
+	  return {
+	    addProduct: addProduct,
+	    getProducts: getProducts
+	  };
+
+	});
