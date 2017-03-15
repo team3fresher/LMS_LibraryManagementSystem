@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -51,9 +52,9 @@ public class UserInfo implements Serializable {
 	private String realName;
 
 	private String sex;
-	
+
 	private boolean valid;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dayofbirth")
 	private Date dayOfBirth;
@@ -73,7 +74,7 @@ public class UserInfo implements Serializable {
 	private List<Role> roles;
 
 	// bi-directional many-to-one association to TicketBookUser
-	@OneToMany(mappedBy = "userInfo")
+	@OneToMany(mappedBy = "userInfo", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<TicketBookUser> ticketBookUsers;
 
 	public UserInfo() {
@@ -149,8 +150,8 @@ public class UserInfo implements Serializable {
 
 	public void setSex(String sex) {
 		this.sex = sex;
-	}	
-	
+	}
+
 	public boolean isValid() {
 		return valid;
 	}

@@ -21,7 +21,6 @@ app.controller('registerController', function($scope, $http, $routeParams) {
 			})
 			.error(function(data, status, headers, config){
 			});
-			alert("Registration Success!!");
 		
 	}
 	function getData() { 

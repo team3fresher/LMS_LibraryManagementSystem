@@ -17,7 +17,7 @@
 							<div class="x_title">
 								<div class="x_content">
 									<br /> 
-									<form id="demo-form" data-parsley-validate ng-submit="AddUser()" novalidate
+									<form id="demo-form" name="myForm" data-parsley-validate action="#/authorManage" ng-submit="AddAuthor()" novalidate
 										class="form-horizontal form-label-left">
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -33,7 +33,7 @@
 												for="birthday"> Birthday <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" class="form-control has-feedback-left"
+												<input type="date" class="form-control has-feedback-left"
 													id="single_cal4" placeholder="First Name"
 													aria-describedby="inputSuccess2Status4"> <span
 													class="fa fa-calendar-o form-control-feedback left"

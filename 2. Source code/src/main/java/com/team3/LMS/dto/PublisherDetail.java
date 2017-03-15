@@ -3,6 +3,7 @@ package com.team3.LMS.dto;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class PublisherDetail implements Serializable {
 	private String publisherName;
 
 	// bi-directional many-to-one association to Book
-	@OneToMany(mappedBy = "publisherDetail")
+	@OneToMany(mappedBy = "publisherDetail", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Book> books;
 
 	public PublisherDetail() {
