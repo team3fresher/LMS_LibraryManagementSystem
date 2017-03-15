@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -51,23 +52,24 @@ public class Book implements Serializable {
 	private byte validStatus;
 
 	// bi-directional many-to-many association to AuthorDetail
-	@ManyToMany(mappedBy = "books", cascade = CascadeType.REMOVE)
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	//@ManyToMany(mappedBy = "books", cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "isbn", referencedColumnName = "isbn"), inverseJoinColumns = @JoinColumn(name = "authorId", referencedColumnName = "author_id"))
 	private List<AuthorDetail> authorDetails;
 
 	// bi-directional many-to-one association to BookCategoryDetail
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "category_id", nullable = false)
 	private BookCategoryDetail bookCategoryDetail;
 
 	// bi-directional many-to-one association to PublisherDetail
-	@ManyToOne
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "publisher_id")
 	private PublisherDetail publisherDetail;
 
 	// bi-directional many-to-one association to TicketBookUser
-	@OneToMany(mappedBy = "book", cascade = CascadeType.REMOVE)
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+	// @Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<TicketBookUser> ticketBookUsers;
 
 	public Book() {
@@ -137,16 +139,16 @@ public class Book implements Serializable {
 		this.validStatus = validStatus;
 	}
 
-	@JsonIgnoreProperties({"books"})
+	// @JsonIgnoreProperties({ "books" })
 	public List<AuthorDetail> getAuthorDetails() {
 		return authorDetails;
 	}
-	
+
 	public void setAuthorDetails(List<AuthorDetail> authorDetails) {
 		this.authorDetails = authorDetails;
 	}
-	
-	@JsonIgnoreProperties({"books"})
+
+	@JsonIgnoreProperties({ "books" })
 	public BookCategoryDetail getBookCategoryDetail() {
 		return this.bookCategoryDetail;
 	}
@@ -155,7 +157,7 @@ public class Book implements Serializable {
 		this.bookCategoryDetail = bookCategoryDetail;
 	}
 
-	@JsonIgnoreProperties({"books"})
+	@JsonIgnoreProperties({ "books" })
 	public PublisherDetail getPublisherDetail() {
 		return this.publisherDetail;
 	}
@@ -164,7 +166,7 @@ public class Book implements Serializable {
 		this.publisherDetail = publisherDetail;
 	}
 
-	@JsonIgnoreProperties({"books"})
+	@JsonIgnoreProperties({ "book" })
 	public List<TicketBookUser> getTicketBookUsers() {
 		return this.ticketBookUsers;
 	}
