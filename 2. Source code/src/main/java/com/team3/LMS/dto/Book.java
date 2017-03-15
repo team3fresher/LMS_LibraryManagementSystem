@@ -52,8 +52,7 @@ public class Book implements Serializable {
 	private byte validStatus;
 
 	// bi-directional many-to-many association to AuthorDetail
-	//@ManyToMany(mappedBy = "books", cascade = CascadeType.ALL)
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "book_author", joinColumns = @JoinColumn(name = "isbn", referencedColumnName = "isbn"), inverseJoinColumns = @JoinColumn(name = "authorId", referencedColumnName = "author_id"))
 	private List<AuthorDetail> authorDetails;
 
@@ -139,7 +138,7 @@ public class Book implements Serializable {
 		this.validStatus = validStatus;
 	}
 
-	// @JsonIgnoreProperties({ "books" })
+	@JsonIgnoreProperties({ "books" })
 	public List<AuthorDetail> getAuthorDetails() {
 		return authorDetails;
 	}

@@ -18,8 +18,9 @@
 							<div class="x_title">
 								<div class="x_content">
 									<br />
-									<form method="post" id="add_book_form" action="#/booksManage" ng-submit="AddBook()"
-										novalidate class="form-horizontal form-label-left">
+									<form name="myForm" id="add_book_form"
+										ng-submit="AddBook()" novalidate
+										class="form-horizontal form-label-left">
 
 										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
@@ -27,7 +28,8 @@
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<input type="text" id="title" ng-model="book.title"
-													required="required" class="form-control col-md-7 col-xs-12">
+													required="required" class="form-control col-md-7 col-xs-12"
+													placeholder="Title">
 											</div>
 										</div>
 										<div class="form-group">
@@ -61,8 +63,10 @@
 												class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="publishYear" ng-model="book.publishYear"
-													required="required" class="form-control col-md-7 col-xs-12">
+												<input type="number" ng-minlength="1" ng-maxlength="4"
+													id="publishYear" ng-model="book.publishYear"
+													required="required" class="form-control col-md-7 col-xs-12"
+													placeholder="Year of publish (Enter 4 numbers)">
 											</div>
 										</div>
 										<div class="form-group">
@@ -70,16 +74,17 @@
 												for="isbn"> ISBN <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="number" id="isbn" ng-model="book.isbn"
-													required="required" class="form-control col-md-7 col-xs-12">
+												<input name="myCheck" type="number" id="isbn" ng-model="book.isbn"
+													required="required" class="form-control col-md-7 col-xs-12" check-isbn1
+													placeholder="Enter a ISBN number">
+												<p>check: {{myForm.myCheck.$valid}}</p>
 											</div>
 										</div>
 										<div class="form-group">
 											<label for="middle-name"
 												class="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<select name="repeatSelect"
-													ng-model="categoryData.model"
+												<select name="repeatSelect" ng-model="categoryData.model"
 													class="form-control col-md-7 col-xs-12">
 													<option
 														ng-repeat="category in categoryData.availableOptions"
@@ -95,8 +100,7 @@
 												<span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<select name="repeatSelect2"
-													ng-model="publisherData.model"
+												<select name="repeatSelect2" ng-model="publisherData.model"
 													class="form-control col-md-7 col-xs-12">
 													<option
 														ng-repeat="publisher in publisherData.availableOptions"
@@ -113,7 +117,8 @@
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<input type="number" id="amount" ng-model="book.amount"
-													required="required" class="form-control col-md-7 col-xs-12">
+													required="required" class="form-control col-md-7 col-xs-12"
+													placeholder="Amount">
 											</div>
 										</div>
 										<div class="form-group">
@@ -121,9 +126,10 @@
 												for="importance">Importance <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input type="text" id="importance"
-													ng-model="book.importance" required="required"
-													class="form-control col-md-7 col-xs-12">
+												<input type=number ng-minlength="1" ng-maxlength="1"
+													id="importance" ng-model="book.importance"
+													required="required" class="form-control col-md-7 col-xs-12"
+													placeholder="importance">
 											</div>
 										</div>
 										<div class="item form-group">

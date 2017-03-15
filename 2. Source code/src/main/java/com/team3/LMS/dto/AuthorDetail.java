@@ -33,8 +33,6 @@ public class AuthorDetail implements Serializable {
 
 	// bi-directional many-to-many association to Book
 	@ManyToMany(mappedBy = "authorDetails")
-	/*@JoinTable(name = "book_author", joinColumns = { @JoinColumn(name = "author_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "isbn") })*/
 	private List<Book> books;
 
 	public AuthorDetail() {
@@ -55,8 +53,7 @@ public class AuthorDetail implements Serializable {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-	
-	@JsonIgnoreProperties({"authorDetails"})
+
 	public List<Book> getBooks() {
 		return this.books;
 	}
