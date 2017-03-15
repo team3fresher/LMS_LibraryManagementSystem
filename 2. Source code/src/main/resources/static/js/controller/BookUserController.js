@@ -1,30 +1,16 @@
-var app = angular.module('myAdmin');
-app.controller("AuthorController",function($scope, $http){
-		
-	var size=10;	
+var app = angular.module('myApp');
 
-	$scope.AddAuthor = function(){
-		$scope.author = {			
-			"authorName": $scope.author.name,
-			
-		};
-			$http.post("http://localhost:9000/LMS/author/add",$scope.author)
-			.success(function(data, status, headers, config){
-				getData();
-			})
-			.error(function(data, status, headers, config){});
-		
-	}
-	$scope.orderByMe = function(x){
-		$scope.myOrderBy = x;
-	}
-
+app.controller('BookUserController', function($scope, $http, $routeParams) {
+	
+	var size=8;
+	
+	getData();
 	function getData() { 
 		$http({
 			method: 'get',
-			url: "http://localhost:9000/LMS/author/findAll?page=0&size="+size
+			url: "http://localhost:9000/LMS/book/findAll?page=0&size="+size
 		}).success(function(data, status, headers, config){
-			$scope.authors = data.content;			
+			$scope.books = data.content;
 			$scope.currentPage = 1;
 			$scope.totalPages = data.totalPages;
 			if(data.totalElements > size){
@@ -33,7 +19,6 @@ app.controller("AuthorController",function($scope, $http){
 		})
 		.error(function(data, status, headers, config){});
 	}
-	getData();			
 
 	//Start Paging
 	$scope.incPaging = function(currentPage){
@@ -44,9 +29,9 @@ app.controller("AuthorController",function($scope, $http){
 			$scope.currentPage = pageNumb;	
 			$http({
 				method: 'get',
-				url: "http://localhost:9000/LMS/author/findAll?page="+(pageNumb-1)+"&size="+size
+				url: "http://localhost:9000/LMS/book/findAll?page="+(pageNumb-1)+"&size="+size
 			}).success(function(data, status, headers, config){
-				$scope.authors = data.content;			
+				$scope.books = data.content;			
 			})
 			.error(function(data, status, headers, config){});
 		}	
@@ -60,12 +45,13 @@ app.controller("AuthorController",function($scope, $http){
 			$scope.currentPage = pageNumb;	
 			$http({
 				method: 'get',
-				url: "http://localhost:9000/LMS/author/findAll?page="+(pageNumb-1)+"&size="+size
+				url: "http://localhost:9000/LMS/book/findAll?page="+(pageNumb-1)+"&size="+size
 			}).success(function(data, status, headers, config){
-				$scope.authors = data.content;			
+				$scope.books = data.content;			
 			})
 			.error(function(data, status, headers, config){});
 		}		
 	}
 	//end Paging
-})
+
+});

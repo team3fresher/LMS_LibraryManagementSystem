@@ -52,7 +52,7 @@ public class BookController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	@ResponseBody
 	public void editBook(@RequestBody Book book) {
-		service.addBook(book);
+		service.editBook(book);
 	}
 	
 	@RequestMapping("/remove/{id}")

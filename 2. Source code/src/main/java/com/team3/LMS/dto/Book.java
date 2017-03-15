@@ -141,11 +141,11 @@ public class Book implements Serializable {
 	public List<AuthorDetail> getAuthorDetails() {
 		return authorDetails;
 	}
-
+	
 	public void setAuthorDetails(List<AuthorDetail> authorDetails) {
 		this.authorDetails = authorDetails;
 	}
-
+	
 	@JsonIgnoreProperties({"books"})
 	public BookCategoryDetail getBookCategoryDetail() {
 		return this.bookCategoryDetail;
