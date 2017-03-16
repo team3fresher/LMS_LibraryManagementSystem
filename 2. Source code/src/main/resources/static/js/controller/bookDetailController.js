@@ -1,5 +1,5 @@
 var app = angular.module('myApp');
-app.controller('bookDetailController', function($scope,$http, $routeParams, $rootScope) {
+app.controller('bookDetailController', function($scope,$http, $routeParams, productService) {
 	$http({
 		method: 'get',
 		url: "http://localhost:9000/LMS/book/get/"+$routeParams.id
@@ -16,5 +16,13 @@ app.controller('bookDetailController', function($scope,$http, $routeParams, $roo
 			$scope.bookRelation = dataBook;	
 		})
 		.error(function(data, status, headers, config){});
+	}
+	$scope.addCart= function (x)
+	{
+		var newObj ={
+				id:x,
+				valuable:1
+		};
+		productService.addProduct(newObj);
 	}
 });
