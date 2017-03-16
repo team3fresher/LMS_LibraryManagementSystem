@@ -26,7 +26,8 @@
 				"b2b80c91-9084-8105-d835-30d9f5ad3d9c",
 				"70b840ed-6050-7bbf-126a-528d57ffe79f",
 				"a6634f05-a47f-68c7-a239-e63cb22716e1",
-				"f7c8dcbc-8a35-41f5-3284-11e5d6dd06f5"
+				"f7c8dcbc-8a35-41f5-3284-11e5d6dd06f5",
+				"0570676b-bd4b-309a-40c6-c4f29aa0eed0"
 			],
 			"owner": "1630242",
 			"isDeleted": false,
@@ -118,6 +119,25 @@
 	"owner": "1630242",
 	"public": false,
 	"requests": [
+		{
+			"folder": "6d0c6c83-6b53-2519-5567-65939fdfcb18",
+			"id": "0570676b-bd4b-309a-40c6-c4f29aa0eed0",
+			"name": "Check ISBN",
+			"dataMode": "params",
+			"data": null,
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": "",
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "http://localhost:9000/LMS/book/check/9780439064866",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
+		},
 		{
 			"id": "0c64723f-5cf9-26e0-7650-2a175dbaa62f",
 			"headers": "",
@@ -264,12 +284,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489433166418,
+			"time": 1489693430121,
 			"name": "Add user info",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"address\": \"test\",\n\t\"degree\": \"1232\",\n\t\"email\": \"1232@dasldf\",\n\t\"job\": \"123\",\n\t\"phoneNumber\": 12312312,\n\t\"pword\": \"1232134\",\n\t\"realName\": \"1111111\",\n\t\"sex\": \"male\",\n\t\"valid\": true,\n\t\"dayOfBirth\": \"2017-03-23\"\n}"
+			"rawModeData": "{\n\t\"address\": \"Thu Duc, TP.HCM\",\n\t\"degree\": null,\n\t\"email\": \"test@gmail.com\",\n\t\"job\": null,\n\t\"phoneNumber\": 123456788,\n\t\"pword\": \"123456\",\n\t\"realName\": \"Nguyen Van Add\",\n\t\"sex\": null,\n\t\"valid\": 0,\n\t\"payments\": [],\n\t\"tickets\": [],\n\t\"roles\": [\n\t  {\n\t    \"roleId\": 1\n\t  }\n\t],\n\t\"dayofBirth\": null\n}"
 		},
 		{
 			"id": "35bf3605-69e5-0d39-5264-bee410ed0f36",
@@ -303,13 +323,15 @@
 			"version": 2,
 			"tests": "",
 			"currentHelper": "normal",
-			"helperAttributes": {},
+			"helperAttributes": "{}",
 			"time": 1489436906593,
 			"name": "Edit category",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"categoryId\": 1,\n\t\"categoryName\": \"Magazine\",\n\t\"categoryDescription\":\"Description\",\n\t\"books\": []\n}"
+			"folder": "d84105ba-67ce-f045-e6aa-d032ce4598fc",
+			"descriptionFormat": null,
+			"rawModeData": "{\n  \"categoryId\": 1,\n  \"categoryName\": \"Magazine\",\n  \"categoryDescription\":\"Description\",\n  \"books\": []\n}"
 		},
 		{
 			"id": "59347098-1ceb-3e6f-2851-3495ac05636e",
@@ -420,12 +442,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489433367841,
+			"time": 1489693463465,
 			"name": "Edit user info",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"userId\": 1,\n\t\"address\": \"edit\",\n\t\"degree\": \"1232\",\n\t\"email\": \"edit@dasldf\",\n\t\"job\": \"123\",\n\t\"phoneNumber\": 12312312,\n\t\"pword\": \"1232134\",\n\t\"realName\": \"edit\",\n\t\"sex\": \"male\",\n\t\"valid\": true,\n\t\"dayOfBirth\": \"2017-03-23\"\n}"
+			"rawModeData": "{\n\t\"userId\": 3,\n\t\"address\": \"Thu Duc, TP.HCM\",\n\t\"degree\": null,\n\t\"email\": \"test@gmail.com\",\n\t\"job\": null,\n\t\"phoneNumber\": 123456788,\n\t\"pword\": \"123456\",\n\t\"realName\": \"Nguyen Van Edit\",\n\t\"sex\": null,\n\t\"valid\": 0,\n\t\"payments\": [],\n\t\"tickets\": [],\n\t\"roles\": [\n\t  {\n\t    \"roleId\": 1\n\t  }\n\t],\n\t\"dayofBirth\": null\n}"
 		},
 		{
 			"id": "7e5d1636-438d-a14c-52f6-45a8744bde7c",
@@ -581,7 +603,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489504546865,
+			"time": 1489605173588,
 			"name": "Remove book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
@@ -619,12 +641,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489504971249,
+			"time": 1489693663496,
 			"name": "Edit book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"isbn\": \"12345678\",\n\t\"amount\": 11,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 1,\n\t\"publishingYear\": 1999,\n\t\"shortDescription\": \"TEst\",\n\t\"title\": \"TEst Gump\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 10,\n\t  \"categoryName\": \"Novel\",\n\t  \"categoryDescription\": null\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 18,\n\t  \"publisherName\": \"Vintage\"\n\t},\n\t\"ticketBookUsers\": []\n}"
+			"rawModeData": "{\n\t\"isbn\": \"1234567\",\n\t\"amount\": 20,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 1999,\n\t\"shortDescription\": \"Edit\",\n\t\"title\": \"Edit\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [\n\t  {\n\t    \"authorId\": 46\n\t  }\n\t],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 2\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 24\n\t},\n\t\"rule\": null,\n\t\"tickets\": []\n}"
 		},
 		{
 			"id": "b2de7250-ac0e-631b-83f7-bcfdf123efe6",
@@ -677,12 +699,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489504161785,
+			"time": 1489693543512,
 			"name": "Add book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"isbn\": \"123\",\n\t\"amount\": 10,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 1,\n\t\"publishingYear\": 2012,\n\t\"shortDescription\": \"The modern classic that inspired the beloved movie starring Tom Hanks\",\n\t\"title\": \"Forrest Gump\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [\n\t  {\n\t    \"authorId\": 1,\n\t    \"authorName\": \"Winston Groom\"\n\t  }\n\t],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 10,\n\t  \"categoryName\": \"Novel\",\n\t  \"categoryDescription\": null\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 18,\n\t  \"publisherName\": \"Vintage\"\n\t},\n\t\"ticketBookUsers\": []\n}"
+			"rawModeData": "{\n\t\"isbn\": \"1234567\",\n\t\"amount\": 20,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 1999,\n\t\"shortDescription\": \"In one of the most hotly anticipated sequel in memory\",\n\t\"title\": \"Harry Potter and the Chamber of Secrets\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [\n\t  {\n\t    \"authorId\": 46\n\t  }\n\t],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 2\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 24\n\t},\n\t\"rule\": null,\n\t\"tickets\": []\n}"
 		},
 		{
 			"id": "c600a19f-30dc-1570-6cc4-5cf043bba1a0",
@@ -775,12 +797,15 @@
 			"version": 2,
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": {},
+			"helperAttributes": "{}",
 			"time": 1489170602778,
 			"name": "Get book by Id",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
-			"responses": []
+			"responses": [],
+			"folder": "6d0c6c83-6b53-2519-5567-65939fdfcb18",
+			"rawModeData": null,
+			"descriptionFormat": null
 		},
 		{
 			"id": "f914999e-da97-72c4-fd8c-ccf55d05650e",
@@ -805,7 +830,7 @@
 		{
 			"id": "fd1dbcbc-ef37-45cc-38b0-161d17e35f11",
 			"headers": "",
-			"url": "http://localhost:9000/LMS/author/remove/37",
+			"url": "http://localhost:9000/LMS/author/remove/47",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -815,7 +840,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489417396178,
+			"time": 1489514957750,
 			"name": "Remove author detail",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
