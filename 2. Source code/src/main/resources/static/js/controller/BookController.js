@@ -34,7 +34,10 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			"shortDescription" : $scope.book.note,
 			"title" : $scope.book.title,
 			"validStatus" : $scope.book.validStatus,
-			"authorDetails" : toObjectArray($scope.authorData.model),
+			//"authorDetails" : toObjectArray($scope.authorData.model),
+			"authorDetails" : $scope.authorData.model.map(function(e) {
+			    return { 'authorId': e };
+			}),
 			"bookCategoryDetail" : {
 				'categoryId' : $scope.categoryData.model
 			},
@@ -43,7 +46,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			},
 			"ticketBookUsers" : []
 		};
-
+		console.log($scope.book);
 		$http.post("http://localhost:9000/LMS/book/add", $scope.book).success(
 				function(data, status, headers, config) {
 					getData();
@@ -72,7 +75,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			},
 			"ticketBookUsers" : []
 		};
-
+		console.log($scope.updatebook);
 		$http.post("http://localhost:9000/LMS/book/edit", $scope.book).success(
 				function(data, status, headers, config) {
 					getData();
@@ -195,4 +198,28 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		}).error(function(data, status, headers, config) {
 		});
 	}
-})
+});
+
+app.directive('checkIsbn1', function($http) {
+	return {
+		require : 'ngModel',
+		link : function(scope, element, attr, mCtrl) {
+			scope.$watch(attr.ngModel, function(value){
+				$http({
+					method : 'get',
+					url : "http://localhost:9000/LMS/book/check/" + value
+				}).success(function(data, status, headers, config) {
+					console.log(data);
+					if (angular.equals(data, true)) {
+						mCtrl.$setValidity('checkIsbn', true);
+					} else {
+						mCtrl.$setValidity('checkIsbn', false);
+					}
+					return value;
+				}).error(function(data, status, headers, config) {
+					return null;
+				});
+			});
+		}
+	};
+});

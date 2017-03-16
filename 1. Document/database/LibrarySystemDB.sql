@@ -1,3 +1,4 @@
+drop database Library;
 create database Library;
 use Library;
 create table BOOK(
@@ -6,7 +7,7 @@ create table BOOK(
     publisher_id int not null,
     publishing_year year not null,
     category_id int not null,
-    short_description varchar(200),
+    short_description varchar(1000),
     brw_tckt_nber int not null,
     valid_status boolean,
     amount int not null,
@@ -17,8 +18,8 @@ create table AUTHOR_DETAILS(
     author_name varchar(30) not null
 );
 create table BOOK_AUTHOR(
-	author_id int not null,
-    isbn bigint(13) not null,
+	author_id int,
+    isbn bigint(13),
     constraint pk_author_isbn_book_author primary key (author_id, isbn)
 );
 create table PUBLISHER_DETAILS(
@@ -27,20 +28,19 @@ create table PUBLISHER_DETAILS(
 );
 create table BOOK_CATEGORY_DETAILS(
 	category_id int not null primary key auto_increment,
-    category_name varchar(30) not null
+    category_name varchar(30) not null,
+	category_description varchar(1000)
 );
 create table TICKET(
     borrowed_date date not null,
-    expired_date date not null,
     ticket_id int not null primary key auto_increment,
-    borrow_number int not null,
-    limition_number int
-);
-create table TICKET_BOOK_USER(
-	isbn bigint(13) not null,
     user_id int not null,
+    borrow_number int not null
+);
+create table TICKET_BOOK(
+	isbn bigint(13) not null,
     ticket_id int not null,
-    primary key (isbn, user_id, ticket_id)
+    primary key (isbn, ticket_id)
 );
 create table STAFF_INFO(
 	staff_id int not null primary key auto_increment,
@@ -49,7 +49,7 @@ create table STAFF_INFO(
     phone_number int(11) not null,
     email varchar(30),
     pword int(20) not null,
-    sex varchar(6) not null,
+    sex varchar(6),
     degree varchar(30),
     dayofbirth date
 );
@@ -64,7 +64,7 @@ create table USER_INFO(
     phone_number int(11) not null,
     email varchar(30) not null,
     pword varchar(20) not null,
-    sex varchar(6) not null,
+    sex varchar(6),
     job varchar(30),
     degree varchar(30),
     valid boolean,
@@ -76,10 +76,10 @@ create table USER_ROLE(
     primary key (user_id, role_id)
 );
 create table RETURN_BOOK(
+	return_book_id int not null primary key auto_increment,
 	user_id int not null,
     returned_date date not null,
-    fine int,
-    return_book_id int not null primary key auto_increment
+    fine int not null
 );
 create table PAYMENT(
 	user_id int not null,
@@ -88,32 +88,71 @@ create table PAYMENT(
     fine int,
     payment_id int primary key not null auto_increment
 );
+create table RULES(
+	rule_id int(1) not null primary key,
+    borrowing_time int not null,
+    fine_per_day int not null,
+    min_left int not null
+);
+
 alter table BOOK 
 add constraint category_id_fk_on_book foreign key (category_id) references BOOK_CATEGORY_DETAILS(category_id);
 alter table BOOK
 add constraint publisher_id_fk_on_book foreign key (publisher_id) references PUBLISHER_DETAILS(publisher_id);
+alter table BOOK 
+add constraint importance_fk_on_book foreign key (importance) references RULES(rule_id);
 alter table BOOK_AUTHOR
-add constraint isbn_fk_on_book_author foreign key (author_id) references AUTHOR_DETAILS(author_id);
+add constraint isbn_fk_on_book_author foreign key (isbn) references BOOK(isbn);
 alter table BOOK_AUTHOR
-add constraint author_id_fk_on_book_author foreign key (isbn) references BOOK(isbn);
+add constraint author_id_fk_on_book_author foreign key (author_id) references AUTHOR_DETAILS(author_id);
 alter table PAYMENT
 add constraint user_id_fk_on_payment foreign key (user_id) references USER_INFO(user_id);
 alter table USER_ROLE
 add constraint user_id_fk_on_user_role foreign key (user_id) references USER_INFO(user_id);
 alter table USER_ROLE
 add constraint role_id_fk_on_user_role foreign key (role_id) references ROLE(role_id);
-alter table TICKET_BOOK_USER
-add constraint user_id_fk_on_ticket_book_user foreign key (user_id) references USER_INFO(user_id);
-alter table TICKET_BOOK_USER
-add constraint ticket_id_fk_on_ticket_book_user foreign key (ticket_id) references TICKET(ticket_id);
-alter table TICKET_BOOK_USER
-add constraint isbn_fk_on_ticket_book_user foreign key (isbn) references BOOK(isbn);
+alter table TICKET
+add constraint user_id_fk_on_ticket foreign key (user_id) references USER_INFO(user_id);
+alter table TICKET_BOOK
+add constraint ticket_id_fk_on_ticket_book foreign key (ticket_id) references TICKET(ticket_id);
+alter table TICKET_BOOK
+add constraint isbn_fk_on_ticket_book foreign key (isbn) references BOOK(isbn);
 alter table RETURN_BOOK
-add constraint user_id_fk_on_return foreign key (user_id) references TICKET_BOOK_USER(user_id);
+add constraint user_id_fk_on_return foreign key (user_id) references TICKET(user_id);
 
 insert into role (role_name) value ("MEMBER_USER");
 insert into role (role_name) value ("ADMIN");
 insert into role (role_name) value ("GUEST");
+
+INSERT INTO `user_info` (`user_id`, `real_name`, `address`, `phone_number`, `email`, `pword`, `sex`, `job`, `degree`, `valid`, `dayofbirth`) VALUES
+(1, 'To The Tan', 'Di An, Binh Duong', 123456789, 'tantt3746@gmail.com', '123456', NULL, NULL, NULL, 1, NULL),
+(2, 'Tran Hoang Giang', 'Thu Duc, TP.HCM', 123456788, 'giangcoibp@gmail.com', '123456', NULL, NULL, NULL, 0, NULL);
+
+INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
+(1, 1),
+(1, 2),
+(2, 1);
+
+INSERT INTO `ticket` (`borrowed_date`, `ticket_id`, `user_id`, `borrow_number`) VALUES
+('2017-03-16', 1, 1, 1),
+('2017-03-17', 2, 2, 2);
+
+INSERT INTO `rules` (`rule_id`, `borrowing_time`, `fine_per_day`, `min_left`) VALUES
+(1, 15, 10000, 1),
+(2, 7, 30000, 3),
+(3, 0, 200000, 5);
+
+INSERT INTO `return_book` (`return_book_id`, `user_id`, `returned_date`, `fine`) VALUES
+(1, 1, '2017-03-17', 1),
+(2, 2, '2017-03-18', 1);
+
+INSERT INTO `ticket` (`borrowed_date`, `ticket_id`, `user_id`, `borrow_number`) VALUES
+('2017-03-16', 1, 1, 1),
+('2017-03-17', 2, 2, 2);
+
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 15, 10000, 1);
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (2, 7, 30000, 3);
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 0, 200000, 5);
 
 insert into book_category_details(category_name) value ("Magazine");
 insert into book_category_details(category_name) value ("Fiction");
@@ -152,6 +191,7 @@ insert into publisher_details(publisher_name) value ("Smithsonian Books");
 insert into publisher_details(publisher_name) value ("Cambridge University Press");
 insert into publisher_details(publisher_name) value ("Haole Library");
 insert into publisher_details(publisher_name) value ("Scholastic Press");
+insert into publisher_details(publisher_name) value ("Oxford University Press");
 
 insert into author_details(author_name) value ("Winston Groom");
 insert into author_details(author_name) value ("Dominic Midgley");
@@ -199,10 +239,7 @@ insert into author_details(author_name) value ("Thug Kitchen LLC");
 insert into author_details(author_name) value ("Darren Naish");
 insert into author_details(author_name) value ("Brett L. Walker");
 insert into author_details(author_name) value ("J. K. Rowling ");
-
-select * from book_category_details;
-select * from author_details;
-select * from publisher_details;
+insert into author_details(author_name) value ("Duane W. Roller");
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9786045332641, "Schoolgirl",2,2015,2,"Essentially the start of Dazai's career, Schoolgirl gained notoriety for its ironic and inventive use of language",0,true,5,1);
@@ -234,8 +271,8 @@ values (9781623363581, "Thug Kitchen: The Official Cookbook",20,2014,11,"Eat Lik
 insert into book_author(author_id, isbn) values (43,9781623363581);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9781588345820, "Dinosaurs: How They Lived and Evolved",8,2016,8,"LEARNING TO LISTEN",0,true,15,1);
-insert into book_author(author_id, isbn) values (37,9781588345820);
+values (9781588345820, "Dinosaurs: How They Lived and Evolved",21,2016,4,"Dinosaurs are one of the most spectacular groups of animals that have ever existed. Many were fantastic, bizarre creatures that still capture our imagination: the super-predator Tyrannosaurus, the plate-backed Stegosaurus, and the long-necked, long-tailed Diplodocus.",0,true,15,1);
+insert into book_author(author_id, isbn) values (44,9781588345820);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9780521178723, "A Concise History of Japan",21,2015,6,"A Concise History of Japan integrates the pageantry of Japanese history",0,true,12,2);
@@ -268,3 +305,33 @@ insert into book_author(author_id, isbn) values (46,9780590353403);
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9780439064866, "Harry Potter and the Chamber of Secrets",24,1999,2,"In one of the most hotly anticipated sequel in memory",0,true,20,2);
 insert into book_author(author_id, isbn) values (46,9780439064866);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9786045835807, "IELTS Listening Strategies for the Ielts Test",6,2011,12,"",0,true,30,1);
+insert into book_author(author_id, isbn) values (8,9786045835807);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876045809747, "Essential Grammer for IELTS",6,2015,12,"",0,true,32,1);
+insert into book_author(author_id, isbn) values (6,9876045809747);
+insert into book_author(author_id, isbn) values (7,9876045809747);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9786048554071, "IELTS Writing Strategies for the Ielts Test",6,2015,12,"",0,true,36,1);
+insert into book_author(author_id, isbn) values (6,9786048554071);
+insert into book_author(author_id, isbn) values (7,9786048554071);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9781570624421, "This Light in Oneself",25,1999,5,"These selections present the core of Krishnamurti's teaching on meditation, taken from discussions with small groups",0,true,8,2);
+insert into book_author(author_id, isbn) values (38,9781570624421);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876046915577, "Book Girl and the Suicidal Mime",1,2014,2,"For Tohko Amano, a third-year high school student and self-styled book girl, being the head of the literary club is more than just an extracurricular activity. It's her bread and butter...literally! Tohko is actually a literature-gobbling demon, who can be found at all hours of the day munching on torn out pages from all kinds of books. But for Tohko, the real delicacies are hand-written stories. To satisfy her gourmet tastes, she's employed (rather, browbeaten) one Konoha Inoue, who scribbles away each day after school to satisfy Tohko's appetite. But when another student comes knocking on the literary club door for advice on writing love letters, will Tohko discover a new kind of delicacy?",0,true,18,1);
+insert into book_author(author_id, isbn) values (13,9876046915577);
+
+insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
+values (9876045836095, "Cleopatra: A Biography",25,2015,3,"Few personalities from classical antiquity are more famous--yet more poorly understood--than Cleopatra VII, queen of Egypt. In this major biography, Duane Roller reveals that Cleopatra was in fact a learned and visionary leader whose overarching goal was always the preservation of her dynasty and kingdom.",0,true,6,2);
+insert into book_author(author_id, isbn) values (47,9876045836095);
+
+INSERT INTO `ticket_book` (`isbn`, `ticket_id`) VALUES
+(9780307947390, 1),
+(9780439064866, 1);

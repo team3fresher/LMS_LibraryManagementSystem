@@ -48,24 +48,24 @@ public class BookController {
 	public void addBook(@RequestBody Book book) {
 		service.addBook(book);
 	}
-	
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	@ResponseBody
 	public void editBook(@RequestBody Book book) {
-		service.editBook(book);
+		service.addBook(book);
 	}
-	
+
 	@RequestMapping("/remove/{id}")
 	public void removeBook(@PathVariable String id) {
 		service.removeBook(id);
 	}
-	
+
 	@RequestMapping(value = "/get/{isbn}", method = RequestMethod.GET)
 	@ResponseBody
 	public Book getBook(@PathVariable String isbn) {
 		return service.getBook(isbn);
 	}
-	
+
 	@RequestMapping(value = "/check/{isbn}", method = RequestMethod.GET)
 	@ResponseBody
 	public boolean checkISBN(@PathVariable String isbn) {
