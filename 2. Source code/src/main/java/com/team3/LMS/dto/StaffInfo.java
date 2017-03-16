@@ -38,7 +38,7 @@ public class StaffInfo implements Serializable {
 	private String realName;
 
 	private String sex;
-	
+
 	@Temporal(TemporalType.DATE)
 	@Column(name = "dayofbirth")
 	private Date dayOfBirth;
@@ -117,5 +117,5 @@ public class StaffInfo implements Serializable {
 	public void setDayOfBirth(Date dayOfBirth) {
 		this.dayOfBirth = dayOfBirth;
 	}
-	
+
 }

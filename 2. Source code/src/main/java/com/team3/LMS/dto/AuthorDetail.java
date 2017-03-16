@@ -3,18 +3,14 @@ package com.team3.LMS.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -31,7 +27,6 @@ public class AuthorDetail implements Serializable {
 	@Column(name = "author_name")
 	private String authorName;
 
-	// bi-directional many-to-many association to Book
 	@ManyToMany(mappedBy = "authorDetails")
 	private List<Book> books;
 
@@ -53,11 +48,12 @@ public class AuthorDetail implements Serializable {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
-
+	
+	@JsonIgnoreProperties({ "authorDetails" })
 	public List<Book> getBooks() {
 		return this.books;
 	}
-	
+
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
