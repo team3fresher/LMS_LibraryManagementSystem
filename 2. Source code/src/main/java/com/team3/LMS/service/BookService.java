@@ -36,24 +36,6 @@ public class BookService {
 	}
 
 	public void addBook(Book book) {
-		List<AuthorDetail> list = book.getAuthorDetails();
-		List<AuthorDetail> authorDetails = new ArrayList<AuthorDetail>();
-		for (AuthorDetail ele : list) {
-			AuthorDetail temp = authorDetailDao.findOne(ele.getAuthorId());
-			temp.setAuthorName("test11");
-			authorDetails.add(authorDetailDao.findOne(ele.getAuthorId()));
-		}
-		
-		book.getAuthorDetails().clear();
-		book.getAuthorDetails().addAll(authorDetails);
-		bookDao.save(book);
-	}
-	
-	public void editBook(Book book) {
-		BookCategoryDetail bookCategoryDetail = book.getBookCategoryDetail();
-		PublisherDetail publisherDetail = book.getPublisherDetail();
-		List<AuthorDetail> list = book.getAuthorDetails();
-		book.setAuthorDetails(list);
 		bookDao.save(book);
 	}
 
