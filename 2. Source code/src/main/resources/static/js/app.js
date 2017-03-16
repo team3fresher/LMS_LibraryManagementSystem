@@ -39,10 +39,37 @@ app.config(function($routeProvider){
 	    })
         .when('/cart',{
             templateUrl: '/LMS/views/cart.html',
-            controller: 'MainController'
+            controller: 'cartController'
         })
         .otherwise(
             { redirectTo: '/'}
+    
         );
 });
+app.service('productService', function() {
+	  var productList = [];
 
+	  var addProduct = function(newObj) {
+		  if(productList.indexOf(newObj) == -1) {
+			  productList.push(newObj);
+			}
+	  };
+
+	  var getProducts = function(){
+	      return productList;
+	  };
+	  var updateNumProducts = function(x,y){
+		  for (var i=0; i< productList.length; i++ ){
+			  if(productList[i].id == x){
+				  productList[i].valuable = y;
+				  break;
+			  }
+		  }
+	  };
+	  return {
+	    addProduct: addProduct,
+	    getProducts: getProducts,
+	    updateNumProducts:updateNumProducts
+	  };
+
+	});
