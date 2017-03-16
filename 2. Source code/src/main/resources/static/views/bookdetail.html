@@ -1,32 +1,35 @@
 <div class="container body">
 	<div class="main_container">
-		<div class="item  col-xs-12 col-lg-12">
-			<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
-				<div>					
+		<div class="item  col-xs-12 col-lg-12 main-center">
+			<div class="col-md-5 col-sm-3 col-xs-12 profile_left">
+				<div style="padding-left: 70px">					
 					<img style="height:350px;width:300px;" src="/LMS/images/BOOKS/{{bookDetail.isbn}}.jpg" alt="image"/>					
 				</div>
 			</div>
-			<div class="col-md-9 col-sm-9 col-xs-12">
+			<div class="col-md-7 col-sm-9 col-xs-12">
 				<div class="caption">
-					<h1 class="group inner list-group-item-heading">{{bookDetail.title}}</h1>
-					<p class="lead">Author: &nbsp
-					<font ng-repeat="author in bookDetail.authorDetails">
-								{{author.authorName}}
-					</font>					
-					</p> 
+					<h2 class="group inner list-group-item-heading"><strong>{{bookDetail.title}}</strong></h2>					
 				</div>
 				<div>
-					<p class="lead">ISBN: &nbsp {{bookDetail.isbn}}</p>
-					<p class="lead">Available: {{bookDetail.amount-bookDetail.brwTcktNber}}</p>
-					<p class="lead">Amount: {{bookDetail.amount}}</p>
-					<p class="lead">Importance: {{bookDetail.importance}}</p>
-					<p class="lead">Publishing year: {{bookDetail.publishingYear}}</p>
-					<p class="lead">Category: {{bookDetail.bookCategoryDetail.categoryName}}</p>
-					<a class="btn btn-success" href="http://www.jquery2dotnet.com">Add to cart</a>
+				<br>
+					<p>Author: &nbsp
+						<font ng-repeat="author in bookDetail.authorDetails">
+									{{author.authorName}}
+						</font>					
+					</p>
+					<p>ISBN: &nbsp {{bookDetail.isbn}}</p>
+					<p>Available: &nbsp {{bookDetail.amount-bookDetail.brwTcktNber}}</p>
+					<p>Amount: &nbsp {{bookDetail.amount}}</p>
+					<p>Importance: &nbsp {{bookDetail.importance}}</p>
+					<p>Publishing year: &nbsp {{bookDetail.publishingYear}}</p>
+					<p>Category: &nbsp {{bookDetail.bookCategoryDetail.categoryName}}</p>
+					<br>
+					<a class="btn btn-success" href="http://www.jquery2dotnet.com"><font style="font-size: 20px;">Add to cart</font></a>
 				</div>				
 			</div>
 			<div class="col-xs-12 col-md-12">
-				<h3 style="margin-bottom: 3px">Description </h3>
+			<br><br>
+				<h3 style="margin-bottom: 3pxj; font-weight: bold;">Description </h3>
 				<hr style="margin-top: 1px"/>				
 				
 				<p><strong><font style="font-size: 20px; color: red;">{{bookDetail.title}}</font></strong></p>				
@@ -39,10 +42,10 @@
 		<!-- Book ralation -->
 		
 		<div class="item  col-xs-3 col-lg-3"		
-			ng-repeat="book in bookRelation.books |limitTo:4">
-			<div class="thumbnail">
+			ng-repeat="book in bookRelation.books |limitTo:4 |orderBy:random">
+			<div class="thumbnail" style="padding-top: 18px">
 				<a href="#/book/bookdetail/{{book.isbn}}"><img
-					class="list-image" src="/LMS/images/BOOKS/{{book.isbn}}.jpg"
+					style="height: 278px; width: 220px" src="/LMS/images/BOOKS/{{book.isbn}}.jpg"
 					alt="image" /></a>
 				<div class="caption">
 					<p class="group inner list-group-item-heading" align="center">
