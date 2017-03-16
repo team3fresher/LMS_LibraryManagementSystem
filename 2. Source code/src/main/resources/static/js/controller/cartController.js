@@ -4,7 +4,7 @@ app.controller('cartController', function($scope, $http, $routeParams,
 		productService) {
 	$scope.bookCarts = [];
 	$scope.products = productService.getProducts();
-	console.log($scope.products);
+	//console.log($scope.products);
 	getCartInfor();
 	//console.log($scope.bookCarts);
 	$scope.removeCart = function(x) {
@@ -29,13 +29,14 @@ app.controller('cartController', function($scope, $http, $routeParams,
 		//console.log($scope.bookCarts[x].valuable);
 		productService.updateNumProducts(id,$scope.bookCarts[x].valuable)
 	}
-	$scope.subNumberTicket = function(x) {
+	$scope.subNumberTicket = function(x,id) {
 		if($scope.bookCarts[x].valuable ==0){
 			$scope.bookCarts[x].valuable=0;
 		}
 		else {
 		$scope.bookCarts[x].valuable -= 1;
 		}
+		productService.updateNumProducts(id,$scope.bookCarts[x].valuable)
 	}
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
