@@ -3,7 +3,6 @@ package com.team3.LMS.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "publisher_details")
@@ -26,8 +27,7 @@ public class PublisherDetail implements Serializable {
 	@Column(name = "publisher_name")
 	private String publisherName;
 
-	// bi-directional many-to-one association to Book
-	@OneToMany(mappedBy = "publisherDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "publisherDetail")
 	private List<Book> books;
 
 	public PublisherDetail() {
@@ -48,7 +48,8 @@ public class PublisherDetail implements Serializable {
 	public void setPublisherName(String publisherName) {
 		this.publisherName = publisherName;
 	}
-
+	
+	@JsonIgnoreProperties({ "publisherDetail" })
 	public List<Book> getBooks() {
 		return this.books;
 	}
