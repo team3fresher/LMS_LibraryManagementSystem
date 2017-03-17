@@ -1,5 +1,4 @@
-drop database Library;
-create database Library;
+create database if not exists Library;
 use Library;
 create table BOOK(
 	isbn bigint(13) primary key not null,
@@ -137,18 +136,9 @@ INSERT INTO `ticket` (`borrowed_date`, `ticket_id`, `user_id`, `borrow_number`) 
 ('2017-03-16', 1, 1, 1),
 ('2017-03-17', 2, 2, 2);
 
-INSERT INTO `rules` (`rule_id`, `borrowing_time`, `fine_per_day`, `min_left`) VALUES
-(1, 15, 10000, 1),
-(2, 7, 30000, 3),
-(3, 0, 200000, 5);
-
 INSERT INTO `return_book` (`return_book_id`, `user_id`, `returned_date`, `fine`) VALUES
 (1, 1, '2017-03-17', 1),
 (2, 2, '2017-03-18', 1);
-
-INSERT INTO `ticket` (`borrowed_date`, `ticket_id`, `user_id`, `borrow_number`) VALUES
-('2017-03-16', 1, 1, 1),
-('2017-03-17', 2, 2, 2);
 
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 15, 10000, 1);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (2, 7, 30000, 3);

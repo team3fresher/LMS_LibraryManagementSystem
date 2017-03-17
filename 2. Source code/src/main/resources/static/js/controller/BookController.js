@@ -18,12 +18,12 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		model : null,
 		availableOptions : []
 	};
-
+	
+	getBookDataByISBN($scope.isbn);
 	getAuthorData();
 	getCategoryData();
 	getPublisherData();
-
-	getBookDataByISBN($scope.isbn);
+	
 	$scope.AddBook = function() {
 		$scope.book = {
 			"isbn" : $scope.book.isbn,
@@ -44,7 +44,8 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			"publisherDetail" : {
 				'publisherId' : $scope.publisherData.model
 			},
-			"ticketBookUsers" : []
+			"rule": null,
+			"tickets": []
 		};
 		console.log($scope.book);
 		$http.post("http://localhost:9000/LMS/book/add", $scope.book).success(
@@ -56,9 +57,9 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 
 	}
 
-	$scope.UpdateBook = function(isbn) {
+	$scope.UpdateBook = function() {
 		$scope.updatebook = {
-			"isbn" : isbn,
+			"isbn" : $routeParams.isbn,
 			"amount" : $scope.updatebook.amount,
 			"brwTcktNber" : 0,
 			"importance" : $scope.updatebook.importance,
@@ -73,10 +74,11 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			"publisherDetail" : {
 				'publisherId' : $scope.publisherData.model
 			},
-			"ticketBookUsers" : []
+			"rule": null,
+			"tickets": []
 		};
 		console.log($scope.updatebook);
-		$http.post("http://localhost:9000/LMS/book/edit", $scope.book).success(
+		$http.post("http://localhost:9000/LMS/book/edit", $scope.updatebook).success(
 				function(data, status, headers, config) {
 					getData();
 					console.log('edit book OK');
@@ -90,11 +92,12 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 
 	function toObjectArray(data) {
 		var output = [];
-		for (var i = 0; i < data.length; i++) {
-			output[i] = {
-				'authorId' : data[i]
-			};
-		}
+		if (data != null)
+			for (var i = 0; i < data.length; i++) {
+				output[i] = {
+					'authorId' : data[i]
+				};
+			}
 		return output;
 	}
 
@@ -109,7 +112,9 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		});
 	}
 	getData();
-
+	$scope.change = function() {
+		//$scope.publisherData.model = $scope.selected;
+	}
 	function getBookDataByISBN(isbn) {
 		$http({
 			method : 'get',
@@ -146,6 +151,12 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			});
 			// console.log(temp);
 			$scope.authorData.availableOptions = temp;
+			if ($scope.updatebook.bookCategoryDetail != undefined) {
+				$scope.authorData.model = [];
+				angular.forEach($scope.updatebook.authorDetails, function(value, key) {
+					$scope.authorData.model.push('' + value.authorId);
+				});
+			}
 			// console.log($scope.authorData.availableOptions);
 		}).error(function(data, status, headers, config) {
 		});
@@ -170,6 +181,9 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			});
 			// console.log(temp);
 			$scope.categoryData.availableOptions = temp;
+			if ($scope.updatebook.authorDetails != undefined) {
+				$scope.categoryData.model = '' + $scope.updatebook.bookCategoryDetail.categoryId;
+			}
 			// console.log($scope.categoryData.availableOptions);
 		}).error(function(data, status, headers, config) {
 		});
@@ -184,7 +198,6 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			console.log('add publisher: ok');
 			var values = $scope.publishers;
 			var temp = [];
-
 			console.log($scope.publishers.length);
 			angular.forEach(values, function(value, key) {
 				var obj = new Object();
@@ -194,6 +207,9 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			});
 			// console.log(temp);
 			$scope.publisherData.availableOptions = temp;
+			if ($scope.updatebook.publisherDetail != undefined) {
+				$scope.publisherData.model = '' + $scope.updatebook.publisherDetail.publisherId;
+			}
 			// console.log($scope.publisherData.availableOptions);
 		}).error(function(data, status, headers, config) {
 		});
