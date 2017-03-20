@@ -24,7 +24,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 	getCategoryData();
 	getPublisherData();
 	
-	$scope.AddBook = function() {
+	$scope.addBook = function() {
 		$scope.book = {
 			"isbn" : $scope.book.isbn,
 			"amount" : $scope.book.amount,
@@ -34,7 +34,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			"shortDescription" : $scope.book.note,
 			"title" : $scope.book.title,
 			"validStatus" : $scope.book.validStatus,
-			//"authorDetails" : toObjectArray($scope.authorData.model),
+			// "authorDetails" : toObjectArray($scope.authorData.model),
 			"authorDetails" : $scope.authorData.model.map(function(e) {
 			    return { 'authorId': e };
 			}),
@@ -57,7 +57,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 
 	}
 
-	$scope.UpdateBook = function() {
+	$scope.updateBook = function() {
 		$scope.updatebook = {
 			"isbn" : $routeParams.isbn,
 			"amount" : $scope.updatebook.amount,
@@ -84,6 +84,22 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 					console.log('edit book OK');
 				}).error(function(data, status, headers, config) {
 		});
+	}
+
+	$scope.removeBook = function(isbn) {
+		$http.get("http://localhost:9000/LMS/book/remove/" + isbn)
+		.success(function(){
+			getData();
+			console.log('remove book OK');
+		})
+		.error(function(){
+			getData();
+		})
+	}
+	
+	// angular.element('#upload').click();
+	$scope.uploadImage = function() {
+		console.log('Uploading....')
 	}
 
 	$scope.orderByMe = function(x) {
@@ -113,7 +129,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 	}
 	getData();
 	$scope.change = function() {
-		//$scope.publisherData.model = $scope.selected;
+		// $scope.publisherData.model = $scope.selected;
 	}
 	function getBookDataByISBN(isbn) {
 		$http({
