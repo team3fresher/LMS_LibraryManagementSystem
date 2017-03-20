@@ -1,8 +1,8 @@
 var app = angular.module('myApp');
 
-app.controller('MainController', function($scope, $http, $routeParams, productService) {
+app.controller('searchController', function($scope, $http, $routeParams, productService) {
+	$scope.searchText=$routeParams.id;
 	getData();
-	$scope.searchText="";
 	function getData() { 
 		$http({
 			method: 'get',
@@ -13,7 +13,7 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 		})
 		.error(function(data, status, headers, config){});
 	}
-
+	
 	$scope.addCart= function (x)
 	{
 		var newObj ={
@@ -22,4 +22,5 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 		}
 		productService.addProduct(newObj);
 	}
+
 });
