@@ -1,4 +1,4 @@
-/*package com.team3.LMS.controller;
+package com.team3.LMS.controller;
 
 import java.util.List;
 
@@ -49,5 +49,10 @@ public class PaymentController {
 	public Payment getPayment(@PathVariable int paymentId) {
 		return service.getPayment(paymentId);
 	}
+	
+	@RequestMapping(value = "/payment/report", method = RequestMethod.GET)	
+	@ResponseBody
+	public String getPaymentDataReport(){
+		return service.getPaymentDataReport();
+	}
 }
-*/
