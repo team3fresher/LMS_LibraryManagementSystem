@@ -18,11 +18,9 @@
 							<div class="x_title">
 								<div class="x_content">
 									<br />
-									
-										<form name="myForm" id="add_book_form" action="#/booksManage"
-												ng-submit="AddBook()" novalidate
-												class="form-horizontal form-label-left">
-										<div class="form-group">
+									<form name="myForm" id="add_book_form" action="#/booksManage"
+										ng-submit="addBook()" novalidate
+										class="form-horizontal form-label-left">										<div class="form-group">
 											<label class="control-label col-md-3 col-sm-3 col-xs-12"
 												for="title">Title <span class="required">*</span>
 											</label>
@@ -37,9 +35,9 @@
 												for="title">Image <span class="required">*</span>
 											</label>
 											<div class="btn-group col-md-6 col-sm-6 col-xs-12">
-												<img src="images/picture.jpg"> <input type="file"
-													data-role="magic-overlay" data-target="#pictureBtn"
-													data-edit="insertImage" style="padding-top: 3px" />
+												<img src="images/picture.jpg">
+												<input name="uploadfile" type="file" style="padding-top: 3px" accept="image/*"
+													ng-model="myFile" onchange="angular.element(this).scope().uploadImage()" id="upload"/>
 											</div>
 										</div>
 										<div class="form-group">
@@ -51,7 +49,6 @@
 													class="form-control col-md-7 col-xs-12">
 													<option ng-repeat="option in authorData.availableOptions"
 														ng-value="option.value">{{option.name}}</option>
-												</select>
 												<br />
 											</div>
 										</div>
@@ -72,8 +69,9 @@
 												for="isbn"> ISBN <span class="required">*</span>
 											</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
-												<input name="myCheck" type="number" id="isbn" ng-model="book.isbn"
-													required="required" class="form-control col-md-7 col-xs-12" check-isbn1
+												<input name="myCheck" type="number" id="isbn"
+													ng-model="book.isbn" required="required"
+													class="form-control col-md-7 col-xs-12" check-isbn1
 													placeholder="Enter a ISBN number">
 											</div>
 										</div>
@@ -87,7 +85,6 @@
 													<option
 														ng-repeat="category in categoryData.availableOptions"
 														value="{{category.id}}">{{category.name}}</option>
-												</select>
 												<br />
 											</div>
 										</div>
@@ -102,7 +99,6 @@
 													<option
 														ng-repeat="publisher in publisherData.availableOptions"
 														value="{{publisher.id}}">{{publisher.name}}</option>
-												</select>
 												<br />
 											</div>
 										</div>
