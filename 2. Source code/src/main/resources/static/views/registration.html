@@ -1,144 +1,169 @@
 <link rel="stylesheet" href="/LMS/css/registration.css">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-<div class="container" >
-	<div class="row main" >
-		<div class="main-login main-center">
-			<h5 algn="center">Please complete this form!</h5>
-			<form class="css-form" name="myForm" id="registerForm" action="#/" ng-submit="AddUser()"  novalidate>
+<style>
+body {
+	background-color: #ffffcc;
+	color: #ffffcc;;
+}
+</style>
+<div style="background-color: #ffffcc; color: #ffffcc;">
+	<div class="container">
+		<div class="row main">
+			<div class="main-login main-center">
+				<h5 algn="center">Please complete this form!</h5>
+				<form class="css-form" name="myForm" id="registerForm" action="#/"
+					ng-submit="AddUser()" novalidate>
 
-				<div class="form-group">
-					<label for="name" class="cols-sm-2 control-label">Your Name</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="name" id="name" ng-model="user.name"
-								placeholder="Enter your Name" required />
+					<div class="form-group">
+						<label for="name" class="cols-sm-2 control-label">Your
+							Name</label>
+						<div class="cols-sm-12">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									name="name" id="name" ng-model="user.name"
+									placeholder="Enter your Name" required />
+							</div>
+							<span ng-show="myForm.name.$dirty && myForm.name.$error.required"
+								class="help-block">Name is required</span>
 						</div>
-						<span ng-show="myForm.name.$dirty && myForm.name.$error.required" class="help-block">Name is required</span>
 					</div>
-				</div>
-				
-				<div class="form-group">
-					<label for="email" class="cols-sm-2 control-label">Your
-						Email (using as Username)</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
-								type="email" class="form-control" name="email" id="email" ng-model="user.email"
-								placeholder="Enter your Email" required/>
+
+					<div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Your
+							Email (using as Username)</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-envelope fa" aria-hidden="true"></i></span> <input
+									type="email" class="form-control" name="email" id="email"
+									ng-model="user.email" placeholder="Enter your Email" required />
+							</div>
+							<span
+								ng-show="myForm.email.$dirty && myForm.email.$error.required"
+								class="help-block">Email is required</span>
 						</div>
-						<span ng-show="myForm.email.$dirty && myForm.email.$error.required" class="help-block">Email is required</span>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="password" class="cols-sm-2 control-label">Password</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-								type="password" class="form-control" name="password" ng-model="user.password"
-								id="password" placeholder="Enter your Password"  required />	
+					<div class="form-group">
+						<label for="password" class="cols-sm-2 control-label">Password</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+									type="password" class="form-control" name="password"
+									ng-model="user.password" id="password"
+									placeholder="Enter your Password" required />
+							</div>
+							<span
+								ng-show="myForm.password.$dirty && myForm.password.$error.required"
+								class="help-block">Password is required</span>
 						</div>
-						<span ng-show="myForm.password.$dirty && myForm.password.$error.required" class="help-block">Password is required</span>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="confirm" class="cols-sm-2 control-label">Confirm
-						Password</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i
-								class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
-								type="password" class="form-control" name="confirm" id="confirm" ng-model="confirm"
-								placeholder="Confirm your Password"  required compare-to="user.password"/>
+					<div class="form-group">
+						<label for="confirm" class="cols-sm-2 control-label">Confirm
+							Password</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i
+									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
+									type="password" class="form-control" name="confirm"
+									id="confirm" ng-model="confirm"
+									placeholder="Confirm your Password" required
+									compare-to="user.password" />
+							</div>
+							<div ng-messages="registrationForm.confirmPassword.$error"
+								ng-messages-include="messages.html"></div>
 						</div>
-						<div ng-messages="registrationForm.confirmPassword.$error"
-     								 ng-messages-include="messages.html"></div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="gender" class="cols-sm-2 control-label">Gender</label>
-					<div class="cols-sm-10">
-						<label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="user.gender" value= "male">Male
-						</label> <label class="radio-inline"> <input type="radio"
-							name="optradio" ng-model="user.gender" value= "female" >Female
-						</label>
+					<div class="form-group">
+						<label for="gender" class="cols-sm-2 control-label">Gender</label>
+						<div class="cols-sm-10">
+							<label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="user.gender" value="male">Male
+							</label> <label class="radio-inline"> <input type="radio"
+								name="optradio" ng-model="user.gender" value="female">Female
+							</label>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label for="birthday" class="cols-sm-2 control-label">Birthday</label>
-					<div class="cols-sm-10">
-						<div class="form-group">
-							<div class='input-group date' id='datetimepicker1'>
-								<input type='date' class="form-control" ng-model="user.birthday" /> <span
-									class="input-group-addon"> <span
-									class="glyphicon glyphicon-calendar"></span>
-								</span>
+					<div class="form-group">
+						<label for="birthday" class="cols-sm-2 control-label">Birthday</label>
+						<div class="cols-sm-10">
+							<div class="form-group">
+								<div class='input-group date' id='datetimepicker1'>
+									<input type='date' class="form-control"
+										ng-model="user.birthday" /> <span class="input-group-addon">
+										<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				
-
-				<div class="form-group">
-					<label for="address" class="cols-sm-2 control-label">Address</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="address" id="address" placeholder="Enter your address" ng-model="user.address" required/>
-						</div>
-						<span ng-show="myForm.address.$dirty && myForm.address.$error.required" class="help-block">Address is required</span>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="address" class="cols-sm-2 control-label">Phone number</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="number" class="form-control"
-								name="phone" id="phone" placeholder="Enter your phone" ng-model="user.phone" required/>
-						</div>
-						<span ng-show="myForm.phone.$dirty && myForm.phone.$error.required" class="help-block">Phone number is required</span>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="job" class="cols-sm-2 control-label">Job</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="job" id="job" placeholder="Enter your job" ng-model="user.job"/>
+					<div class="form-group">
+						<label for="address" class="cols-sm-2 control-label">Address</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-users fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									name="address" id="address" placeholder="Enter your address"
+									ng-model="user.address" required />
+							</div>
+							<span
+								ng-show="myForm.address.$dirty && myForm.address.$error.required"
+								class="help-block">Address is required</span>
 						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="job" class="cols-sm-2 control-label">Degree</label>
-					<div class="cols-sm-10">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-users fa"
-								aria-hidden="true"></i></span> <input type="text" class="form-control"
-								name="degree" id="degree" placeholder="Enter your job" ng-model="user.degree"/>
+					<div class="form-group">
+						<label for="address" class="cols-sm-2 control-label">Phone
+							number</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-users fa"
+									aria-hidden="true"></i></span> <input type="number"
+									class="form-control" name="phone" id="phone"
+									placeholder="Enter your phone" ng-model="user.phone" required />
+							</div>
+							<span
+								ng-show="myForm.phone.$dirty && myForm.phone.$error.required"
+								class="help-block">Phone number is required</span>
 						</div>
 					</div>
-				</div>
-				<div class="form-group ">
-						<button type="submit" ng-disabled="myForm.$invalid" class="btn btn-primary btn-lg btn-block login-button">Register</button>
-				</div>
 
-			</form>
+					<div class="form-group">
+						<label for="job" class="cols-sm-2 control-label">Job</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-users fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									name="job" id="job" placeholder="Enter your job"
+									ng-model="user.job" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="job" class="cols-sm-2 control-label">Degree</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-users fa"
+									aria-hidden="true"></i></span> <input type="text" class="form-control"
+									name="degree" id="degree" placeholder="Enter your job"
+									ng-model="user.degree" />
+							</div>
+						</div>
+					</div>
+					<div class="form-group ">
+						<button type="submit" ng-disabled="myForm.$invalid"
+							class="btn btn-primary btn-lg btn-block login-button">Register</button>
+					</div>
+
+				</form>
+			</div>
 		</div>
 	</div>
+
 </div>
-
-

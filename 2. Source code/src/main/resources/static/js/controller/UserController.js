@@ -14,8 +14,14 @@ app.controller("UserController", function($scope, $http){
 			"realName": $scope.user.name,
 			"sex": $scope.user.gender,
 			"valid": "true",
+			"roles": [
+			    	  {
+			    	    "roleId": 1
+			    	  }
+			    	],
 			"dayOfBirth":$scope.user.dayOfBirth,
 		};
+		console.log($scope.user )
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
 			.success(function(data, status, headers, config){
 				//alert("Add user success!!");
@@ -25,7 +31,6 @@ app.controller("UserController", function($scope, $http){
 				//alert("Add user error!!");
 
 			});
-			alert("Registration Success!!");
 		
 	}
 	$scope.removeUser = function(x){
