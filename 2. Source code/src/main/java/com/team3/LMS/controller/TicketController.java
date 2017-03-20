@@ -49,4 +49,10 @@ public class TicketController {
 	public Ticket getTicket(@PathVariable int id) {
 		return service.getTicket(id);
 	}
+	
+	@RequestMapping(value = "/ticket/report", method = RequestMethod.GET)	
+	@ResponseBody
+	public String getTicketDataReport(){
+		return service.getTicketDataReport();
+	}
 }
