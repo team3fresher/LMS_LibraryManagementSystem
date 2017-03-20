@@ -1,53 +1,75 @@
 <div class="container">
-    <div class="well well-sm">
-        <strong>Category Title</strong>
-        <div class="btn-group">
-            <a href="#/book" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-            </span>List</a> <a href="#/book" id="grid" class="btn btn-default btn-sm"><span
-                class="glyphicon glyphicon-th"></span>Grid</a>
-        </div>
-    </div>
-    <script type="text/javascript"> 
-    $(document).ready(function() {
-        $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-        $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-    });
-    </script>    
-    <div id="products" class="row list-group">
-        <div class="item  col-xs-3 col-lg-3" ng-repeat="book in books | filter : search | orderBy:myOrderBy">
-            <div class="thumbnail">
-                <a href="#/book/bookdetail/{{book.isbn}}"><img class="list-image" src="/LMS/images/BOOKS/{{book.isbn}}.jpg" alt="image" /></a>
-                <div class="caption">
-                    <h4 class="group inner list-group-item-heading" align="center">
-                        {{book.title}}</h4>
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                            <p class="lead">
-                               Amount: {{book.amount}}</p>
-                        </div>
-                        <div class="col-xs-6 col-md-6">
-                            <button class="btn btn-success" ng-click="addCart(book.isbn)">Add to cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>        
-        <div class="container" ng-show="pagingShow">        
-			<div class=" container col-xs-12 col-md-offset-5">										
-				<ul class="pagination pagination">
-					<li ng-click="desPaging(currentPage)">
-				      <a class="btn btn-paging" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li>
-				    <li ng-model="page"><a class="btn btn-paging" >{{currentPage}}/{{totalPages}}</a></li>								  
-					<li ng-click="incPaging(currentPage)">
-				      <a class="btn btn-paging" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				      </a>
-				    </li>
-				</ul>													
+	<div class="well well-sm">
+		<div class="btn-group ">
+			<a href="#/book" id="list" class="btn btn-default btn-sm"><span
+				class="glyphicon glyphicon-th-list"> </span>List</a> <a href="#/book"
+				id="grid" class="btn btn-default btn-sm"><span
+				class="glyphicon glyphicon-th"></span>Grid</a>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#list').click(function(event) {
+				event.preventDefault();
+				$('#products .item').addClass('list-group-item');
+			});
+			$('#grid').click(function(event) {
+				event.preventDefault();
+				$('#products .item').removeClass('list-group-item');
+				$('#products .item').addClass('grid-group-item');
+			});
+		});
+	</script>
+	<div class="container col-md-12">
+		<label>Category: <select ng-model="selectCategory">
+				<option value="">-- choose category --</option>
+				<option ng-repeat="category in categories |orderBy:'categoryName'"
+					value="{{category.categoryId}}">{{category.categoryName}}</option>
+		</select> <label>Author: <select ng-model="selectAuthor">
+					<option value="">-- choose author --</option>
+					<option ng-repeat="author in authors |orderBy:'authorName'" value="{{author.authorId}}">{{author.authorName}}</option>
+			</select> <label>Publisher: <select ng-model="selectPublisher">
+						<option value="">-- choose publisher --</option>
+						<option ng-repeat="publisher in publishers |orderBy:'publisherName'" value="{{publisher.publisherId}}">{{publisher.publisherName}}</option>
+				</select>
+				<button ng-click="searchBooks()"> Search</button>
+	</div>
+	<div id="products" class="row list-group">
+		<div class="item  col-xs-3 col-lg-3"
+			ng-repeat="book in books | filter : search | orderBy:myOrderBy">
+			<div class="thumbnail">
+				<a href="#/book/bookdetail/{{book.isbn}}"><img
+					class="list-image" src="/LMS/images/BOOKS/{{book.isbn}}.jpg"
+					alt="image" /></a>
+				<div class="caption">
+					<h4 class="group inner list-group-item-heading" align="center">
+						{{book.title}}</h4>
+					<div class="row">
+						<div class="col-xs-6 col-md-6">
+							<p class="lead">Amount: {{book.amount}}</p>
+						</div>
+						<div class="col-xs-6 col-md-6">
+							<button class="btn btn-success" ng-click="addCart(book.isbn)">Add
+								to cart</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-    </div>
+		<div class="container" ng-show="pagingShow">
+			<div class=" container col-xs-12 col-md-offset-5">
+				<ul class="pagination pagination">
+					<li ng-click="desPaging(currentPage)"><a
+						class="btn btn-paging" aria-label="Previous"> <span
+							aria-hidden="true">&laquo;</span>
+					</a></li>
+					<li ng-model="page"><a class="btn btn-paging">{{currentPage}}/{{totalPages}}</a></li>
+					<li ng-click="incPaging(currentPage)"><a
+						class="btn btn-paging" aria-label="Next"> <span
+							aria-hidden="true">&raquo;</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>

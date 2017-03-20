@@ -13,7 +13,7 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 		})
 		.error(function(data, status, headers, config){});
 	}
-	
+
 	$scope.addCart= function (x)
 	{
 		var newObj ={
@@ -22,5 +22,4 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 		}
 		productService.addProduct(newObj);
 	}
-
 });
