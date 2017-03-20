@@ -51,9 +51,9 @@ public class TicketController {
 		return service.getTicket(id);
 	}
 	
-	@RequestMapping(value = "/ticket/quantity", method = RequestMethod.GET)	
+	@RequestMapping(value = "/ticket/report", method = RequestMethod.GET)	
 	@ResponseBody
-	public String getTicketQuantity(){
-		return service.getTicketQuantity();
+	public String getTicketDataReport(){
+		return service.getTicketDataReport();
 	}
 }
