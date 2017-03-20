@@ -45,9 +45,7 @@ public class Ticket implements Serializable {
 	@JoinColumn(name = "user_id")
 	private UserInfo userInfo;
 
-	@ManyToMany
-	@JoinTable(name = "ticket_book", joinColumns = { @JoinColumn(name = "ticket_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "isbn") })
+	@ManyToMany(mappedBy = "tickets")
 	private List<Book> books;
 
 	public Ticket() {

@@ -74,6 +74,19 @@
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3"
 		},
 		{
+			"id": "3bdb1691-3348-ef3e-7bc4-5f736b6d450b",
+			"name": "Return Book",
+			"description": "",
+			"order": [
+				"9640a8ff-307e-f25d-13cb-6fc4a55b9b5b",
+				"c002ad03-c651-a0fa-a073-aaeedb4cc689",
+				"024d1384-08f7-e86d-acd9-d075079c8c08",
+				"e5c4be1b-76de-f37a-c41c-ab67d54395dc"
+			],
+			"owner": "1630242",
+			"collectionId": "67ef0169-c58c-a0ef-af44-d9e6a614e13d"
+		},
+		{
 			"id": "23072fd7-b244-b40a-97a5-6bea227881b5",
 			"name": "Staff Info",
 			"description": "",
@@ -119,6 +132,25 @@
 	"owner": "1630242",
 	"public": false,
 	"requests": [
+		{
+			"id": "024d1384-08f7-e86d-acd9-d075079c8c08",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/returnBook/remove/2",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1490046738413,
+			"name": "Remove return book",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": []
+		},
 		{
 			"folder": "6d0c6c83-6b53-2519-5567-65939fdfcb18",
 			"id": "0570676b-bd4b-309a-40c6-c4f29aa0eed0",
@@ -571,6 +603,25 @@
 			"folder": "e907e5eb-a351-857a-844f-32d162fb2b13"
 		},
 		{
+			"id": "9640a8ff-307e-f25d-13cb-6fc4a55b9b5b",
+			"headers": "Content-Type: application/json\n",
+			"url": "http://localhost:9000/LMS/returnBook/add",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1490046886886,
+			"name": "Add Return Book",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": [],
+			"rawModeData": "{\n\t\"fine\": 1,\n\t\"returnedDate\": \"2017-03-17\",\n\t\"ticket\": {\n\t  \"ticketId\": 1\n\t}\n}"
+		},
+		{
 			"id": "a285089d-6768-ccf2-d263-a23ee572185a",
 			"headers": "",
 			"url": "http://localhost:9000/LMS/staffInfo/get/1",
@@ -641,12 +692,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489693663496,
+			"time": 1489781237262,
 			"name": "Edit book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"isbn\": \"1234567\",\n\t\"amount\": 20,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 1999,\n\t\"shortDescription\": \"Edit\",\n\t\"title\": \"Edit\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [\n\t  {\n\t    \"authorId\": 46\n\t  }\n\t],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 2\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 24\n\t},\n\t\"rule\": null,\n\t\"tickets\": []\n}"
+			"rawModeData": "{\n\t\"isbn\": \"1234567\",\n\t\"amount\": 20,\n\t\"brwTcktNber\": 0,\n\t\"importance\": 2,\n\t\"publishingYear\": 1999,\n\t\"shortDescription\": \"edit edit\",\n\t\"title\": \"Edit edit\",\n\t\"validStatus\": 1,\n\t\"authorDetails\": [\n\t  {\n\t    \"authorId\": 46\n\t  }\n\t],\n\t\"bookCategoryDetail\": {\n\t  \"categoryId\": 2\n\t},\n\t\"publisherDetail\": {\n\t  \"publisherId\": 24\n\t},\n\t\"rule\": null,\n\t\"tickets\": []\n}"
 		},
 		{
 			"id": "b2de7250-ac0e-631b-83f7-bcfdf123efe6",
@@ -688,6 +739,25 @@
 			"folder": "23072fd7-b244-b40a-97a5-6bea227881b5"
 		},
 		{
+			"id": "c002ad03-c651-a0fa-a073-aaeedb4cc689",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/returnBook/list",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1490046723957,
+			"name": "Get all return book",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": []
+		},
+		{
 			"id": "c1cc1940-34d3-4a7a-7a75-3cac4c2a6361",
 			"headers": "Content-Type: application/json\n",
 			"url": "http://localhost:9000/LMS/book/add",
@@ -699,7 +769,7 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1489693543512,
+			"time": 1489769074624,
 			"name": "Add book",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
@@ -718,13 +788,12 @@
 			"tests": "",
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1488923105843,
+			"time": 1489767894775,
 			"name": "Add ticket",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": [],
-			"rawModeData": "{\n\t\"ticketId\": 2,\n\t\"borrowNumber\": 1,\n\t\"borrowedDate\": \"2017-03-07\",\n\t\"expiredDate\": \"2017-03-14\",\n\t\"limitionNumber\": 12\n}",
-			"folder": "529115ca-780f-5d5d-be1a-dbbf31432b6d"
+			"rawModeData": "{\n\t\"borrowNumber\": 1,\n\t\"borrowedDate\": \"2017-03-16\",\n\t\"returnBooks\": [],\n\t\"userInfo\": {\n\t\t\"userId\": 1\n\t},\n\t\"books\": []\n}"
 		},
 		{
 			"id": "d26f165f-2709-7ab2-968e-f354eef35ab6",
@@ -741,6 +810,25 @@
 			"helperAttributes": {},
 			"time": 1489417395131,
 			"name": "Get author detail by Id",
+			"description": "",
+			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
+			"responses": []
+		},
+		{
+			"id": "e5c4be1b-76de-f37a-c41c-ab67d54395dc",
+			"headers": "",
+			"url": "http://localhost:9000/LMS/returnBook/get/1",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1490046751486,
+			"name": "Get return book by Id",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
 			"responses": []
@@ -788,7 +876,7 @@
 		{
 			"id": "f7c8dcbc-8a35-41f5-3284-11e5d6dd06f5",
 			"headers": "",
-			"url": "http://localhost:9000/LMS/book/get/9780307947390",
+			"url": "http://localhost:9000/LMS/book/get/9786041092969",
 			"preRequestScript": null,
 			"pathVariables": {},
 			"method": "GET",
@@ -797,15 +885,12 @@
 			"version": 2,
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": "{}",
-			"time": 1489170602778,
+			"helperAttributes": {},
+			"time": 1490047484078,
 			"name": "Get book by Id",
 			"description": "",
 			"collectionId": "4e81c624-3ab8-01f3-0345-ebe7a73aa7e3",
-			"responses": [],
-			"folder": "6d0c6c83-6b53-2519-5567-65939fdfcb18",
-			"rawModeData": null,
-			"descriptionFormat": null
+			"responses": []
 		},
 		{
 			"id": "f914999e-da97-72c4-fd8c-ccf55d05650e",
