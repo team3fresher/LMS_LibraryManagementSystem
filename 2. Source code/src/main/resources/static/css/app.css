@@ -116,3 +116,9 @@ div {
 p{
 	font-size:120%;
 }
+
+.slideCarousel
+{
+	height: 342px !important;
+	width: 342px !important;
+}

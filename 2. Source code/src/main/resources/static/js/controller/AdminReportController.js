@@ -1,7 +1,7 @@
 var app = angular.module('myAdmin');
 
 
-app.controller('AdminReportController', function($http, $scope, $routeParams, $q) {
+app.controller('AdminReportController', function($http, $scope, $routeParams) {
 		
 	var dataReportByTicket = [];
 	var dataReportByIncome= [];

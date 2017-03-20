@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngRoute','ngResource']);
+var app = angular.module('myApp', ['ngRoute','ngResource', 'ui.bootstrap']);
 app.config(function($routeProvider){
     $routeProvider
 	    .when('/',{
@@ -8,11 +8,7 @@ app.config(function($routeProvider){
 	    .when('/register',{
             templateUrl: '/LMS/views/registration.html',
             controller: 'registerController'
-        })
-        .when('/main',{
-            templateUrl: '/LMS/views/main.html',
-            controller: 'MainController'
-        })
+        })        
         .when('/book',{
             templateUrl: '/LMS/views/book.html',
             controller: 'BookUserController'
