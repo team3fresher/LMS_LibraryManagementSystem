@@ -61,7 +61,9 @@ public class Book implements Serializable {
 	@JoinColumn(name = "rule_id")
 	private Rule rule;
 
-	@ManyToMany(mappedBy = "books")
+	@ManyToMany
+	@JoinTable(name = "ticket_book", joinColumns = { @JoinColumn(name = "isbn") }, inverseJoinColumns = {
+			@JoinColumn(name = "ticket_id") })
 	private List<Ticket> tickets;
 
 	public Book() {
