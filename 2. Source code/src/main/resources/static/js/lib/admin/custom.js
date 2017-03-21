@@ -65,7 +65,7 @@ var setContentHeight = function () {
 
 	// normalize content
 	contentHeight -= $NAV_MENU.height() + footerHeight;
-
+	contentHeight -= 37;
 	$RIGHT_COL.css('min-height', contentHeight);
 };
 
