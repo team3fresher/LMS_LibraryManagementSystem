@@ -16,8 +16,8 @@
 .photo{
     padding-right: 5px;
 }
-/* Add a gray background color and some padding to the footer */
-footer {
+Add a gray background color and some padding to the footer
+#user-footer{
 	background-color: #f2f2f2;
 	position: inherit;
     height: 50px;
