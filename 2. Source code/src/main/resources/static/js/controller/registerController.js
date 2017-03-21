@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 
-app.controller('registerController', function($scope, $http, $routeParams) {
+app.controller('registerController', function($scope, $http, $routeParams,$filter) {
 
 	$scope.AddUser = function(){
 		$scope.user = {  
@@ -12,8 +12,13 @@ app.controller('registerController', function($scope, $http, $routeParams) {
 			"pword": $scope.user.password,
 			"realName": $scope.user.name,
 			"sex": $scope.user.gender,
-			"valid": "true",
-			"dayOfBirth":$scope.user.birthday,
+			"valid": 1,
+			"roles": [
+				  {
+				    "roleId": 1
+				  }
+				],
+			"dayofBirth":$scope.user.birthday,
 		};
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
 			.success(function(data, status, headers, config){
