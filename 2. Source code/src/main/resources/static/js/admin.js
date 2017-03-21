@@ -75,7 +75,7 @@ app.config(function($routeProvider){
 	    })
 	    .when('/rules',{
 	        templateUrl: '/LMS/views/admin/rules.html',
-	        controller: 'AdminController'
+	        controller: 'AdminRules'
 	    })
 	    .when('/blacklist',{
 	        templateUrl: '/LMS/views/admin/blacklist.html',

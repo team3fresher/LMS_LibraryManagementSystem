@@ -1,6 +1,7 @@
 var app = angular.module('myApp');
 
-app.controller('MainController', function($scope, $http, $routeParams, productService) {
+app.controller('MainController', function($scope, $http, $routeParams, productService, $rootScope) {
+	$scope.myInterval = 3000;	 
 	getData();
 	$scope.searchText="";
 	function getData() { 
@@ -23,3 +24,21 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 		productService.addProduct(newObj);
 	}
 });
+
+app.service('productService', function() {
+	  var productList = [];
+
+	  var addProduct = function(newObj) {
+	      productList.push(newObj);
+	  };
+
+	  var getProducts = function(){
+	      return productList;
+	  };
+
+	  return {
+	    addProduct: addProduct,
+	    getProducts: getProducts
+	  };
+
+	});
