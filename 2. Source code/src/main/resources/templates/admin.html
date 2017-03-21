@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myAdmin" xmlns:th="http://www.thymeleaf.org" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+<!-- Meta, title, CSS, etc. -->
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+
+<title>Admin Home</title>
+<!-- jQuery -->
+<script src="../js/jquery.min.js" th:src="@{js/jquery.min.js}"></script>
+
+<!-- Bootstrap -->
+<script src="../js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+
+<link href="../css/app.css" th:href="@{css/app.css}" rel="stylesheet" ></link>
+<link href="../css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}" rel="stylesheet"></link>
+
+<!-- Font Awesome -->
+<link href="../css/admin/font-awesome.min.css" th:href="@{css/admin/font-awesome.min.css}" rel="stylesheet"></link>
+<!-- NProgress -->
+<link href="../css/admin/nprogress.css" th:href="@{css/admin/nprogress.css}" rel="stylesheet"></link>
+
+<!-- bootstrap-progressbar -->
+<link href="../css/admin/bootstrap-progressbar-3.3.4.min.css" th:href="@{css/admin/bootstrap-progressbar-3.3.4.min.css}"
+	rel="stylesheet"></link>
+<!-- JQVMap -->
+<link href="../css/admin/jqvmap.min.css" th:href="@{css/admin/jqvmap.min.css}" rel="stylesheet"></link>
+<!-- bootstrap-daterangepicker -->
+<link href="../css/admin/daterangepicker.css" th:href="@{css/admin/daterangepicker.css}" rel="stylesheet"></link>
+<link href="../css/admin/flat.css" th:href="@{css/admin/flat.css}" rel="stylesheet"></link>
+
+<!-- iCheck -->
+<link href="../css/admin/skins/flat/green.css" th:href="@{css/admin/skins/flat/green.css}" rel="stylesheet"></link>
+<!-- Custom Theme Style -->
+<link href="../css/admin/custom.min.css" th:href="@{css/admin/custom.min.css}" rel="stylesheet"></link>
+
+</head>
+
+<body class="nav-md">
+	<div class="container body">
+		<div class="main_container">
+			<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+					<div class="navbar nav_title" style="border: 0;">
+						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
+							<span> LMS</span></a>
+					</div>
+
+					<div class="clearfix"></div>
+
+					<!-- menu profile quick info -->
+					<div class="profile clearfix">
+						<div class="profile_pic">
+							<img src="images/img.jpg" alt="..."
+								class="img-circle profile_img"></img>
+						</div>
+						<div class="profile_info">
+							<span>Welcome,</span>
+							<h2 sec:authentication="name"></h2>
+						</div>
+					</div>
+					<!-- /menu profile quick info -->
+
+					<br />
+
+					<!-- sidebar menu -->
+					<div id="sidebar-menu"
+						class="main_menu_side hidden-print main_menu">
+						<div class="menu_section">
+							<h3>General</h3>
+							<ul class="nav side-menu">
+								<li><a href="#/"><i class="fa fa-home"></i>
+										Dashboard </a></li>
+								<li><a><i class="fa fa-tasks"></i> Management <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="#/booksManage"> Books </a></li>
+										<li><a href="#/ticketsManage"> Tickets </a></li>
+										<li><a href="#/categoryManage"> Categories </a></li>
+										<li><a href="#/authorManage"> Authors </a></li>
+										<li><a href="#/userManage"> Users </a></li>
+									</ul></li>
+								<li><a><i class="fa fa-exchange"></i> Transaction <span
+										class="fa fa-chevron-down"></span></a>
+									<ul class="nav child_menu">
+										<li><a href="#/borrowBook"> Issue Book </a></li>
+										<li><a href="#/returnBook"> Return Book </a></li>
+
+									</ul></li>
+								<li><a href="#/rules"><i class="fa fa-tag"></i> Rules
+										and Regulations </a>
+								</li>
+								<li><a href="#/blacklist"><i
+										class="fa fa-exclamation-triangle"></i> Blacklist </a>
+								</li>
+								<li><a href="#/reports"><i class="fa fa-bar-chart"></i>
+										Reports </a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<!-- /sidebar menu -->
+
+				</div>
+			</div>
+
+			<!-- top navigation -->
+			<div class="top_nav">
+				<div class="nav_menu">
+					<nav>
+						<div class="nav toggle">
+							<a id="menu_toggle"><i class="fa fa-bars"></i></a>
+						</div>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li class=""><a href="javascript:;"
+								class="user-profile dropdown-toggle" data-toggle="dropdown"
+								aria-expanded="false"> <img src="images/img.jpg" alt="">
+									<span sec:authentication="name"></span>
+								<span class=" fa fa-angle-down"></span></img>
+								</a>
+								<ul class="dropdown-menu dropdown-usermenu pull-right">
+									<li><a href="javascript:;"> Profile</a></li>
+									<li>
+										<form action="#" th:action="@{/logout}" method="POST" style="padding: 12px 20px;">
+											<button type="submit">Logout<i class="fa fa-sign-out pull-right"></i></button>
+										</form>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<!-- /top navigation -->
+
+		</div>
+		<div ng-view=""></div>
+
+	</div>
+	<div>
+		<!-- footer content -->
+		<footer>
+			<div class="col-md-12">
+				<p align="center">Team 3 &copy; 2017</p>
+			</div>
+			<div class="clearfix"></div>
+		</footer>
+		<!-- /footer content -->
+	</div>	
+
+	<!-- FastClick -->
+	<script src="../js/lib/admin/fastclick.js" th:src="@{js/lib/admin/fastclick.js}"></script>
+	<!-- NProgress -->
+	<script src="../js/lib/admin/nprogress.js" th:src="@{js/lib/admin/nprogress.js}"></script>
+	<!-- Chart.js -->
+	<script src="../js/lib/admin/Chart.min.js" th:src="@{js/lib/admin/Chart.min.js}"></script>
+	<!-- gauge.js -->
+	<script src="../js/lib/admin/gauge.min.js" th:src="@{js/lib/admin/gauge.min.js}"></script>
+	<!-- bootstrap-progressbar -->
+	<script src="../js/lib/admin/bootstrap-progressbar.min.js" th:src="@{js/lib/admin/bootstrap-progressbar.min.js}"></script>
+	<!-- iCheck -->
+	<script src="../js/lib/admin/icheck.min.js" th:src="@{js/lib/admin/icheck.min.js}"></script>
+	<!-- Skycons -->
+	<script src="../js/lib/admin/skycons.js" th:src="@{js/lib/admin/skycons.js}"></script>
+	<!-- Flot -->
+	<script src="../js/lib/admin/jquery.flot.js" th:src="@{js/lib/admin/jquery.flot.js}"></script>
+	<script src="../js/lib/admin/jquery.flot.pie.js" th:src="@{js/lib/admin/jquery.flot.pie.js}"></script>
+	<script src="../js/lib/admin/jquery.flot.time.js" th:src="@{js/lib/admin/jquery.flot.time.js}"></script>
+	<script src="../js/lib/admin/jquery.flot.stack.js" th:src="@{js/lib/admin/jquery.flot.stack.js}"></script>
+	<script src="../js/lib/admin/jquery.flot.resize.js" th:src="@{js/lib/admin/jquery.flot.resize.js}"></script>
+	<!-- Flot plugins -->
+	<script src="../js/lib/admin/jquery.flot.orderBars.js" th:src="@{js/lib/admin/jquery.flot.orderBars.js}"></script>
+	<script src="../js/lib/admin/jquery.flot.spline.min.js" th:src="@{js/lib/admin/jquery.flot.spline.min.js}"></script>
+	<script src="../js/lib/admin/curvedLines.js" th:src="@{js/lib/admin/curvedLines.js}"></script>
+	<!-- DateJS -->
+	<script src="../js/lib/admin/date.js" th:src="@{js/lib/admin/date.js}"></script>
+	<!-- JQVMap -->
+	<script src="../js/lib/admin/jquery.vmap.js" th:src="@{js/lib/admin/jquery.vmap.js}"></script>
+	<script src="../js/lib/admin/jquery.vmap.world.js" th:src="@{js/lib/admin/jquery.vmap.world.js}"></script>
+	<script src="../js/lib/admin/jquery.vmap.sampledata.js" th:src="@{js/lib/admin/jquery.vmap.sampledata.js}"></script>
+	<!-- bootstrap-daterangepicker -->
+	<script src="../js/lib/admin/moment.min.js" th:src="@{js/lib/admin/moment.min.js}"></script>
+	<script src="../js/lib/admin/daterangepicker.js" th:src="@{js/lib/admin/daterangepicker.js}"></script>
+	<script src="../js/lib/admin/custom.min.js" th:src="@{js/lib/admin/custom.min.js}"></script>
+	
+
+
+
+	<script src="../js/lib/angular-1.4.9/angular.js" th:src="@{js/lib/angular-1.4.9/angular.js}"></script>
+	<script src="../js/lib/angular-1.4.9/angular-resource.js" th:src="@{js/lib/angular-1.4.9/angular-resource.js}"></script>
+	<script src="../js/lib/angular-1.4.9/angular-route.js" th:src="@{js/lib/angular-1.4.9/angular-route.js}"></script>
+
+	<script src="../js/admin.js" th:src="@{js/admin.js}"></script>
+	<script src="../js/controller/AdminController.js" th:src="@{js/controller/AdminController.js}"></script>
+	<script src="../js/controller/BookController.js" th:src="@{js/controller/BookController.js}"></script>
+	<script src="../js/controller/IssueBookController.js" th:src="@{js/controller/IssueBookController.js}"></script>
+	<script src="../js/controller/ReturnBookController.js" th:src="@{js/controller/ReturnBookController.js}"></script>
+	<script src="../js/controller/bookDetailCtr.js" th:src="@{js/controller/bookDetailCtr.js}"></script>
+	<script src="../js/controller/CategoryController.js" th:src="@{js/controller/CategoryController.js}"></script>
+	<script src="../js/controller/categoryDetailCtr.js" th:src="@{js/controller/categoryDetailCtr.js}"></script>
+	<script src="../js/controller/AuthorController.js" th:src="@{js/controller/AuthorController.js}"></script>
+	<script src="../js/controller/authorDetailCtr.js" th:src="@{js/controller/authorDetailCtr.js}"></script>
+	<script src="../js/controller/UserController.js" th:src="@{js/controller/UserController.js}"></script>
+	<script src="../js/controller/userDetailCtr.js" th:src="@{js/controller/userDetailCtr.js}"></script>
+	
+	<script src="../js/controller/AdminReportController.js" th:src="@{js/controller/AdminReportController.js}"></script>
+	<!-- Custom Theme Scripts -->
+	
+	<!-- Chart Report -->
+	<script src="../js/lib/angular-1.4.9/fusioncharts.js" th:src="@{js/lib/angular-1.4.9/fusioncharts.js}"></script>
+	<script src="../js/lib/angular-1.4.9/angular-fusioncharts.min.js" th:src="@{js/lib/angular-1.4.9/angular-fusioncharts.min.js}"></script>
+	
+	
+
+</body>
+</html>
