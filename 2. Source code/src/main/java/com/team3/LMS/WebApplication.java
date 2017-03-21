@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WebApplication {
     private static final Logger logger = LoggerFactory.getLogger(WebApplication.class);
+    public static int LIMIT = 5; 
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebApplication.class, args);
