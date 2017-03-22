@@ -3,28 +3,33 @@
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html ng-app="myApp" lang="en" class="no-js" xmlns:th="http://www.thymeleaf.org" 
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html ng-app="myApp" lang="en"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <!--<![endif]-->
 <head>
 <meta charset="utf-8"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 <title>Library Management System</title>
 <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-<link rel="stylesheet" href="../static/css/app.css" th:href="@{/css/app.css}"></link>
-<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"></link>
+<link rel="stylesheet" href="../static/css/app.css"
+	th:href="@{/css/app.css}"></link>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}"></link>
 <script src="../static/js/jquery.min.js" th:src="@{js/jquery.min.js}"></script>
 
-<script src="../static/js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+<script src="../static/js/bootstrap.min.js"
+	th:src="@{js/bootstrap.min.js}"></script>
 </head>
 
 <body class="nav-md">
 	<div class="container-fluid"
 		style="background-color: #2196F3; color: #fff; height: 200px; background-image: url(images/background.jpg);">
-		
+
 		<h1 style="color: red; font-size: 400%; font-family: Times New Roman">Library
 			Management System</h1>
-		<h3 style="color:yellow">This is demo for LMS</h3>
+		<h3 style="color: yellow">This is demo for LMS</h3>
 	</div>
 
 	<!-- Menu bar -->
@@ -35,17 +40,8 @@
 					<a class="navbar-brand" href="#/">Library Management System</a>
 				</div>
 				<ul class="nav navbar-nav">
-					<li ><a href="#/">Home</a></li>
 					<li><a href="#/book">Book</a></li>
 					<li><a href="#/user">User</a></li>
-					<li><a href="#/author">Author</a></li>
-					<!-- <li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Page 1-1</a></li>
-							<li><a href="#">Page 1-2</a></li>
-							<li><a href="#">Page 1-3</a></li>
-						</ul></li> -->
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#/register"><span
@@ -56,24 +52,41 @@
 							class="glyphicon glyphicon-log-in"></span> Login</a></li>
 					<li><a href="#/cart"><span
 							class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+					<li class=""><a href="javascript:;"
+						class="user-profile dropdown-toggle" data-toggle="dropdown"
+						aria-expanded="false"><span class="glyphicon glyphicon-user"></span><span sec:authentication="name"></span>
+							<span class=" fa fa-angle-down"></span>
+					</a>
+						<ul class="dropdown-menu dropdown-usermenu pull-right">
+							<li><a href="javascript:;"> Profile</a></li>
+							<li>
+								<form action="#" th:action="@{/logout}" method="POST"
+									style="padding: 12px 20px;">
+									<button type="submit">
+										Logout<i class="fa fa-sign-out pull-right"></i>
+									</button>
+								</form>
+							</li>
+						</ul></li>
 				</ul>
 				<form class="navbar-form navbar-left">
-					<div class="form-group input-group">					
+					<div class="form-group input-group">
 						<input type="text" class="form-control" placeholder="Search.."
 							ng-model="searchText"></input> <span class="input-group-btn">
 							<a href="#/search/{{searchText}}"><button
 									class="btn btn-default" type="button">
-								<span class="glyphicon glyphicon-search"></span>
-							
+									<span class="glyphicon glyphicon-search"></span>
+
 								</button></a>
 						</span>
 					</div>
 				</form>
+
 			</div>
 		</nav>
 	</div>
 
-	<div ng-view=""> </div>
+	<div ng-view=""></div>
 	<!-- Modal -->
 	<div class="modal fade" id="myModal" role="dialog">
 		<div class="modal-dialog">
@@ -97,7 +110,7 @@
 							<label for="usrname"><span
 								class="glyphicon glyphicon-lock"></span> Password</label> <input
 								type="text" class="form-control" id="password"
-								placeholder="Enter password"></input> 
+								placeholder="Enter password"></input>
 						</div>
 						<button type="submit" class="btn btn-block">
 							Login <span class="glyphicon glyphicon-ok"></span>
@@ -109,7 +122,7 @@
 						data-dismiss="modal">
 						<span class="glyphicon glyphicon-remove"></span> Cancel
 					</button>
-					
+
 					<p>
 						Need <a href="#">help?</a>
 					</p>
@@ -117,26 +130,36 @@
 			</div>
 		</div>
 	</div>
-	
 
 
 
-	<script src="../static/js/lib/angular-1.4.9/angular.js" th:src="@{js/lib/angular-1.4.9/angular.js}"></script>
-	<script src="../static/js/lib/angular-1.4.9/angular-resource.js" th:src="@{js/lib/angular-1.4.9/angular-resource.js}"></script>
-	<script src="../static/js/lib/angular-1.4.9/angular-route.js" th:src="@{js/lib/angular-1.4.9/angular-route.js}"></script>
-	<script src="/LMS/js/lib/angular-1.4.9/angular-cookies.min.js" th:src="@{js/lib/angular-1.4.9/angular-cookies.min.js}"></script>
-	
-	<script src="../static/js/app.js" th:src="@{js/app.js}"></script>		
+	<script src="../static/js/lib/angular-1.4.9/angular.js"
+		th:src="@{js/lib/angular-1.4.9/angular.js}"></script>
+	<script src="../static/js/lib/angular-1.4.9/angular-resource.js"
+		th:src="@{js/lib/angular-1.4.9/angular-resource.js}"></script>
+	<script src="../static/js/lib/angular-1.4.9/angular-route.js"
+		th:src="@{js/lib/angular-1.4.9/angular-route.js}"></script>
+	<script src="/LMS/js/lib/angular-1.4.9/angular-cookies.min.js"
+		th:src="@{js/lib/angular-1.4.9/angular-cookies.min.js}"></script>
 
-	<script src="../static/js/controller/MainController.js" th:src="@{js/controller/MainController.js}"></script>
-	<script src="/LMS/static/js/controller/registerController.js" th:src="@{js/controller/registerController.js}"></script>
-	<script src="/LMS/static/js/controller/bookDetailController.js" th:src="@{js/controller/bookDetailController.js}"></script>
-	<script src="/LMS/static/js/controller/BookUserController.js" th:src="@{js/controller/BookUserController.js}"></script>
-	<script src="/LMS/static/js/controller/cartController.js" th:src="@{js/controller/cartController.js}"></script>
-	<script src="/LMS/static/js/controller/searchController.js" th:src="@{js/controller/searchController.js}"></script>
-	
-	<script src="static/js/lib/ui-bootstrap-tpls.min.js" th:src="@{js/lib/ui-bootstrap-tpls.min.js}"></script>
-	
+	<script src="../static/js/app.js" th:src="@{js/app.js}"></script>
+
+	<script src="../static/js/controller/MainController.js"
+		th:src="@{js/controller/MainController.js}"></script>
+	<script src="/LMS/static/js/controller/registerController.js"
+		th:src="@{js/controller/registerController.js}"></script>
+	<script src="/LMS/static/js/controller/bookDetailController.js"
+		th:src="@{js/controller/bookDetailController.js}"></script>
+	<script src="/LMS/static/js/controller/BookUserController.js"
+		th:src="@{js/controller/BookUserController.js}"></script>
+	<script src="/LMS/static/js/controller/cartController.js"
+		th:src="@{js/controller/cartController.js}"></script>
+	<script src="/LMS/static/js/controller/searchController.js"
+		th:src="@{js/controller/searchController.js}"></script>
+
+	<script src="static/js/lib/ui-bootstrap-tpls.min.js"
+		th:src="@{js/lib/ui-bootstrap-tpls.min.js}"></script>
+
 	<footer class="container-fluid text-center">
 		<p>Team 3 Project</p>
 	</footer>
