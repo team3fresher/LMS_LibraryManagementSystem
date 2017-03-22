@@ -63,7 +63,7 @@ app.config(function($routeProvider){
 	    })
 	    .when('/borrowBook/ticketDetail/:id',{
 	        templateUrl: '/LMS/views/admin/ticket_detail.html',
-	        controller: 'IssueBookController'
+	        controller: 'IssueBookDetailController'
 	    })
 	    .when('/returnBook',{
 	        templateUrl: '/LMS/views/admin/return_book.html',

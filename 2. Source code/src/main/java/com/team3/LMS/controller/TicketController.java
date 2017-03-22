@@ -18,41 +18,42 @@ import com.team3.LMS.dto.Ticket;
 import com.team3.LMS.service.TicketService;
 
 @RestController
+@RequestMapping(value = "/ticket")
 public class TicketController {
 
 	@Autowired
 	TicketService service;
 
-	@RequestMapping(value = "/ticket/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Ticket> getTicketList() {
 		return service.getTicketList();
 	}
 
-	@RequestMapping(value = "/ticket/findAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	@ResponseBody
 	public Page<Ticket> findAll(Pageable pageable) {
 		Page<Ticket> tickets = service.findAll(pageable);
 		return tickets;
 	}
 
-	@RequestMapping(value = "/ticket/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void addTicket(@RequestBody Ticket ticket) {
 		service.addTicket(ticket);
 	}
 	
-	@RequestMapping("/ticket/remove/{id}")
+	@RequestMapping("/remove/{id}")
 	public void removeTicket(@PathVariable int id) {
 		service.removeTicket(id);
 	}
 	
-	@RequestMapping(value = "/ticket/get/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Ticket getTicket(@PathVariable int id) {
 		return service.getTicket(id);
 	}
 	
-	@RequestMapping(value = "/ticket/report", method = RequestMethod.GET)	
+	@RequestMapping(value = "/report", method = RequestMethod.GET)	
 	@ResponseBody
 	public String getTicketDataReport(){
 		return service.getTicketDataReport();

@@ -119,27 +119,6 @@ add constraint isbn_fk_on_ticket_book foreign key (isbn) references BOOK(isbn);
 alter table RETURN_BOOK
 add constraint user_id_fk_on_return foreign key (user_id) references TICKET(user_id);
 
-insert into role (role_name) value ("MEMBER_USER");
-insert into role (role_name) value ("ADMIN");
-insert into role (role_name) value ("GUEST");
-
-INSERT INTO `user_info` (`user_id`, `real_name`, `address`, `phone_number`, `email`, `pword`, `sex`, `job`, `degree`, `valid`, `dayofbirth`) VALUES
-(1, 'To The Tan', 'Di An, Binh Duong', 123456789, 'tantt3746@gmail.com', '123456', NULL, NULL, NULL, 1, NULL),
-(2, 'Tran Hoang Giang', 'Thu Duc, TP.HCM', 123456788, 'giangcoibp@gmail.com', '123456', NULL, NULL, NULL, 0, NULL);
-
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 1);
-
-INSERT INTO `ticket` (`borrowed_date`, `ticket_id`, `user_id`, `borrow_number`) VALUES
-('2017-03-16', 1, 1, 1),
-('2017-03-17', 2, 2, 2);
-
-INSERT INTO `return_book` (`return_book_id`, `user_id`, `returned_date`, `fine`) VALUES
-(1, 1, '2017-03-17', 1),
-(2, 2, '2017-03-18', 1);
-
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 15, 10000, 1);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (2, 7, 30000, 3);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 0, 200000, 5);
@@ -319,7 +298,7 @@ values (9876046915577, "Book Girl and the Suicidal Mime",1,2014,2,"For Tohko Ama
 insert into book_author(author_id, isbn) values (13,9876046915577);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9781908291585, "Abramovich: The Billionaire from Nowhere",26,2015,6,"Roman Abramovich, the billionaire owner of Chelsea FC, was a penniless orphan who rose from the ashes of Soviet Russia to become one of the richest and most powerful men in the world. His fascinating life story has been shrouded in mystery â€“ until now. Journalists Dominic Midgley and Chris Hutchins get to grips with the Russian boss of Chelsea FC, who has revolutionised English football since he bought the club in the summer of 2003, since when it has won two Premiership titles",0,true,13,1);
+values (9781908291585, "Abramovich: The Billionaire from Nowhere",26,2015,6,"Roman Abramovich, the billionaire owner of Chelsea FC, was a penniless orphan who rose from the ashes of Soviet Russia to become one of the richest and most powerful men in the world. His fascinating life story has been shrouded in mystery – until now. Journalists Dominic Midgley and Chris Hutchins get to grips with the Russian boss of Chelsea FC, who has revolutionised English football since he bought the club in the summer of 2003, since when it has won two Premiership titles",0,true,13,1);
 insert into book_author(author_id, isbn) values (2,9781908291585);
 insert into book_author(author_id, isbn) values (3,9781908291585);
 
