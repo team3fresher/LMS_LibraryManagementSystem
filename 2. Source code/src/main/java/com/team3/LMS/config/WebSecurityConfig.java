@@ -41,6 +41,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/index").permitAll()
+                
+                .antMatchers("/book/list").permitAll()
+                .antMatchers("/book/findAll/**").permitAll()
+                .antMatchers("/book/get/**").permitAll()
+                .antMatchers("/book/edit").hasRole("MEMBER")
+                
+                .antMatchers("/category/list").permitAll()
+                .antMatchers("/category/findAll/**").permitAll()
+                .antMatchers("/category/get/**").permitAll()
+
+                .antMatchers("/author/list").permitAll()
+                .antMatchers("/author/findAll/**").permitAll()
+                .antMatchers("/author/get/**").permitAll()
+
+                .antMatchers("/publisher/list").permitAll()
+                .antMatchers("/publisher/findAll/**").permitAll()
+                .antMatchers("/publisher/get/**").permitAll()
+                
+                .antMatchers("/ticket/add").hasRole("MEMBER")
+                .antMatchers("/ticket/get/**").hasRole("MEMBER")
+                
                 .antMatchers("/book/**").hasRole("ADMIN")
                 .antMatchers("/category/**").hasRole("ADMIN")
                 .antMatchers("/author/**").hasRole("ADMIN")

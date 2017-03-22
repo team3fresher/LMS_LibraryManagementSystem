@@ -65,6 +65,12 @@ public class BookController {
 	public void editBook(@RequestBody Book book) {
 		service.addBook(book);
 	}
+	
+	/*@RequestMapping(value = "/updateBookInCart", method = RequestMethod.POST)
+	@ResponseBody
+	public void updateBookInCart(@RequestBody Cart cart) {
+		
+	}*/
 
 	@RequestMapping("/remove/{id}")
 	public void removeBook(@PathVariable String id) {
