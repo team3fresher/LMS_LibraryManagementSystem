@@ -17,41 +17,42 @@ import com.team3.LMS.dto.Payment;
 import com.team3.LMS.service.PaymentService;
 
 @RestController
+@RequestMapping(value = "/payment")
 public class PaymentController {
 
 	@Autowired
 	PaymentService service;
 
-	@RequestMapping(value = "/payment/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Payment> getPaymentList() {
 		return service.getPaymentList();
 	}
 
-	@RequestMapping(value = "/payment/findAll", method = RequestMethod.GET)
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	@ResponseBody
 	public Page<Payment> findAll(Pageable pageable) {
 		Page<Payment> payments = service.findAll(pageable);
 		return payments;
 	}
 
-	@RequestMapping(value = "/payment/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void addPayment(@RequestBody Payment payment) {
 		service.addPayment(payment);
 	}
 	
-	@RequestMapping("/payment/remove/{paymentId}")
+	@RequestMapping("/remove/{paymentId}")
 	public void removePayment(@PathVariable int paymentId) {
 		service.removePayment(paymentId);
 	}
 	
-	@RequestMapping(value = "/payment/get/{paymentId}", method = RequestMethod.GET)
+	@RequestMapping(value = "/get/{paymentId}", method = RequestMethod.GET)
 	@ResponseBody
 	public Payment getPayment(@PathVariable int paymentId) {
 		return service.getPayment(paymentId);
 	}
 	
-	@RequestMapping(value = "/payment/report", method = RequestMethod.GET)	
+	@RequestMapping(value = "/report", method = RequestMethod.GET)	
 	@ResponseBody
 	public String getPaymentDataReport(){
 		return service.getPaymentDataReport();
