@@ -45,6 +45,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
 			admin.setAddress("District 3");
 			admin.setSex("Male");
 			admin.setPhoneNumber(12345678);
+			admin.setValid((byte) 1);
 			admin.setEmail("admin@gmail.com");
 			admin.setPword(passwordEncoder.encode("123456"));
 			List<Role> roles = new ArrayList<>();
@@ -62,6 +63,7 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
 			user.setSex("Female");
 			user.setPhoneNumber(87654321);
 			user.setEmail("member@gmail.com");
+			user.setValid((byte) 1);
 			user.setPword(passwordEncoder.encode("123456"));
 			List<Role> roles = new ArrayList<>();
 			roles.add(roleRepository.findByRoleName("ROLE_MEMBER"));
