@@ -319,14 +319,8 @@ values (9876046915577, "Book Girl and the Suicidal Mime",1,2014,2,"For Tohko Ama
 insert into book_author(author_id, isbn) values (13,9876046915577);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9781908291585, "Abramovich: The Billionaire from Nowhere",26,2015,6,"Roman Abramovich, the billionaire owner of Chelsea FC, was a penniless orphan who rose from the ashes of Soviet Russia to become one of the richest and most powerful men in the world. His fascinating life story has been shrouded in mystery – until now. Journalists Dominic Midgley and Chris Hutchins get to grips with the Russian boss of Chelsea FC, who has revolutionised English football since he bought the club in the summer of 2003, since when it has won two Premiership titles",0,true,13,1);
-insert into book_author(author_id, isbn) values (2,9781908291585);
-insert into book_author(author_id, isbn) values (3,9781908291585);
-
-insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9781427802569, "Welcome to the NHK",27,2007,10,"The novel that inspired the manga and anime!Twenty-two-year-old Satou, a college dropout and aficionado of anime porn, knows a little secret--or at least he thinks he does! Believe it or not, he has stumbled upon an incredible conspiracy created by the Japanese Broadcasting Company, N.H.K. But despite fighting the good fight, Satou has become an unemployed hikikomori--a shut-in who has withdrawn from the world....",0,true,30,1);
-insert into book_author(author_id, isbn) values (12,9781427802569);
-
+values (9876045836095, "Cleopatra: A Biography",25,2015,3,"Few personalities from classical antiquity are more famous--yet more poorly understood--than Cleopatra VII, queen of Egypt. In this major biography, Duane Roller reveals that Cleopatra was in fact a learned and visionary leader whose overarching goal was always the preservation of her dynasty and kingdom.",0,true,6,2);
+insert into book_author(author_id, isbn) values (47,9876045836095);
 
 INSERT INTO `ticket_book` (`isbn`, `ticket_id`) VALUES
 (9780307947390, 1),
