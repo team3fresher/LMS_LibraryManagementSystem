@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.team3.LMS.dto.Role;
 import com.team3.LMS.dto.UserInfo;
+import com.team3.LMS.dao.RoleDao;
 import com.team3.LMS.dao.UserInfoDao;
 
 @Component

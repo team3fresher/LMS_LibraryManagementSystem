@@ -11,12 +11,12 @@ public class MainController {
 	
     @RequestMapping(value="/",method = RequestMethod.GET)
     public String homepage(){
-        return "index2";
+        return "index";
     }
     
     @GetMapping("/index") 
 	public String index() {
-		return "index2";
+		return "index";
 	}
     
 	@GetMapping("/admin") 

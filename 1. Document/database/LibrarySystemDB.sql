@@ -58,11 +58,11 @@ create table ROLE(
 );
 create table USER_INFO(
 	user_id int not null auto_increment primary key,
-    real_name varchar(30) not null,
-    address varchar(30) not null,
-    phone_number int(11) not null,
+    real_name varchar(30),
+    address varchar(30),
+    phone_number int(11),
     email varchar(30) not null,
-    pword varchar(20) not null,
+    pword varchar(255) not null,
     sex varchar(6),
     job varchar(30),
     degree varchar(30),
