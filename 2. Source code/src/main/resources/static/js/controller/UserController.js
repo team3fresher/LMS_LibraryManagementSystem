@@ -4,6 +4,7 @@ app.controller("UserController", function($scope, $http){
 	var size = 10;
 	
 	$scope.AddUser = function(){
+		getDate();
 		$scope.user = {
 			"address": $scope.user.address,
 			"degree": $scope.user.degree,	
@@ -19,7 +20,7 @@ app.controller("UserController", function($scope, $http){
 			    	    "roleId": 1
 			    	  }
 			    	],
-			"dayOfBirth":$scope.user.dayOfBirth,
+			"dayOfBirth":$scope.dateUser,
 		};
 		console.log($scope.user )
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
@@ -32,6 +33,15 @@ app.controller("UserController", function($scope, $http){
 
 			});
 		
+	}
+	function getDate(){
+		
+		var d = ($scope.user.dayOfBirth.getDate() < 10 ? '0' : '' )+ $scope.user.dayOfBirth.getDate();
+		var m = (($scope.user.dayOfBirth.getMonth() + 1) < 10 ? '0' :'') + ($scope.user.dayOfBirth.getMonth() + 1);
+		var y = $scope.user.dayOfBirth.getFullYear();
+		var x = String(y+"-"+m+"-"+d); 
+		$scope.dateUser=x;
+		 
 	}
 	$scope.removeUser = function(x){
 		//$scope.users.splice(x, 1);
