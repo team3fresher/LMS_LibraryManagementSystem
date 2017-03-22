@@ -1,5 +1,5 @@
 var app = angular.module('myAdmin');
-app.controller("BookController", function($scope, $http, $routeParams) {
+app.controller("BookDetailController", function($scope, $http, $routeParams) {
 	$scope.updatebook = {};
 	$scope.isbn = $routeParams.isbn;
 	$scope.authors = [];
@@ -25,6 +25,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 	getPublisherData();
 	var size=10;	
 	
+	// Add book
 	$scope.addBook = function() {
 		$scope.book = {
 			"isbn" : $scope.book.isbn,
@@ -57,7 +58,8 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		});
 
 	}
-
+	
+	// Update book
 	$scope.updateBook = function() {
 		$scope.updatebook = {
 			"isbn" : $routeParams.isbn,
@@ -85,17 +87,6 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 					console.log('edit book OK');
 				}).error(function(data, status, headers, config) {
 		});
-	}
-
-	$scope.removeBook = function(isbn) {
-		$http.get("http://localhost:9000/LMS/book/remove/" + isbn)
-		.success(function(){
-			getData();
-			console.log('remove book OK');
-		})
-		.error(function(){
-			getData();
-		})
 	}
 	
 	// angular.element('#upload').click();
@@ -235,40 +226,6 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		}).error(function(data, status, headers, config) {
 		});
 	}
-	
-	//Start Paging
-	$scope.incPaging = function(currentPage){
-		if(currentPage == $scope.totalPages){
-			
-		}else{
-			pageNumb = parseInt(currentPage)+1;
-			$scope.currentPage = pageNumb;	
-			$http({
-				method: 'get',
-				url: "http://localhost:9000/LMS/book/findAll?page="+(pageNumb-1)+"&size="+size
-			}).success(function(data, status, headers, config){
-				$scope.books = data.content;			
-			})
-			.error(function(data, status, headers, config){});
-		}	
-	}
-	
-	$scope.desPaging = function(currentPage){
-		if(currentPage == 1){
-			
-		}else{
-			pageNumb = parseInt(currentPage)-1;
-			$scope.currentPage = pageNumb;	
-			$http({
-				method: 'get',
-				url: "http://localhost:9000/LMS/book/findAll?page="+(pageNumb-1)+"&size="+size
-			}).success(function(data, status, headers, config){
-				$scope.books = data.content;			
-			})
-			.error(function(data, status, headers, config){});
-		}		
-	}
-	//end Paging
 });
 
 app.directive('checkIsbn1', function($http) {

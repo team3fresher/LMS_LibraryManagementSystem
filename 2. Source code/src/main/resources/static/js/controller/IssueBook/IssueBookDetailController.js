@@ -1,7 +1,7 @@
 var app = angular.module('myAdmin');
 app.controller("IssueBookDetailController", function($scope, $http, $routeParams) {
 	$scope.id = $routeParams.id;
-	
+	getDataById($scope.id);
 	function getDataById(id) {
 		$http({
 			method : 'get',
