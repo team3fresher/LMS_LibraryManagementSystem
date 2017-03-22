@@ -6,6 +6,9 @@ app.config(function($routeProvider){
 	}).when('/register', {
             templateUrl: '/LMS/views/registration.html',
             controller: 'registerController'
+	}).when('/login', {
+        templateUrl: 'login.html',
+        controller: 'registerController'
     }).when('/book',{
         templateUrl: '/LMS/views/book.html',
         controller: 'BookUserController'
