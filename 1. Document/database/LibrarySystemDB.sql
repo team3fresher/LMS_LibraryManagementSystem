@@ -119,27 +119,6 @@ add constraint isbn_fk_on_ticket_book foreign key (isbn) references BOOK(isbn);
 alter table RETURN_BOOK
 add constraint user_id_fk_on_return foreign key (user_id) references TICKET(user_id);
 
-insert into role (role_name) value ("MEMBER_USER");
-insert into role (role_name) value ("ADMIN");
-insert into role (role_name) value ("GUEST");
-
-INSERT INTO `user_info` (`user_id`, `real_name`, `address`, `phone_number`, `email`, `pword`, `sex`, `job`, `degree`, `valid`, `dayofbirth`) VALUES
-(1, 'To The Tan', 'Di An, Binh Duong', 123456789, 'tantt3746@gmail.com', '123456', NULL, NULL, NULL, 1, NULL),
-(2, 'Tran Hoang Giang', 'Thu Duc, TP.HCM', 123456788, 'giangcoibp@gmail.com', '123456', NULL, NULL, NULL, 0, NULL);
-
-INSERT INTO `user_role` (`user_id`, `role_id`) VALUES
-(1, 1),
-(1, 2),
-(2, 1);
-
-INSERT INTO `ticket` (`borrowed_date`, `ticket_id`, `user_id`, `borrow_number`) VALUES
-('2017-03-16', 1, 1, 1),
-('2017-03-17', 2, 2, 2);
-
-INSERT INTO `return_book` (`return_book_id`, `user_id`, `returned_date`, `fine`) VALUES
-(1, 1, '2017-03-17', 1),
-(2, 2, '2017-03-18', 1);
-
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 15, 10000, 1);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (2, 7, 30000, 3);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 0, 200000, 5);
@@ -321,7 +300,3 @@ insert into book_author(author_id, isbn) values (13,9876046915577);
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9876045836095, "Cleopatra: A Biography",25,2015,3,"Few personalities from classical antiquity are more famous--yet more poorly understood--than Cleopatra VII, queen of Egypt. In this major biography, Duane Roller reveals that Cleopatra was in fact a learned and visionary leader whose overarching goal was always the preservation of her dynasty and kingdom.",0,true,6,2);
 insert into book_author(author_id, isbn) values (47,9876045836095);
-
-INSERT INTO `ticket_book` (`isbn`, `ticket_id`) VALUES
-(9780307947390, 1),
-(9780439064866, 1);

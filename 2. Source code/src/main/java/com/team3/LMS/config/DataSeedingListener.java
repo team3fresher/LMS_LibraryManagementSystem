@@ -41,6 +41,10 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
 		// Admin account
 		if (userRepository.findByEmail("admin@gmail.com") == null) {
 			UserInfo admin = new UserInfo();
+			admin.setRealName("Admin");
+			admin.setAddress("District 3");
+			admin.setSex("Male");
+			admin.setPhoneNumber(12345678);
 			admin.setEmail("admin@gmail.com");
 			admin.setPword(passwordEncoder.encode("123456"));
 			List<Role> roles = new ArrayList<>();
@@ -53,6 +57,10 @@ public class DataSeedingListener implements ApplicationListener<ContextRefreshed
 		// Member account
 		if (userRepository.findByEmail("member@gmail.com") == null) {
 			UserInfo user = new UserInfo();
+			user.setRealName("User");
+			user.setAddress("District 9");
+			user.setSex("Female");
+			user.setPhoneNumber(87654321);
 			user.setEmail("member@gmail.com");
 			user.setPword(passwordEncoder.encode("123456"));
 			List<Role> roles = new ArrayList<>();
