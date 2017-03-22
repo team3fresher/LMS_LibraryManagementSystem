@@ -161,6 +161,8 @@ insert into publisher_details(publisher_name) value ("Cambridge University Press
 insert into publisher_details(publisher_name) value ("Haole Library");
 insert into publisher_details(publisher_name) value ("Scholastic Press");
 insert into publisher_details(publisher_name) value ("Oxford University Press");
+insert into publisher_details(publisher_name) value ("James Leasor Publishing");
+insert into publisher_details(publisher_name) value ("TokyoPop");
 
 insert into author_details(author_name) value ("Winston Groom");
 insert into author_details(author_name) value ("Dominic Midgley");
@@ -298,7 +300,7 @@ values (9876046915577, "Book Girl and the Suicidal Mime",1,2014,2,"For Tohko Ama
 insert into book_author(author_id, isbn) values (13,9876046915577);
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
-values (9781908291585, "Abramovich: The Billionaire from Nowhere",26,2015,6,"Roman Abramovich, the billionaire owner of Chelsea FC, was a penniless orphan who rose from the ashes of Soviet Russia to become one of the richest and most powerful men in the world. His fascinating life story has been shrouded in mystery – until now. Journalists Dominic Midgley and Chris Hutchins get to grips with the Russian boss of Chelsea FC, who has revolutionised English football since he bought the club in the summer of 2003, since when it has won two Premiership titles",0,true,13,1);
+values (9781908291585, "Abramovich: The Billionaire from Nowhere",26,2015,6,"Roman Abramovich, the billionaire owner of Chelsea FC, was a penniless orphan who rose from the ashes of Soviet Russia to become one of the richest and most powerful men in the world. His fascinating life story has been shrouded in mystery Â– until now. Journalists Dominic Midgley and Chris Hutchins get to grips with the Russian boss of Chelsea FC, who has revolutionised English football since he bought the club in the summer of 2003, since when it has won two Premiership titles",0,true,13,1);
 insert into book_author(author_id, isbn) values (2,9781908291585);
 insert into book_author(author_id, isbn) values (3,9781908291585);
 
