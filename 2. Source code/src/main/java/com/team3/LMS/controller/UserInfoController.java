@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.team3.LMS.dto.UserInfo;
 import com.team3.LMS.service.UserInfoService;
 
-@Controller
+@RestController
 @RequestMapping(value = "/userInfo")
 public class UserInfoController {
 
