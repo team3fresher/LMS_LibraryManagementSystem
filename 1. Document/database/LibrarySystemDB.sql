@@ -326,8 +326,3 @@ insert into book_author(author_id, isbn) values (3,9781908291585);
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9781427802569, "Welcome to the NHK",27,2007,10,"The novel that inspired the manga and anime!Twenty-two-year-old Satou, a college dropout and aficionado of anime porn, knows a little secret--or at least he thinks he does! Believe it or not, he has stumbled upon an incredible conspiracy created by the Japanese Broadcasting Company, N.H.K. But despite fighting the good fight, Satou has become an unemployed hikikomori--a shut-in who has withdrawn from the world....",0,true,30,1);
 insert into book_author(author_id, isbn) values (12,9781427802569);
-
-
-INSERT INTO `ticket_book` (`isbn`, `ticket_id`) VALUES
-(9780307947390, 1),
-(9780439064866, 1);
