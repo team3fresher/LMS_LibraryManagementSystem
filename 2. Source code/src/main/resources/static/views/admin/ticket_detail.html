@@ -31,62 +31,39 @@
 										<li><i class="fa fa-map-marker user-profile-icon"></i>
 											{{ticket.userInfo.address}}</li>
 									</ul>
-
-									<a class="btn btn-success" href="update_user.html"><i
-										class="fa fa-edit m-right-xs"></i>Edit Profile</a> <br />
 								</div>
 								<div class="col-md-9 col-sm-9 col-xs-12">
 
 									<!-- start of user-activity-graph -->
 									<div id="graph_bar" style="width: 100%; height: 280px;">
 										<p>
-											<strong>Ticket number:</strong> 123456654
+											<strong>Ticket number:</strong> {{ticket.ticketId}}
 										</p>
 										<p>
-											<strong>Amount:</strong> 12
+											<strong>Borrowed date:</strong> {{ticket.borrowedDate}}
 										</p>
 										<p>
-											<strong>Borrowed date:</strong> 03/08/2017
+											<strong>Expire date:</strong> Unknown
 										</p>
-										<p>
-											<strong>Expire date:</strong> 23/08/2017
-										</p>
-										<p>
-											<strong>Returned date:</strong>
-										</p>
-										<p>
-											<strong>Fines:</strong>
-										</p>
-										<p>
-											<strong>Limit:</strong>
-										</p>
-
 									</div>
 									<!-- end of user-activity-graph -->
 									<div class="table-responsive">
 										<table class="table table-striped jambo_table bulk_action">
 											<thead>
 												<tr class="headings">
+													<th class="column-title">STT</th>
 													<th class="column-title">ISBN</th>
-													<th class="column-title">Books</th>
-													<th class="column-title">Avaluable</th>
+													<th class="column-title">Title</th>
 													<th class="column-title">Amount</th>
-													<th class="column-title">Remaining</th>
-													<th class="column-title no-link last"><span
-														class="nobr">Action</span></th>
 												</tr>
 											</thead>
 
 											<tbody>
-												<tr class="even pointer">
-
-													<td class="">121000040</td>
-													<td class=" ">Java Programming</td>
-													<td class=" ">121000210 <i
-														class="success fa fa-long-arrow-up"></i></td>
-													<td class=" ">Medium</td>
-													<td class=" ">1</td>
-													<td class=" last"><a href="update_book.html">View</a></td>
+												<tr class="even pointer" ng-repeat="book in ticket.books | filter : search | orderBy:myOrderBy">
+													<td class="">{{$index + 1}}</td>
+													<td class="">{{book.isbn}}</td>
+													<td class=" ">{{book.title}}</td>
+													<td class=" ">Unknown</td>
 												</tr>
 											</tbody>
 										</table>
