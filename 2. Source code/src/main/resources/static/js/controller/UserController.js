@@ -4,7 +4,6 @@ app.controller("UserController", function($scope, $http){
 	var size = 10;
 	
 	$scope.AddUser = function(){
-		getDate();
 		$scope.user = {
 			"address": $scope.user.address,
 			"degree": $scope.user.degree,	
@@ -17,7 +16,7 @@ app.controller("UserController", function($scope, $http){
 			"valid": 1,
 			"roles": [
 			    	  {
-			    	    "roleId": 1
+			    	    "roleId": 2
 			    	  }
 			    	],
 			"dayofBirth":$scope.user.dayOfBirth,
