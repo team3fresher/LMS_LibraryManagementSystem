@@ -13,15 +13,14 @@ app.controller("UserController", function($scope, $http){
 			"pword": "test",
 			"realName": $scope.user.name,
 			"sex": $scope.user.gender,
-			"valid": "true",
+			"valid": 1,
 			"roles": [
 			    	  {
 			    	    "roleId": 1
 			    	  }
 			    	],
-			"dayOfBirth":$scope.user.dayOfBirth,
+			"dayofBirth":$scope.user.dayOfBirth,
 		};
-		console.log($scope.user )
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
 			.success(function(data, status, headers, config){
 				//alert("Add user success!!");

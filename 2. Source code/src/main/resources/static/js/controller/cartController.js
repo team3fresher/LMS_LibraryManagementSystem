@@ -1,42 +1,59 @@
 var app = angular.module('myApp');
 
-app.controller('cartController', function($scope, $http, $routeParams,
-		productService) {
+app.controller('cartController',function($scope, $http, $routeParams,
+		productService, $cookies) {
 	$scope.bookCarts = [];
 	$scope.products = productService.getProducts();
 	//console.log($scope.products);
 	getCartInfor();
 	//console.log($scope.bookCarts);
 	$scope.removeCart = function(x) {
-		$scope.bookCarts.splice(x, 1);
-		$scope.products.splice(x, 1);
+		productService.removeProducts(x);
+		$scope.bookCarts = [];
+		getCartInfor();
+		//$scope.bookCarts.splice(x, 1);
+		//$scope.products.splice(x, 1);
 	}
 	$scope.cancelTicket = function() {
-		var len = $scope.products.length;
-		$scope.bookCarts.splice(0, len);
-		$scope.products.splice(0, len);
+		productService.cancelProducts();
+		$scope.bookCarts = [];
+		//var len = $scope.products.length;
+		//$scope.bookCarts.splice(0, len);
+		//$scope.products.splice(0, len);
 
 	}
-	$scope.addNumberTicket = function(x, id) {
-		var temp =$scope.bookCarts[x].amount - $scope.bookCarts[x].brwTcktNber;
-		if($scope.bookCarts[x].valuable == temp ){
-			$scope.bookCarts[x].valuable = temp;
-		}
-		else {
-		$scope.bookCarts[x].valuable += 1;
+	$scope.addNumberTicket = function(id) {
+		for (var i=0 ; i<$scope.bookCarts.length; i++) {
+			if ($scope.bookCarts[i].isbn==id){
+				var temp =$scope.bookCarts[i].amount - $scope.bookCarts[i].brwTcktNber;
+				if($scope.bookCarts[i].valuable == temp ){
+					$scope.bookCarts[i].valuable = temp;
+				}
+				else {
+					$scope.bookCarts[i].valuable += 1;
+				}
+				productService.updateNumProducts(id,$scope.bookCarts[i].valuable)
+				break;
+			}
 		}
 		//console.log(id);
 		//console.log($scope.bookCarts[x].valuable);
-		productService.updateNumProducts(id,$scope.bookCarts[x].valuable)
+		
 	}
-	$scope.subNumberTicket = function(x,id) {
-		if($scope.bookCarts[x].valuable ==0){
-			$scope.bookCarts[x].valuable=0;
+	$scope.subNumberTicket = function(id) {
+		for (var i=0 ; i<$scope.bookCarts.length; i++) {
+			if ($scope.bookCarts[i].isbn==id){
+				if($scope.bookCarts[i].valuable ==0){
+					$scope.bookCarts[i].valuable=0;
+				}
+				else {
+				$scope.bookCarts[i].valuable -= 1;
+				}
+				productService.updateNumProducts(id,$scope.bookCarts[i].valuable)
+				break;
+			}
 		}
-		else {
-		$scope.bookCarts[x].valuable -= 1;
-		}
-		productService.updateNumProducts(id,$scope.bookCarts[x].valuable)
+		
 	}
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
@@ -51,7 +68,7 @@ app.controller('cartController', function($scope, $http, $routeParams,
 				},
 				"books":$scope.bookCarts	
 		}
-		console.log($scope.ticket)
+		//console.log($scope.ticket)
 		$http.post("http://localhost:9000/LMS/ticket/add",$scope.ticket)
 		.success(function(data, status, headers, config){
 			//alert("Add user success!!");

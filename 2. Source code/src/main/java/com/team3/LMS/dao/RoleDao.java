@@ -10,4 +10,5 @@ import com.team3.LMS.dto.Role;
 @Repository
 public interface RoleDao extends CrudRepository<Role, Integer> {
 	Page<Role> findAll(Pageable pageable);
+	Role findByRoleName(String name);
 }
