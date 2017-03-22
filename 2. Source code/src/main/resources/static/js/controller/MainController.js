@@ -4,6 +4,45 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 	$scope.myInterval = 3000;	 
 	getData();
 	$scope.searchText="";
+	getBookCategory1();
+	getBookCategory2();
+	getBookCategory3();
+	getBookCategory4();
+	$scope.orderByMe = function(x) {
+		$scope.myOrderBy = x;
+	}
+	function getBookCategory1() { 
+		$http({
+			method: 'get',
+			url: "http://localhost:9000/LMS/category/get/"+2
+		}).success(function(data){
+			$scope.categoryBook1 = data;
+		})
+	}
+	function getBookCategory2() { 
+		$http({
+			method: 'get',
+			url: "http://localhost:9000/LMS/category/get/"+12
+		}).success(function(data){
+			$scope.categoryBook2 = data;
+		})
+	}
+	function getBookCategory3() { 
+		$http({
+			method: 'get',
+			url: "http://localhost:9000/LMS/category/get/"+7
+		}).success(function(data){
+			$scope.categoryBook3 = data;
+		})
+	}
+	function getBookCategory4() { 
+		$http({
+			method: 'get',
+			url: "http://localhost:9000/LMS/category/get/"+6
+		}).success(function(data){
+			$scope.categoryBook4 = data;
+		})
+	}
 	function getData() { 
 		$http({
 			method: 'get',
