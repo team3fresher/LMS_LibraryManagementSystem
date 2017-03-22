@@ -23,8 +23,9 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 	getAuthorData();
 	getCategoryData();
 	getPublisherData();
+	var size=10;	
 	
-	$scope.AddBook = function() {
+	$scope.addBook = function() {
 		$scope.book = {
 			"isbn" : $scope.book.isbn,
 			"amount" : $scope.book.amount,
@@ -34,7 +35,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 			"shortDescription" : $scope.book.note,
 			"title" : $scope.book.title,
 			"validStatus" : $scope.book.validStatus,
-			//"authorDetails" : toObjectArray($scope.authorData.model),
+			// "authorDetails" : toObjectArray($scope.authorData.model),
 			"authorDetails" : $scope.authorData.model.map(function(e) {
 			    return { 'authorId': e };
 			}),
@@ -57,7 +58,7 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 
 	}
 
-	$scope.UpdateBook = function() {
+	$scope.updateBook = function() {
 		$scope.updatebook = {
 			"isbn" : $routeParams.isbn,
 			"amount" : $scope.updatebook.amount,
@@ -86,6 +87,22 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		});
 	}
 
+	$scope.removeBook = function(isbn) {
+		$http.get("http://localhost:9000/LMS/book/remove/" + isbn)
+		.success(function(){
+			getData();
+			console.log('remove book OK');
+		})
+		.error(function(){
+			getData();
+		})
+	}
+	
+	// angular.element('#upload').click();
+	$scope.uploadImage = function() {
+		console.log('Uploading....')
+	}
+
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
 	}
@@ -104,16 +121,20 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 	function getData() {
 		$http({
 			method : 'get',
-			url : "http://localhost:9000/LMS/book/list"
+			url : "http://localhost:9000/LMS/book/findAll?page=0&size="+size
 		}).success(function(data, status, headers, config) {
-			$scope.books = data;
-
+			$scope.books = data.content;
+			$scope.currentPage = 1;
+			$scope.totalPages = data.totalPages;
+			if(data.totalElements > size){
+				$scope.pagingShow=true;
+			}
 		}).error(function(data, status, headers, config) {
 		});
 	}
 	getData();
 	$scope.change = function() {
-		//$scope.publisherData.model = $scope.selected;
+		// $scope.publisherData.model = $scope.selected;
 	}
 	function getBookDataByISBN(isbn) {
 		$http({
@@ -214,6 +235,40 @@ app.controller("BookController", function($scope, $http, $routeParams) {
 		}).error(function(data, status, headers, config) {
 		});
 	}
+	
+	//Start Paging
+	$scope.incPaging = function(currentPage){
+		if(currentPage == $scope.totalPages){
+			
+		}else{
+			pageNumb = parseInt(currentPage)+1;
+			$scope.currentPage = pageNumb;	
+			$http({
+				method: 'get',
+				url: "http://localhost:9000/LMS/book/findAll?page="+(pageNumb-1)+"&size="+size
+			}).success(function(data, status, headers, config){
+				$scope.books = data.content;			
+			})
+			.error(function(data, status, headers, config){});
+		}	
+	}
+	
+	$scope.desPaging = function(currentPage){
+		if(currentPage == 1){
+			
+		}else{
+			pageNumb = parseInt(currentPage)-1;
+			$scope.currentPage = pageNumb;	
+			$http({
+				method: 'get',
+				url: "http://localhost:9000/LMS/book/findAll?page="+(pageNumb-1)+"&size="+size
+			}).success(function(data, status, headers, config){
+				$scope.books = data.content;			
+			})
+			.error(function(data, status, headers, config){});
+		}		
+	}
+	//end Paging
 });
 
 app.directive('checkIsbn1', function($http) {

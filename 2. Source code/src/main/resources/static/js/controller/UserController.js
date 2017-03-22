@@ -14,15 +14,14 @@ app.controller("UserController", function($scope, $http){
 			"pword": "test",
 			"realName": $scope.user.name,
 			"sex": $scope.user.gender,
-			"valid": "true",
+			"valid": 1,
 			"roles": [
 			    	  {
 			    	    "roleId": 1
 			    	  }
 			    	],
-			"dayOfBirth":$scope.dateUser,
+			"dayofBirth":$scope.user.dayOfBirth,
 		};
-		console.log($scope.user )
 			$http.post("http://localhost:9000/LMS/userInfo/add",$scope.user)
 			.success(function(data, status, headers, config){
 				//alert("Add user success!!");
@@ -34,15 +33,7 @@ app.controller("UserController", function($scope, $http){
 			});
 		
 	}
-	function getDate(){
-		
-		var d = ($scope.user.dayOfBirth.getDate() < 10 ? '0' : '' )+ $scope.user.dayOfBirth.getDate();
-		var m = (($scope.user.dayOfBirth.getMonth() + 1) < 10 ? '0' :'') + ($scope.user.dayOfBirth.getMonth() + 1);
-		var y = $scope.user.dayOfBirth.getFullYear();
-		var x = String(y+"-"+m+"-"+d); 
-		$scope.dateUser=x;
-		 
-	}
+
 	$scope.removeUser = function(x){
 		//$scope.users.splice(x, 1);
 		$http({

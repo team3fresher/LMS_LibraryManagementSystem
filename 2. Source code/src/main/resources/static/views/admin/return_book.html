@@ -2,8 +2,7 @@
 <div class="container body">
 	<div class="main_container">
 
-		<!-- page content -->
-		<div class="right_col" role="main">
+		<!-- page content -->		
 			<div class="">
 				<div class="page-title">
 					<div class="title_left">
@@ -29,14 +28,6 @@
 					<div class="col-md-12 col-sm-12 col-xs-12">
 						<div class="x_panel">
 							<div class="x_title">
-								<!-- <ul class="nav navbar-right panel_toolbox">                      
-                      <li><a href="add_book.html"><button class="btn btn-primary">Add new</button></a></li>
-                      <li><a><button class="btn btn-danger" type="button">Delete</button></a></li>
-                    </ul> -->
-								<!-- <div class="nav navbar-right panel_toolbox">
-                      <a href="add_book.html"><button class="btn btn-primary" type="button">Add new</button></a>
-                      <button class="btn btn-danger" type="button">Delete</button>
-                    </div>   -->
 								<div class="clearfix"></div>
 							</div>
 
@@ -45,6 +36,7 @@
 									<table class="table table-striped jambo_table bulk_action">
 										<thead>
 											<tr class="headings">
+												<th class="column-title">STT</th>
 												<th class="column-title">Ticket Number</th>
 												<th class="column-title">Borrower</th>
 												<th class="column-title">Amount</th>
@@ -52,7 +44,6 @@
 												<th class="column-title">Expired date</th>
 												<th class="column-title">Returned date</th>
 												<th class="column-title">Fines</th>
-												<th class="column-title">Limit</th>
 												<th class="column-title no-link last"><span
 													class="nobr">Action</span></th>
 												<th class="bulk-actions" colspan="7"><a class="antoo"
@@ -63,136 +54,16 @@
 										</thead>
 
 										<tbody>
-											<tr class="even pointer">
-
-												<td class="">121000040</td>
-												<td class=" ">Java Programming</td>
+											<tr class="even pointer" ng-repeat="returnBook in returnBooks | filter : search | orderBy:myOrderBy">
+												<td class="">{{$index + 1}}</td>
+												<td class="">{{returnBook.ticket.ticketId}}</td>
+												<td class=" ">{{returnBook.ticket.userInfo.realName}}</td>
 												<td class=" ">121000210</td>
-												<td class=" ">Medium</td>
+												<td class=" ">{{returnBook.ticket.borrowedDate}}</td>
 												<td class=" ">1</td>
-												<td class=" ">1</td>
+												<td class=" ">{{returnBook.returnedDate}}</td>
 												<td class="a-right a-right ">$7.45</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="#/returnBook/ticketDetail">View</a>
-												</td>
-											</tr>
-											<tr class="odd pointer">
-
-												<td class="">121000040</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000208</i>
-												</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$741.20</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-											<tr class="even pointer">
-
-												<td class="">121000040</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000203 </i>
-												</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$432.26</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-											<tr class="odd pointer">
-
-												<td class=" ">121000037</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000204</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$333.21</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-											<tr class="even pointer">
-												<td class=" ">121000040</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000210</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$7.45</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-											<tr class="odd pointer">
-
-												<td class=" ">121000039</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000208</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$741.20</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-											<tr class="even pointer">
-
-												<td class=" ">121000038</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000203</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$432.26</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-											<tr class="odd pointer">
-
-												<td class=" ">121000037</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000204</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$333.21</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="ticket_detail.html">View</a>
-												</td>
-											</tr>
-
-											<tr class="even pointer">
-
-												<td class=" ">121000040</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000210</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$7.45</td>
-												<td class=" ">1</td>
-												<td class=" last"><a href="#/ticketsManage">View</a>
-												</td>
-											</tr>
-											<tr class="odd pointer">
-
-												<td class=" ">121000039</td>
-												<td class=" ">Java Programming</td>
-												<td class=" ">121000208</td>
-												<td class=" ">Medium</td>
-												<td class=" ">1</td>
-												<td class=" ">1</td>
-												<td class="a-right a-right ">$741.20</td>
-												<td class=" ">1</td>
-												<td class="last"><a href="#/ticketsManage">View</a>
+												<td class=" last"><a href="#/returnBook/returnDetail">View</a>
 												</td>
 											</tr>
 										</tbody>
@@ -208,7 +79,5 @@
 
 
 			</div>
-		</div>
-
-	</div>
+		</div>	
 </div>

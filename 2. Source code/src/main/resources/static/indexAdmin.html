@@ -8,19 +8,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Admin Home</title>
-<!-- jQuery -->
-<script src="/LMS/js/jquery.min.js"></script>
 
-<!-- Bootstrap -->
-<script src="/LMS/js/bootstrap.min.js"></script>
-
-<link href="/LMS/css/app.css" rel="stylesheet" >
 <link href="/LMS/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Font Awesome -->
 <link href="/LMS/css/admin/font-awesome.min.css" rel="stylesheet">
 <!-- NProgress -->
 <link href="/LMS/css/admin/nprogress.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="/LMS/css/admin/custom.min.css" rel="stylesheet">
+
+<link href="/LMS/css/app.css" rel="stylesheet" >
 
 <!-- bootstrap-progressbar -->
 <link href="/LMS/css/admin/bootstrap-progressbar-3.3.4.min.css"
@@ -33,8 +31,6 @@
 
 <!-- iCheck -->
 <link href="/LMS/css/admin/skins/flat/green.css" rel="stylesheet">
-<!-- Custom Theme Style -->
-<link href="/LMS/css/admin/custom.min.css" rel="stylesheet">
 
 </head>
 
@@ -131,12 +127,12 @@
 				</div>
 			</div>
 			<!-- /top navigation -->
-
+		<!-- page content -->
+		<div class="right_col" role="main">
+			<div ng-view></div>
 		</div>
-		<div ng-view></div>
-
-	</div>
-	<div>
+		<!-- /page content -->
+		
 		<!-- footer content -->
 		<footer>
 			<div class="col-md-12">
@@ -146,11 +142,16 @@
 		</footer>
 		<!-- /footer content -->
 	</div>	
-
+	</div>
+	<!-- jQuery -->
+	<script src="/LMS/js/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script src="/LMS/js/bootstrap.min.js"></script>
 	<!-- FastClick -->
 	<script src="/LMS/js/lib/admin/fastclick.js"></script>
 	<!-- NProgress -->
 	<script src="/LMS/js/lib/admin/nprogress.js"></script>
+	<script src="/LMS/js/lib/admin/custom.js"></script>
 	<!-- Chart.js -->
 	<script src="/LMS/js/lib/admin/Chart.min.js"></script>
 	<!-- gauge.js -->
@@ -179,9 +180,7 @@
 	<script src="/LMS/js/lib/admin/jquery.vmap.sampledata.js"></script>
 	<!-- bootstrap-daterangepicker -->
 	<script src="/LMS/js/lib/admin/moment.min.js"></script>
-	<script src="/LMS/js/lib/admin/daterangepicker.js"></script>
-	<script src="/LMS/js/lib/admin/custom.min.js"></script>
-	
+	<script src="/LMS/js/lib/admin/daterangepicker.js"></script>		
 
 
 
@@ -192,6 +191,8 @@
 	<script src="/LMS/js/admin.js"></script>
 	<script src="/LMS/js/controller/AdminController.js"></script>
 	<script src="/LMS/js/controller/BookController.js"></script>
+	<script src="/LMS/js/controller/IssueBookController.js"></script>
+	<script src="/LMS/js/controller/ReturnBookController.js"></script>
 	<script src="/LMS/js/controller/bookDetailCtr.js"></script>
 	<script src="/LMS/js/controller/CategoryController.js"></script>
 	<script src="/LMS/js/controller/categoryDetailCtr.js"></script>
@@ -199,6 +200,7 @@
 	<script src="/LMS/js/controller/authorDetailCtr.js"></script>
 	<script src="/LMS/js/controller/UserController.js"></script>
 	<script src="/LMS/js/controller/userDetailCtr.js"></script>
+	<script src="/LMS/js/controller/AdminRules.js"></script>
 	
 	<script src="/LMS/js/controller/AdminReportController.js"></script>
 	<!-- Custom Theme Scripts -->

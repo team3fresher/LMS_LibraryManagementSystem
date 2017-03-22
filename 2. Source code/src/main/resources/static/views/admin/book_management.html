@@ -1,8 +1,7 @@
 
 <div class="container body">
 	<div class="main_container">
-		<!-- page content -->
-		<div class="right_col" role="main">
+		<!-- page content -->		
 			<div class="">
 				<div class="page-title">
 					<div class="title_left">
@@ -80,7 +79,7 @@
 												<td class=" last"><a
 													href="#/booksManage/updatebook/{{book.isbn}}"><button
 															class="btn btn-info" type="button">Update</button></a>
-													<button class="btn btn-danger" type="button">Delete</button>
+													<button class="btn btn-danger" type="button" ng-click="removeBook(book.isbn)">Delete</button>
 												</td>
 											</tr>
 
@@ -100,7 +99,6 @@
 										</ul>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -111,7 +109,5 @@
 
 
 			</div>
-		</div>
-
-	</div>
+		</div>	
 </div>

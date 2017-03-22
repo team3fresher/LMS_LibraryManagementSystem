@@ -1,6 +1,7 @@
 var app = angular.module('myApp');
 
-app.controller('MainController', function($scope, $http, $routeParams, productService) {
+app.controller('MainController', function($scope, $http, $routeParams, productService, $rootScope) {
+	$scope.myInterval = 3000;	 
 	getData();
 	$scope.searchText="";
 	function getData() { 
