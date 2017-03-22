@@ -78,7 +78,7 @@
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
 										<li><a href="#/booksManage"> Books </a></li>
-										<li><a href="#/ticketsManage"> Tickets </a></li>
+										<!-- <li><a href="#/ticketsManage"> Tickets </a></li> -->
 										<li><a href="#/categoryManage"> Categories </a></li>
 										<li><a href="#/authorManage"> Authors </a></li>
 										<li><a href="#/userManage"> Users </a></li>
@@ -138,8 +138,9 @@
 			<!-- /top navigation -->
 
 		</div>
-		<div ng-view=""></div>
-
+		<div class="right_col" role="main">
+		<div ng-view =""></div>
+		</div>
 	</div>
 	<div>
 		<!-- footer content -->
@@ -197,7 +198,8 @@
 	<script src="../js/admin.js" th:src="@{js/admin.js}"></script>
 	<script src="../js/controller/AdminController.js" th:src="@{js/controller/AdminController.js}"></script>
 	<script src="../js/controller/BookController.js" th:src="@{js/controller/BookController.js}"></script>
-	<script src="../js/controller/IssueBookController.js" th:src="@{js/controller/IssueBookController.js}"></script>
+	<script src="../js/controller/IssueBook/IssueBookController.js" th:src="@{js/controller/IssueBook/IssueBookController.js}"></script>
+	<script src="../js/controller/IssueBook/IssueBookDetailController.js" th:src="@{js/controller/IssueBook/IssueBookDetailController.js}"></script>
 	<script src="../js/controller/ReturnBookController.js" th:src="@{js/controller/ReturnBookController.js}"></script>
 	<script src="../js/controller/bookDetailCtr.js" th:src="@{js/controller/bookDetailCtr.js}"></script>
 	<script src="../js/controller/CategoryController.js" th:src="@{js/controller/CategoryController.js}"></script>
@@ -206,6 +208,7 @@
 	<script src="../js/controller/authorDetailCtr.js" th:src="@{js/controller/authorDetailCtr.js}"></script>
 	<script src="../js/controller/UserController.js" th:src="@{js/controller/UserController.js}"></script>
 	<script src="../js/controller/userDetailCtr.js" th:src="@{js/controller/userDetailCtr.js}"></script>
+	<script src="../js/controller/AdminRules.js" th:src="@{js/controller/AdminRules.js}"></script>
 	
 	<script src="../js/controller/AdminReportController.js" th:src="@{js/controller/AdminReportController.js}"></script>
 	<!-- Custom Theme Scripts -->
