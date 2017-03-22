@@ -60,6 +60,7 @@ app.controller('cartController',function($scope, $http, $routeParams,
 	}
 	$scope.AddTicket= function(){
 		var num= getNumBorrow();
+		var arrBooks = [];
 		$scope.ticket={
 				"borrowNumber": num,
 				"borrowedDate": "2017-03-16",
@@ -75,9 +76,32 @@ app.controller('cartController',function($scope, $http, $routeParams,
 			
 		})
 		.error(function(data, status, headers, config){
-			//alert("Add user error!!");
-
-		});
+			//alert("Add user error!!");		
+		});			
+			
+		//borrow ticket number update after register book.
+		//get list book to get full information of books
+		//BUG: if tickets of book has value then update fail?x
+		$http.get("http://localhost:9000/LMS/book/list")
+	    .then(function(response) {
+	        arrBooks = response.data;	        
+	        for (var int = 0; int < arrBooks.length; int++) {
+	        	angular.forEach($scope.bookCarts, function(value, key){ 
+	        		if(value.isbn == arrBooks[int].isbn){
+	        			arrBooks[int].brwTcktNber += value.valuable;
+	        			value.brwTcktNber += value.valuable	        			
+	        			console.log(arrBooks[int]);
+//	        			var test = arrBooks[int];
+	        			$http.post("http://localhost:9000/LMS/book/edit", arrBooks[int]).success(
+	        					function(data, status, headers, config) {
+	        						console.log("update ok");	        						
+	        					}).error(function(data, status, headers, config) {
+	        			});
+	        		}
+	        	});	        	
+			}
+	    });
+		
 	}
 	function getNumBorrow(){
 		var len = $scope.bookCarts.length;
