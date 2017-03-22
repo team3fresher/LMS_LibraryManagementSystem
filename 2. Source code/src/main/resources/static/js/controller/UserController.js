@@ -4,6 +4,7 @@ app.controller("UserController", function($scope, $http){
 	var size = 10;
 	
 	$scope.AddUser = function(){
+		getDate();
 		$scope.user = {
 			"address": $scope.user.address,
 			"degree": $scope.user.degree,	
@@ -32,6 +33,7 @@ app.controller("UserController", function($scope, $http){
 			});
 		
 	}
+
 	$scope.removeUser = function(x){
 		//$scope.users.splice(x, 1);
 		$http({

@@ -1,4 +1,3 @@
-
 var app = angular.module('myApp', ['ngRoute','ngResource', 'ui.bootstrap', 'ngCookies']);
 app.config(function($routeProvider){    
 	$routeProvider.when('/', {
