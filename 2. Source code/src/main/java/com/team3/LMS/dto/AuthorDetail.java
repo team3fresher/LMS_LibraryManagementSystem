@@ -9,12 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "author_details")
+@NamedQueries(value = {
+	    @NamedQuery(name = "Book.getAll", query = "SELECT b FROM Book b")
+	})
 public class AuthorDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,7 +37,11 @@ public class AuthorDetail implements Serializable {
 
 	public AuthorDetail() {
 	}
-
+	
+	public AuthorDetail(String authorName){
+		this.authorName = authorName;
+	}
+	
 	public int getAuthorId() {
 		return this.authorId;
 	}
