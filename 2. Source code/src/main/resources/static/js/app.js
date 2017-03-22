@@ -30,6 +30,9 @@ app.config(function($routeProvider){
 	}).when('/cart', {
             templateUrl: '/LMS/views/cart.html',
 		controller : 'cartController'
+	}).when('/login', {
+        templateUrl: 'login.html',
+	controller : 'cartController'
 	}).otherwise({
 		redirectTo : '/'
 	});
