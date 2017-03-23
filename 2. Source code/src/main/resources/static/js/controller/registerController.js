@@ -15,7 +15,7 @@ app.controller('registerController', function($scope, $http, $routeParams,$filte
 			"valid": 1,
 			"roles": [
 				  {
-				    "roleId": 1
+				    "roleId": 2
 				  }
 				],
 			"dayofBirth":$scope.user.birthday,

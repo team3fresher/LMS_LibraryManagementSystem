@@ -11,8 +11,13 @@ app.controller("userDetailCtr", function($scope, $http, $routeParams) {
 			pword : $scope.password,
 			realName : $scope.name,
 			sex : $scope.gender,
-			valid : "true",
-			dayOfBirth : $scope.day
+			valid : 1,
+			roles: [
+			    	  {
+			    	    "roleId": 2
+			    	  }
+			    	],
+			dayofBirth : $scope.day
 		}
 		$http.post("http://localhost:9000/LMS/userInfo/add", $scope.temp)
 				.success(function(data, status, headers, config) {
@@ -38,7 +43,7 @@ app.controller("userDetailCtr", function($scope, $http, $routeParams) {
 			$scope.password = data.pword;
 			$scope.name = data.realName;
 			$scope.gender = data.sex;
-			$scope.day = data.dayOfBirth
+			$scope.day = data.dayofBirth
 		})
 	}
 	getUser();
