@@ -1,14 +1,14 @@
 var app = angular.module('myApp');
 
-app.controller('BookUserController',function($scope, $http, $routeParams, productService) {
+app.controller('BookUserController',function($scope, $http, $routeParams, productService,userService) {
 	var size = 8;
 	getCategory();
 	getAuthor();
 	getPublisher();
 	$scope.addCart = function(x) {
-		var newObj = {
-				id : x,
-				valuable : 1
+		var newObj ={
+				id:x.isbn,
+				importance:x.importance
 		};
 		productService.addProduct(newObj);
 	}
