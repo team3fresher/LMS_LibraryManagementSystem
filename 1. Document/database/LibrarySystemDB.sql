@@ -216,7 +216,6 @@ insert into author_details(author_name) value ("J. K. Rowling");
 insert into author_details(author_name) value ("Duane W. Roller");
 insert into author_details(author_name) value ("Wataru Watari");
 insert into author_details(author_name) value ("Jasper Fforde");
-insert into author_details(author_name) value ("Suzumu");
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9786045332641, "Schoolgirl",2,2015,2,"Essentially the start of Dazai's career, Schoolgirl gained notoriety for its ironic and inventive use of language",0,true,5,1);
