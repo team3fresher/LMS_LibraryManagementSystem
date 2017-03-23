@@ -62,7 +62,8 @@
 												<td class="">{{ticket.userInfo.realName}}</td>
 												<td class="">{{ticket.borrowedDate}}</td>
 												<td class="">{{ticket.borrowNumber}}</td>
-												<td class=" last"><a href="#/borrowBook/ticketDetail/{{ticket.ticketId}}">View</a>
+												<td class=" last"><a href="#/borrowBook/ticketDetail/{{ticket.ticketId}}"><button class="btn btn-warning" type="button">View</button></a>
+													<button class="btn btn-danger" type="button" ng-click = "returnBook(ticket.ticketId)">Returned</button>
 												</td>
 											</tr>
 											

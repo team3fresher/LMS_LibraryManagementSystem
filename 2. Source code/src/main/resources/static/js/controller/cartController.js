@@ -71,22 +71,37 @@ app.controller('cartController',function($scope, $http, $routeParams,
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
 	}
+	
 	$scope.AddTicket= function(){
 		//var num= getNumBorrow();
-		
 		//var numberOfDaysToAdd = 14;
 		//$scope.newdate = $scope.userdate.setDate($scope.userdate.getDate() + numberOfDaysToAdd); 
-		
+		$http({
+			method : 'get',
+			url : "http://localhost:9000/LMS/userInfo/get/" + $scope.status.username
+		}).success(function(data) {
+		var num =data.tickets.length;
+		//console.log(num);
+		var count=0;
+		for (var i=0; i<num; i++){
+			count+=$scope.userData.tickets[i].borrowNumber;
+			//console.log($scope.userData.tickets[i].borrowNumber);
+		}
+		count+=$scope.products.length;
+		//console.log(count);
+		if(count > 5){
+			alert("Da muon qua nhieu")
+		} else{
 		var arrBooks = [];
 		$scope.ticket={
-				"borrowNumber": $scope.bookCarts.length, //num,
+				"borrowNumber": $scope.products.length, //num,
 				"borrowedDate": $scope.userdate,
 				"userInfo": {
 			    	"userId": $scope.userData.userId
 				},
 				//"books":$scope.bookCarts	
 		}
-		console.log($scope.ticket)
+		//console.log($scope.ticket)
 		$http.post("http://localhost:9000/LMS/ticket/add",$scope.ticket)
 		.success(function(data, status, headers, config){
 			//alert("Add user success!!");
@@ -103,6 +118,8 @@ app.controller('cartController',function($scope, $http, $routeParams,
 					}).error(function(data, status, headers, config) {
 			});
 		}
+		}
+	});
 		$scope.cancelTicket();
 		//borrow ticket number update after register book.
 		//get list book to get full information of books
@@ -153,5 +170,25 @@ app.controller('cartController',function($scope, $http, $routeParams,
 			$scope.bookCarts.push(data);
 		}).error(function(data, status, headers, config) {
 		});
+	}
+	function checkUser(){
+		$http({
+			method : 'get',
+			url : "http://localhost:9000/LMS/userInfo/get/" + $scope.status.username
+		}).success(function(data) {
+		var num =data.tickets.length;
+		//console.log(num);
+		var count=0;
+		for (var i=0; i<num; i++){
+			count+=$scope.userData.tickets[i].borrowNumber;
+			//console.log($scope.userData.tickets[i].borrowNumber);
+		}
+		count+=$scope.products.length;
+		console.log(count);
+		if(count > 2){
+			alert("Da muon qua nhieu")
+			$scope.add= -1;
+		} 
+		})
 	}
 });
