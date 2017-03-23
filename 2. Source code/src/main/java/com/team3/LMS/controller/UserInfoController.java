@@ -1,5 +1,6 @@
 package com.team3.LMS.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,5 +58,15 @@ public class UserInfoController {
 	@ResponseBody
 	public UserInfo getUserInfo(@PathVariable int id) {
 		return service.getUserInfo(id);
+	}
+	
+	@RequestMapping(value = "/getTotalUser", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Integer> getTotalUser() {
+		List<Integer> result = new ArrayList<Integer>();;
+		result.add(service.getTotalUser());
+		result.add(service.getTotalMale());
+		result.add(service.getTotalFemale());
+		return result;
 	}
 }

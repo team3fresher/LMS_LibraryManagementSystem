@@ -49,7 +49,7 @@
 												<th class="column-title">Ticket Number</th>
 												<th class="column-title">Borrower</th>
 												<th class="column-title">Borrowed date</th>
-												<th class="column-title">Expired date</th>
+												<th class="column-title">Book amount</th>
 												<th class="column-title no-link last"><span
 													class="nobr">Action</span></th>
 											</tr>
@@ -61,7 +61,7 @@
 												<td class="">{{ticket.ticketId}}</td>
 												<td class="">{{ticket.userInfo.realName}}</td>
 												<td class="">{{ticket.borrowedDate}}</td>
-												<td class="">Unknown</td>
+												<td class="">{{ticket.borrowNumber}}</td>
 												<td class=" last"><a href="#/borrowBook/ticketDetail/{{ticket.ticketId}}">View</a>
 												</td>
 											</tr>

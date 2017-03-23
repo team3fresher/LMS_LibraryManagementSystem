@@ -25,6 +25,8 @@ app.controller("BookController", function($scope, $http) {
 	
 	// Remove book
 	$scope.removeBook = function(isbn) {
+		$('#myModalDelete-' + isbn).modal().hide();
+		$('.modal-backdrop').hide();
 		$http.get("http://localhost:9000/LMS/book/remove/" + isbn)
 		.success(function(){
 			getData();

@@ -42,9 +42,6 @@
 										<p>
 											<strong>Borrowed date:</strong> {{ticket.borrowedDate}}
 										</p>
-										<p>
-											<strong>Expire date:</strong> Unknown
-										</p>
 									</div>
 									<!-- end of user-activity-graph -->
 									<div class="table-responsive">
@@ -54,7 +51,6 @@
 													<th class="column-title">STT</th>
 													<th class="column-title">ISBN</th>
 													<th class="column-title">Title</th>
-													<th class="column-title">Amount</th>
 												</tr>
 											</thead>
 
@@ -63,7 +59,6 @@
 													<td class="">{{$index + 1}}</td>
 													<td class="">{{book.isbn}}</td>
 													<td class=" ">{{book.title}}</td>
-													<td class=" ">Unknown</td>
 												</tr>
 											</tbody>
 										</table>

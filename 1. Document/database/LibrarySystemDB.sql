@@ -119,9 +119,9 @@ add constraint isbn_fk_on_ticket_book foreign key (isbn) references BOOK(isbn);
 alter table RETURN_BOOK
 add constraint user_id_fk_on_return foreign key (user_id) references TICKET(user_id);
 
-insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 15, 10000, 1);
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 0, 200000, 5);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (2, 7, 30000, 3);
-insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 0, 200000, 5);
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 15, 10000, 1);
 
 insert into book_category_details(category_name) value ("Magazine");
 insert into book_category_details(category_name) value ("Fiction");
