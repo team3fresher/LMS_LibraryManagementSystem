@@ -1,6 +1,9 @@
 var app = angular.module('myAdmin');
-app.controller("BookDetailController", function($scope, $http, $routeParams) {
+app.controller("BookDetailController", function($scope, $resource, $http, $routeParams) {
+	$scope.book = {};
 	$scope.updatebook = {};
+	$scope.image;
+	$scope.imageUpdate;
 	$scope.isbn = $routeParams.isbn;
 	$scope.authors = [];
 	$scope.categories = [];
@@ -133,6 +136,7 @@ app.controller("BookDetailController", function($scope, $http, $routeParams) {
 			url : "http://localhost:9000/LMS/book/get/" + isbn
 		}).success(function(data, status, headers, config) {
 			$scope.updatebook = data;
+			$scope.imageUpdate = 'http://covers.openlibrary.org/b/isbn/' + $scope.updatebook.isbn + '-M.jpg'
 			console.log("load book by isbn: ok");
 			console.log($scope.updatebook);
 		}).error(function(data, status, headers, config) {
@@ -226,6 +230,22 @@ app.controller("BookDetailController", function($scope, $http, $routeParams) {
 		}).error(function(data, status, headers, config) {
 		});
 	}
+	
+	$scope.$watch('book.isbn', function(value) {
+		$http({
+			method : 'get',
+			url : 'http://localhost:9000/LMS/book/check/' + value
+		}).success(function(data, status, headers, config) {
+			if (data == true) {				
+				$scope.image = 'http://covers.openlibrary.org/b/isbn/' + value + '-M.jpg';
+			}
+			else {
+				bookCoverSrc = 'not found';
+				$scope.image = 'images/BOOKS/defaultbookcover.jpg';
+			}
+		}).error(function(data, status, headers, config) {
+		});
+	});
 });
 
 app.directive('checkIsbn1', function($http) {
