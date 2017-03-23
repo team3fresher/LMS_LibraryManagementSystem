@@ -77,14 +77,14 @@ app.config(function($routeProvider){
 	        templateUrl: '/LMS/views/admin/rules.html',
 	        controller: 'AdminRules'
 	    })
-	    .when('/blacklist',{
+	    /*.when('/blacklist',{
 	        templateUrl: '/LMS/views/admin/blacklist.html',
 	        controller: 'AdminController'
 	    })
 	    .when('/reports',{
 	        templateUrl: '/LMS/views/admin/reports.html',
 	        controller: 'AdminReportController'
-	    })
+	    })*/
 	    .when('/test',{
 	        templateUrl: '/LMS/book_management.html',
 	        controller: 'AdminController'
