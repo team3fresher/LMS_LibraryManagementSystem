@@ -18,6 +18,8 @@ app.controller("CategoryController", function($scope, $http){
 	}
 	$scope.removeCategory = function(x){
 		//$scope.users.splice(x, 1);
+		$('#myModalDelete-' + x).modal().hide();
+		$('.modal-backdrop').hide();
 		$http({
 			method: 'get',
 			url: "http://localhost:9000/LMS/category/remove/"+x

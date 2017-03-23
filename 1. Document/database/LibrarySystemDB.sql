@@ -119,9 +119,9 @@ add constraint isbn_fk_on_ticket_book foreign key (isbn) references BOOK(isbn);
 alter table RETURN_BOOK
 add constraint user_id_fk_on_return foreign key (user_id) references TICKET(user_id);
 
-insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 15, 10000, 1);
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (1, 0, 200000, 5);
 insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (2, 7, 30000, 3);
-insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 0, 200000, 5);
+insert into rules (rule_id, borrowing_time, fine_per_day, min_left) values (3, 15, 10000, 1);
 
 insert into book_category_details(category_name) value ("Magazine");
 insert into book_category_details(category_name) value ("Fiction");
@@ -216,7 +216,6 @@ insert into author_details(author_name) value ("J. K. Rowling");
 insert into author_details(author_name) value ("Duane W. Roller");
 insert into author_details(author_name) value ("Wataru Watari");
 insert into author_details(author_name) value ("Jasper Fforde");
-insert into author_details(author_name) value ("Suzumu");
 
 insert into book(isbn, title, publisher_id, publishing_year, category_id, short_description, brw_tckt_nber, valid_status, amount, importance)
 values (9786045332641, "Schoolgirl",2,2015,2,"Essentially the start of Dazai's career, Schoolgirl gained notoriety for its ironic and inventive use of language",0,true,5,1);

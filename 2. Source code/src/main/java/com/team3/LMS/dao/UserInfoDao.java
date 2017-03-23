@@ -1,5 +1,7 @@
 package com.team3.LMS.dao;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
@@ -11,4 +13,5 @@ import com.team3.LMS.dto.UserInfo;
 public interface UserInfoDao extends CrudRepository<UserInfo, Integer> {
 	Page<UserInfo> findAll(Pageable pageable);
 	UserInfo findByEmail(String email);
+	List<UserInfo> findBySex(String sex);
 }

@@ -65,8 +65,35 @@
 												<td class=" last"><a
 													href="#/categoryManage/updatecategory/{{category.categoryId}}"><button
 															class="btn btn-info" type="button">Update</button></a>
-													<button class="btn btn-danger" type="button" ng-click="removeCategory(category.categoryId)">Delete</button>
+													<button data-toggle="modal" data-target="#myModalDelete-{{category.categoryId}}" class="btn btn-danger" type="button">Delete</button>
+													<!-- modal -->
+													<div class="modal fade" id="myModalDelete-{{category.categoryId}}" role="dialog">
+														<div class="modal-dialog">
+													
+															<!-- Modal content-->
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h3 align="center">
+																		Delete!
+																	</h3>
+																</div>
+																<div class="modal-body">
+																	<h2>Are you sure?</h2>
+																</div>
+																<div class="modal-footer">
+																	<button type="submit" class="btn btn-default pull-left"
+																		data-dismiss="modal"> Cancel
+																	</button>
+																	<button type="submit" class="btn btn-danger btn-default pull-right" ng-click="removeCategory(category.categoryId)">
+																		<span class="glyphicon glyphicon-remove"></span> OK
+																	</button>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- /modal -->
 												</td>
+											</tr>
 										</tbody>
 									</table>
 								</div>
@@ -89,5 +116,5 @@
 				</div>
 			</div>
 		</div>
-		<!-- /page content -->	
+		<!-- /page content -->
 </div>

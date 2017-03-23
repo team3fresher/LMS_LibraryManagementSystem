@@ -17,6 +17,8 @@ app.controller("AuthorController",function($scope, $http){
 	}
 	$scope.removeAuthor = function(x){
 		//$scope.users.splice(x, 1);
+		$('#myModalDelete-' + x).modal().hide();
+		$('.modal-backdrop').hide();
 		$http({
 			method: 'get',
 			url: "http://localhost:9000/LMS/author/remove/"+x
