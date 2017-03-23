@@ -1,4 +1,4 @@
-<div class="container">
+<div ng-show="value" class="container">
 	<div class="col-md-12 col-sm-12 col-xs-12">					
 		<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
 			<div class="profile_img">
@@ -9,14 +9,14 @@
 						title="Change the avatar">
 				</div>
 			</div>
-			<h3>Samuel Doe</h3>
-
+			<h3>{{userData.realName}}</h3>
 			<ul class="list-unstyled user_data">
-				<li>San Francisco, California, USA</li>
+				<li>{{userData.sex}}</li>
+				<li>{{userData.address}}</li>
+			
+				<li>{{userData.job}}</li>
 
-				<li>Software Engineer</li>
-
-				<li class="m-top-xs"> 03/08/1998</li>
+				<li class="m-top-xs"> {{userData.dayofBirth |date : "fullDate" }}</li>
 			</ul>
 
 			<a class="btn btn-success" href="#/user/updateuser">Edit Profile</a> <br />
@@ -26,46 +26,57 @@
 			<!-- start of user-activity-graph -->
 			<div id="graph_bar" style="width: 100%; height: 180px;">				
 				<p>
-					<strong>Join date:</strong> 03/08/2017
-				</p>
-				<p>
-					<strong>Expire date:</strong> 23/08/2017
+					<strong>Status:</strong> {{userData.valid}}
 				</p>								
 				<p>
-					<strong>Total tickets:</strong> 12
+					<strong>Total tickets:</strong> {{userData.tickets.length}}
 				</p>
 
 			</div>
 			<!-- end of user-activity-graph -->
 			<h3>Tickets created</h3>
-				<div class="table-responsive">
+			<div class="table-responsive">
 					<table class="table table-striped jambo_table bulk_action">
 						<thead>
 							<tr class="headings">
-								<th class="column-title">Ticket number</th>
-								<th class="column-title">Books</th>																
-								<th class="column-title">Borrow date</th>
-								<th class="column-title">Expire date</th>
-								<th class="column-title">Return date</th>
-								<th class="column-title">Fines</th>								
+								<th class="column-title">Ticket ID</th>																
+								<th class="column-title">Date borrow</th>
+								<th class="column-title">Amount</th>								
 							</tr>
 						</thead>
 
 						<tbody>
-							<tr class="even pointer">
-
-								<td class="">121000040</td>
-								<td class=" ">Java Programming <br/> Technical</td>
-								<td class=" ">121000210 <i
-									class="success fa fa-long-arrow-up"></i></td>
-								<td class=" ">Medium</td>								
-								<td class=" ">1</td>
-								<td class=" ">1</td>								
+							<tr ng-repeat="ticket in userData.tickets">
+								<td class="">{{ticket.ticketId}}</td>
+								<td class=" " >{{ticket.borrowedDate|date : "fullDate" }}</td>	
+								<td class=" " >{{ticket.borrowNumber}}</td>							
 							</tr>
 														
 						</tbody>
 					</table>
 				</div>
+			<!-- <select ng-model="selectTicket">
+				<option ng-repeat="ticket in userData.tickets"
+					value="{{ticket.ticketId}}">{{ticket.ticketId}}</option></select>
+					<button ng-click="showTicket()">Show</button>
+				<div class="table-responsive">
+					<table class="table table-striped jambo_table bulk_action">
+						<thead>
+							<tr class="headings">
+								<th class="column-title">Book ISBN</th>																
+								<th class="column-title">Title</th>							
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr ng-repeat="book in bookTickets">
+								<td class="">{{book.isbn}}</td>
+								<td class=" " >{{book.title}}</td>							
+							</tr>
+														
+						</tbody>
+					</table>
+				</div> -->
 			</div>				
 		</div>
 	</div>

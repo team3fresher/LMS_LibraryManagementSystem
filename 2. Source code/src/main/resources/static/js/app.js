@@ -100,3 +100,47 @@ app.service('productService', function($cookies) {
 	};
 
 });
+app.service('userService', function($cookies,$http) {
+	if ($cookies.getObject('userDetail')==null){
+		var user = [];
+		} else {
+			var user=$cookies.getObject('userDetail');
+		}
+	getData();
+	var getUser = function() {	
+		return user;
+	};
+	var update = function() {	
+		getData();
+	};
+	
+	function getData(){ 
+		
+	$http({
+		method: 'get',
+		url: "http://localhost:9000/LMS/userInfo/userDetail"
+	}).success(function(data){
+		var userInfo = data;
+		//console.log(data)
+		//console.log($scope.userData)
+		//console.log($scope.userData.userId)
+		if(typeof(userInfo.userId) == "undefined"){
+			alert("Login")	
+			$cookies.remove('userDetail');
+			user = []
+		} else{
+			var status ={
+					username: userInfo.userId,
+					status: 1
+			}
+			$cookies.putObject('userDetail',status);
+			user=$cookies.getObject('userDetail');
+		}
+	});
+	}
+	return {
+		getUser : getUser,
+		update : update
+
+	};
+});

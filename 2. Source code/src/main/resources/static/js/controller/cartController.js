@@ -1,7 +1,19 @@
 var app = angular.module('myApp');
 
 app.controller('cartController',function($scope, $http, $routeParams,
-		productService, $cookies) {
+		productService,userService,$cookies) {
+	userService.update();
+	$scope.status=userService.getUser();
+	$scope.userData=[];
+	getUser();
+	function getUser() {
+		$http({
+			method : 'get',
+			url : "http://localhost:9000/LMS/userInfo/get/" + $scope.status.username
+		}).success(function(data) {
+			$scope.userData=data;
+		})
+	}
 	$scope.bookCarts = [];
 	$scope.userdate = new Date();
 	$scope.products = productService.getProducts();
@@ -70,11 +82,11 @@ app.controller('cartController',function($scope, $http, $routeParams,
 				"borrowNumber": $scope.bookCarts.length, //num,
 				"borrowedDate": $scope.userdate,
 				"userInfo": {
-			    	"userId": 1
+			    	"userId": $scope.userData.userId
 				},
-				"books":$scope.bookCarts	
+				//"books":$scope.bookCarts	
 		}
-		//console.log($scope.ticket)
+		console.log($scope.ticket)
 		$http.post("http://localhost:9000/LMS/ticket/add",$scope.ticket)
 		.success(function(data, status, headers, config){
 			//alert("Add user success!!");

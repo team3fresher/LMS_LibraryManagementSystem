@@ -1,5 +1,5 @@
 var app = angular.module('myApp');
-app.controller('bookDetailController', function($scope,$http, $routeParams, productService) {
+app.controller('bookDetailController', function($scope,$http, $routeParams, productService,userService) {
 	$http({
 		method: 'get',
 		url: "http://localhost:9000/LMS/book/get/"+$routeParams.id

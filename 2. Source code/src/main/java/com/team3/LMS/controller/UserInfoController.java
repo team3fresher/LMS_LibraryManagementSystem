@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -58,4 +60,12 @@ public class UserInfoController {
 	public UserInfo getUserInfo(@PathVariable int id) {
 		return service.getUserInfo(id);
 	}
+	@RequestMapping(value = "/userDetail")
+	@ResponseBody
+    public UserInfo getUserDetail()
+    { 
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication(); 
+		System.out.println("username: " + auth.getName());
+		return service.findByEmail(auth.getName());
+    } 
 }

@@ -1,6 +1,6 @@
 var app = angular.module('myApp');
 
-app.controller('BookUserController',function($scope, $http, $routeParams, productService) {
+app.controller('BookUserController',function($scope, $http, $routeParams, productService,userService) {
 	var size = 8;
 	getCategory();
 	getAuthor();
