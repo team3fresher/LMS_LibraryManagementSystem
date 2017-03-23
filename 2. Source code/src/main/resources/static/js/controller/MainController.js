@@ -58,7 +58,7 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 	{
 		var newObj ={
 				id:x,
-				valuable:1
+				importance:y
 		}
 		productService.addProduct(newObj);
 	}

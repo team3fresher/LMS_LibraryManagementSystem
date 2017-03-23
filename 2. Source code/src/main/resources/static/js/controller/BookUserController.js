@@ -6,9 +6,9 @@ app.controller('BookUserController',function($scope, $http, $routeParams, produc
 	getAuthor();
 	getPublisher();
 	$scope.addCart = function(x) {
-		var newObj = {
-				id : x,
-				valuable : 1
+		var newObj ={
+				id:x.isbn,
+				importance:x.importance
 		};
 		productService.addProduct(newObj);
 	}

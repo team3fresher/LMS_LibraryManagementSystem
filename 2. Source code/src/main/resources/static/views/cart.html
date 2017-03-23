@@ -1,5 +1,6 @@
 
 <div class="container">
+
 	<h2 align="center">Your Cart</h2>
 	<form ng-submit="AddTicket()" novalidate>
 		<table class="table table-striped jambo_table bulk_action">
@@ -20,11 +21,7 @@
 					<td class=" ">{{book.title}}</td>
 					<td class=" ">{{book.amount - book.brwTcktNber}}<i
 						class="success fa fa-long-arrow-up"></i></td>
-					<td><span ng-click="subNumberTicket(book.isbn)"><i
-							class="glyphicon glyphicon-minus btn btn-sm btn-warning"></i> </span>
-						 {{book.valuable}}  <span
-						ng-click="addNumberTicket(book.isbn)"><i
-							class="glyphicon glyphicon-plus btn btn-sm btn-success"></i></span></td>
+					<td> 1 </td>
 					<td><span ng-click="removeCart(book.isbn)"><i
 							class="glyphicon glyphicon-trash btn btn-danger"></i> </span></td>
 				</tr>
@@ -36,6 +33,7 @@
 			<button type="button" class="btn btn-danger"
 				ng-click="cancelTicket()">Cancel ticket</button>
 		</div>
+		<div align="left">Date: {{userdate | date : "fullDate" }}</div>
 		<div align="right">Remaining tickets: {{bookCarts.length}}</div>
 	</form>
 </div>

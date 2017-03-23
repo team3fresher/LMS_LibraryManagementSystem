@@ -29,8 +29,8 @@ app.controller('bookDetailController', function($scope,$http, $routeParams, prod
 	$scope.addCart= function (x)
 	{
 		var newObj ={
-				id:x,
-				valuable:1
+				id:x.isbn,
+				importance:x.importance
 		};
 		productService.addProduct(newObj);
 	}

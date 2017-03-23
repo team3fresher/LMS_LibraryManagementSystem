@@ -26,7 +26,7 @@ app.config(function($routeProvider){
             controller: 'MainController'
 	}).when('/user', {
             templateUrl: '/LMS/views/user.html',
-            controller: 'MainController'
+            controller: 'UserHome'
 	}).when('/user/updateuser', {
 	        templateUrl: '/LMS/views/admin/update_user.html',
 	        controller: 'userDetailCtr'
@@ -45,18 +45,24 @@ app.service('productService', function($cookies) {
 	}
 	//console.log($cookies.getObject('myCart')==null)
 	var addProduct = function(newObj) {
+		if(newObj.importance==1){
+			alert("Book only read in library!!!")
+		} else {
 		var count = 0;
 		for (var i = 0; i < productList.length; i++) {
 			if (productList[i].id == newObj.id) {
-				productList[i].valuable += 1;
+				//productList[i].valuable += 1;
+				alert("Already in cart!")
 				break;
 			}
 			count++;
 		}
 		if (count == productList.length) {
 			productList.push(newObj);
+			$cookies.putObject('myCart', productList);
 		}
-		$cookies.putObject('myCart', productList);
+		}
+		//$cookies.putObject('myCart', productList);
 	};
 
 	var getProducts = function() {

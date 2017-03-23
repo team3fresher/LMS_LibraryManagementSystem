@@ -3,6 +3,7 @@ var app = angular.module('myApp');
 app.controller('cartController',function($scope, $http, $routeParams,
 		productService, $cookies) {
 	$scope.bookCarts = [];
+	$scope.userdate = new Date();
 	$scope.products = productService.getProducts();
 	//console.log($scope.products);
 	getCartInfor();
@@ -22,7 +23,7 @@ app.controller('cartController',function($scope, $http, $routeParams,
 		//$scope.products.splice(0, len);
 
 	}
-	$scope.addNumberTicket = function(id) {
+	/*$scope.addNumberTicket = function(id) {
 		for (var i=0 ; i<$scope.bookCarts.length; i++) {
 			if ($scope.bookCarts[i].isbn==id){
 				var temp =$scope.bookCarts[i].amount - $scope.bookCarts[i].brwTcktNber;
@@ -54,16 +55,20 @@ app.controller('cartController',function($scope, $http, $routeParams,
 			}
 		}
 		
-	}
+	}*/
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
 	}
 	$scope.AddTicket= function(){
-		var num= getNumBorrow();
+		//var num= getNumBorrow();
+		
+		//var numberOfDaysToAdd = 14;
+		//$scope.newdate = $scope.userdate.setDate($scope.userdate.getDate() + numberOfDaysToAdd); 
+		
 		var arrBooks = [];
 		$scope.ticket={
-				"borrowNumber": num,
-				"borrowedDate": "2017-03-16",
+				"borrowNumber": $scope.bookCarts.length, //num,
+				"borrowedDate": $scope.userdate,
 				"userInfo": {
 			    	"userId": 1
 				},
@@ -78,17 +83,25 @@ app.controller('cartController',function($scope, $http, $routeParams,
 		.error(function(data, status, headers, config){
 			//alert("Add user error!!");		
 		});			
-			
+		for(var i=0; i<$scope.bookCarts.length; i++){
+			$scope.bookCarts[i].brwTcktNber += 1;
+			$http.post("http://localhost:9000/LMS/book/edit", $scope.bookCarts[i]).success(
+					function(data, status, headers, config) {
+						console.log("update ok");	        						
+					}).error(function(data, status, headers, config) {
+			});
+		}
+		$scope.cancelTicket();
 		//borrow ticket number update after register book.
 		//get list book to get full information of books
 		//BUG: if tickets of book has value then update fail?x
-		$http.get("http://localhost:9000/LMS/book/list")
+	/*	$http.get("http://localhost:9000/LMS/book/list")
 	    .then(function(response) {
 	        arrBooks = response.data;	        
 	        for (var int = 0; int < arrBooks.length; int++) {
 	        	angular.forEach($scope.bookCarts, function(value, key){ 
 	        		if(value.isbn == arrBooks[int].isbn){
-	        			arrBooks[int].brwTcktNber += value.valuable;
+	        			arrBooks[int].brwTcktNber += 1;value.valuable;
 	        			value.brwTcktNber += value.valuable	        			
 	        			console.log(arrBooks[int]);
 //	        			var test = arrBooks[int];
@@ -100,7 +113,7 @@ app.controller('cartController',function($scope, $http, $routeParams,
 	        		}
 	        	});	        	
 			}
-	    });
+	    });*/
 		
 	}
 	function getNumBorrow(){
