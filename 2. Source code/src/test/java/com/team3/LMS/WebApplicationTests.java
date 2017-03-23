@@ -76,11 +76,4 @@ public class WebApplicationTests {
 	        return "{ \"email\": \"" + email + "\", " +
 	                            "\"password\":\"" + password + "\"}";
 	    }
-	@Test
-	public void homepageLoad() {
-		ResponseEntity<String> response = template.getForEntity("http://localhost:"
-				+ port + "/LMS/", String.class);
-		assertEquals(HttpStatus.OK, response.getStatusCode());	
-	}
-
 }
