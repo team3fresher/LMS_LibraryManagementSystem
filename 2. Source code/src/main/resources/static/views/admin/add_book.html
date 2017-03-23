@@ -34,9 +34,9 @@
 												for="title">Image <span class="required">*</span>
 											</label>
 											<div class="btn-group col-md-6 col-sm-6 col-xs-12">
-												<img src="images/picture.jpg">
-												<input name="uploadfile" type="file" style="padding-top: 3px" accept="image/*"
-													ng-model="myFile" onchange="angular.element(this).scope().uploadImage()" id="upload"/>
+												<img ng-src="{{image}}" height="200px"></img>
+												<!-- <input name="uploadfile" type="file" style="padding-top: 3px" accept="image/*"
+													ng-model="myFile" onchange="angular.element(this).scope().uploadImage()" id="upload"/> -->
 											</div>
 										</div>
 										<div class="form-group">
