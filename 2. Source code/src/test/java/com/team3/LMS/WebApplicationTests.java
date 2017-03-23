@@ -24,7 +24,7 @@ public class WebApplicationTests {
 	public void homepageLoad() {
 		ResponseEntity<String> response = template.getForEntity("http://localhost:"
 				+ port + "/", String.class);
-		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(HttpStatus.OK, response.getStatusCode());	
 	}
 
 }
