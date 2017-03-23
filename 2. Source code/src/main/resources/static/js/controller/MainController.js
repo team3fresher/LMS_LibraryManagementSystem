@@ -1,9 +1,18 @@
 var app = angular.module('myApp');
 
-app.controller('MainController', function($scope, $http, $routeParams, productService, $rootScope) {
+app.controller('MainController', function($scope, $http, $routeParams, productService,userService, $rootScope) {
 	$scope.myInterval = 3000;	 
 	getData();
 	$scope.searchText="";
+	userService.update();
+	$scope.status=userService.getUser();
+	if(typeof($scope.status.status)=="undefined"){
+		$scope.value=false;
+	}
+	else {
+		$scope.value=true;
+	}
+	console.log($scope.status.status)
 	getBookCategory1();
 	getBookCategory2();
 	getBookCategory3();
@@ -58,7 +67,7 @@ app.controller('MainController', function($scope, $http, $routeParams, productSe
 	{
 		var newObj ={
 				id:x,
-				valuable:1
+				importance:y
 		}
 		productService.addProduct(newObj);
 	}

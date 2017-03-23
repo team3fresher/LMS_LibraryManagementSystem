@@ -26,7 +26,7 @@ app.config(function($routeProvider){
             controller: 'MainController'
 	}).when('/user', {
             templateUrl: '/LMS/views/user.html',
-            controller: 'MainController'
+            controller: 'UserHome'
 	}).when('/user/updateuser', {
 	        templateUrl: '/LMS/views/admin/update_user.html',
 	        controller: 'userDetailCtr'
@@ -45,18 +45,24 @@ app.service('productService', function($cookies) {
 	}
 	//console.log($cookies.getObject('myCart')==null)
 	var addProduct = function(newObj) {
+		if(newObj.importance==1){
+			alert("Book only read in library!!!")
+		} else {
 		var count = 0;
 		for (var i = 0; i < productList.length; i++) {
 			if (productList[i].id == newObj.id) {
-				productList[i].valuable += 1;
+				//productList[i].valuable += 1;
+				alert("Already in cart!")
 				break;
 			}
 			count++;
 		}
 		if (count == productList.length) {
 			productList.push(newObj);
+			$cookies.putObject('myCart', productList);
 		}
-		$cookies.putObject('myCart', productList);
+		}
+		//$cookies.putObject('myCart', productList);
 	};
 
 	var getProducts = function() {
@@ -93,4 +99,48 @@ app.service('productService', function($cookies) {
 		cancelProducts : cancelProducts
 	};
 
+});
+app.service('userService', function($cookies,$http) {
+	if ($cookies.getObject('userDetail')==null){
+		var user = [];
+		} else {
+			var user=$cookies.getObject('userDetail');
+		}
+	getData();
+	var getUser = function() {	
+		return user;
+	};
+	var update = function() {	
+		getData();
+	};
+	
+	function getData(){ 
+		
+	$http({
+		method: 'get',
+		url: "http://localhost:9000/LMS/userInfo/userDetail"
+	}).success(function(data){
+		var userInfo = data;
+		//console.log(data)
+		//console.log($scope.userData)
+		//console.log($scope.userData.userId)
+		if(typeof(userInfo.userId) == "undefined"){
+			alert("Login")	
+			$cookies.remove('userDetail');
+			user = []
+		} else{
+			var status ={
+					username: userInfo.userId,
+					status: 1
+			}
+			$cookies.putObject('userDetail',status);
+			user=$cookies.getObject('userDetail');
+		}
+	});
+	}
+	return {
+		getUser : getUser,
+		update : update
+
+	};
 });

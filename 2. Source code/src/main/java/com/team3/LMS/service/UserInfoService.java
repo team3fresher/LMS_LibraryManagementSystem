@@ -23,6 +23,10 @@ public class UserInfoService {
 		return (List<UserInfo>) userInfoDao.findAll();
 	}
 
+	public UserInfo findByEmail(String email) {
+		return userInfoDao.findByEmail(email);
+	}
+	
 	public Page<UserInfo> findAll(Pageable pageable) {
 		return userInfoDao.findAll(pageable);
 	}
