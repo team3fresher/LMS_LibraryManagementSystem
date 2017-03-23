@@ -31,7 +31,7 @@ app.controller("BookDetailController", function($scope, $resource, $http, $route
 	// Add book
 	$scope.addBook = function() {
 		$scope.book = {
-			"isbn" : $scope.book.isbn,
+			"isbn" : '' + $scope.book.isbn,
 			"amount" : $scope.book.amount,
 			"brwTcktNber" : 0,
 			"importance" : $scope.book.importance,
@@ -130,12 +130,18 @@ app.controller("BookDetailController", function($scope, $resource, $http, $route
 	$scope.change = function() {
 		// $scope.publisherData.model = $scope.selected;
 	}
+	
 	function getBookDataByISBN(isbn) {
 		$http({
 			method : 'get',
 			url : "http://localhost:9000/LMS/book/get/" + isbn
 		}).success(function(data, status, headers, config) {
 			$scope.updatebook = data;
+			var isbnLength = '' + $scope.updatebook.isbn;
+			console.log(isbnLength);
+			if (isbnLength.length == 9) {
+				$scope.updatebook.isbn = '0' + $scope.updatebook.isbn;
+			}
 			$scope.imageUpdate = 'http://covers.openlibrary.org/b/isbn/' + $scope.updatebook.isbn + '-M.jpg'
 			console.log("load book by isbn: ok");
 			console.log($scope.updatebook);
@@ -240,7 +246,6 @@ app.controller("BookDetailController", function($scope, $resource, $http, $route
 				$scope.image = 'http://covers.openlibrary.org/b/isbn/' + value + '-M.jpg';
 			}
 			else {
-				bookCoverSrc = 'not found';
 				$scope.image = 'images/BOOKS/defaultbookcover.jpg';
 			}
 		}).error(function(data, status, headers, config) {

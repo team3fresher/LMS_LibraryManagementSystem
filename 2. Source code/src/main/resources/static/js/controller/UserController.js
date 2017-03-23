@@ -35,6 +35,8 @@ app.controller("UserController", function($scope, $http){
 
 	$scope.removeUser = function(x){
 		//$scope.users.splice(x, 1);
+		$('#myModalDelete-' + x).modal().hide();
+		$('.modal-backdrop').hide();
 		$http({
 			method: 'get',
 			url: "http://localhost:9000/LMS/userInfo/remove/"+x

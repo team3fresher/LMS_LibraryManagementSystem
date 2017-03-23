@@ -63,7 +63,33 @@
 												<td class=" ">Birthday</td>
 												<td class=" ">Country</td>
 												<td class=" last"><a href="#/authorManage/updateauthor/{{author.authorId}}"><button class="btn btn-info" type="button">Update</button></a>
-												<button class="btn btn-danger" type="button" ng-click="removeAuthor(author.authorId)" >Delete</button>
+													<button data-toggle="modal" data-target="#myModalDelete-{{author.authorId}}" class="btn btn-danger" type="button">Delete</button>
+													<!-- modal -->
+													<div class="modal fade" id="myModalDelete-{{author.authorId}}" role="dialog">
+														<div class="modal-dialog">
+													
+															<!-- Modal content-->
+															<div class="modal-content">
+																<div class="modal-header">
+																	<h3 align="center">
+																		Delete!
+																	</h3>
+																</div>
+																<div class="modal-body">
+																	<h2>Are you sure?</h2>
+																</div>
+																<div class="modal-footer">
+																	<button type="submit" class="btn btn-default pull-left"
+																		data-dismiss="modal"> Cancel
+																	</button>
+																	<button type="submit" class="btn btn-danger btn-default pull-right" ng-click="removeAuthor(author.authorId)">
+																		<span class="glyphicon glyphicon-remove"></span> OK
+																	</button>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- /modal -->
 												</td>
 											</tr>
 										</tbody>
