@@ -1,49 +1,112 @@
 
 <div class="container">
 	<div class="row">
-		<div class="col-sm-12 ">	
+		<div class="col-sm-12 ">
 
-		<div id="slides_control">
-		    <div>
-		      <carousel interval="myInterval">
-		        <slide ng-repeat="book in books |limitTo: 4" active="book.active">
-		          <img class="slideCarousel" ng-src="/LMS/images/BOOKS/{{book.isbn}}.jpg">		     		         
-		        </slide>
-		      </carousel>
-		    </div>
-		  </div>					
+			<div id="slides_control">
+				<div>
+					<carousel interval="myInterval"> <slide
+						ng-repeat="book in books |limitTo: 4 |orderBy:'isbn'"
+						active="book.active"> <a href="#book/bookdetail/{{book.isbn}}"> <img class="slideCarousel"
+						ng-src="/LMS/images/BOOKS/{{book.isbn}}.jpg"> </a></slide> </carousel>
+				</div>
+			</div>
 
 		</div>
 	</div>
 	<hr>
-<!-- show some new books -->
+	<!-- show some new books -->
 	<div class="container-fluid bg-3 text-center">
-		<h3>New books</h3>
-		<br>
-		<div class="row  list-group">			
-			<div class="item  col-xs-3 col-lg-3"
-				ng-repeat="book in books |limitTo:8">
-            <div class="thumbnail">                
+		<h2>New books</h2>
+		<hr>
+		<div class="row  list-group">
+			<div class="item  col-sm-3" ng-repeat="book in books |limitTo:-8">
+				<div class="thumbnail">
 					<a href="#/book/bookdetail/{{book.isbn}}"><img
 						class="list-image" src="/LMS/images/BOOKS/{{book.isbn}}.jpg"
 						alt="image" /></a>
-                <div class="caption">
-                    <p class="group inner list-group-item-heading" align="center">
-                        {{book.title}}</p>
-                </div>
-                <div style="position: absolute; bottom: 20px;" class="col-md-10">
-						<div class="col-xs-6 col-md-6">
-							<p class="lead" style="font-size:130%"> <span class="glyphicon glyphicon-book"></span>{{book.amount}} left</p>
-						</div>
-						<div class="col-xs-6 col-md-6">
-							<button class="btn btn-success" ng-click="addCart(book.isbn)">Add
-								to cart</button>
+					<div class="caption">
+						<p class="group inner list-group-item-heading" align="center">
+							{{book.title}}</p>
+					</div>
+					<div style="position: absolute; bottom: 40px;width:80%;padding: 10px 10px 10px 10px">
+						<div class="btn-group btn-group-justified">
+							<a href="#book/bookdetail/{{book.isbn}}" class="btn btn-primary">Read More</a>
 						</div>
 					</div>
-            </div>
-        </div>  
-		</div>		
+				</div>
+			</div>
+		</div>
 	</div>
+	<hr>
+	<h2 align="center">Category</h2>
+	<hr>
+	<!-- category 1 -->
+
+	<div class="col-sm-3 ">
+		<h3 align="center">{{categoryBook1.categoryName}}</h3>
+		<div id="category1_control">
+			<div>
+				<carousel interval="myInterval"> <slide
+					ng-repeat="book1 in categoryBook1.books |limitTo: 8"
+					active="book1.active"> <a
+					href="#/book/bookdetail/{{book1.isbn}}"> <img
+					class="slideCarousel" ng-src="/LMS/images/BOOKS/{{book1.isbn}}.jpg">
+				</a></slide> </carousel>
+			</div>
+		</div>
+	</div>
+
+	<!-- category 2 -->
+
+	<div class="col-sm-3 ">
+		<h3 align="center">{{categoryBook2.categoryName}}</h3>
+		<div id="category2_control">
+			<div>
+				<carousel interval="myInterval"> <slide
+					ng-repeat="book2 in categoryBook2.books |limitTo: 8"
+					active="book2.active"> <a
+					href="#/book/bookdetail/{{book2.isbn}}"><img
+					class="slideCarousel" ng-src="/LMS/images/BOOKS/{{book2.isbn}}.jpg"></a>
+				</slide> </carousel>
+			</div>
+		</div>
+	</div>
+
+	<!-- category 3 -->
+
+	<div class="col-sm-3 ">
+		<h3 align="center">{{categoryBook3.categoryName}}</h3>
+		<div id="category3_control">
+			<div>
+				<carousel interval="myInterval"> <slide
+					ng-repeat="book3 in categoryBook3.books |limitTo: 8"
+					active="book3.active"> <a
+					href="#/book/bookdetail/{{book3.isbn}}"> <img
+					class="slideCarousel" ng-src="/LMS/images/BOOKS/{{book3.isbn}}.jpg"></a>
+				</slide> </carousel>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- category 4 -->
+
+	<div class="col-sm-3 ">
+		<h3 align="center">{{categoryBook4.categoryName}}</h3>
+		<div id="category4_control">
+			<div>
+				<carousel interval="myInterval"> <slide
+					ng-repeat="book4 in categoryBook4.books |limitTo: 8"
+					active="book4.active"> <a
+					href="#/book/bookdetail/{{book4.isbn}}"> <img
+					class="slideCarousel" ng-src="/LMS/images/BOOKS/{{book4.isbn}}.jpg">
+				</a> </slide> </carousel>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<br> <br>
 </div>
 <br>
 
