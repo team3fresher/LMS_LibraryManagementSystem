@@ -109,14 +109,20 @@ app.controller('cartController',function($scope, $http, $routeParams,
 		})
 		.error(function(data, status, headers, config){
 			//alert("Add user error!!");		
-		});			
-		for(var i=0; i<$scope.bookCarts.length; i++){
-			$scope.bookCarts[i].brwTcktNber += 1;
-			$http.post("http://localhost:9000/LMS/book/edit", $scope.bookCarts[i]).success(
-					function(data, status, headers, config) {
-						console.log("update ok");	        						
-					}).error(function(data, status, headers, config) {
-			});
+		});		
+		for(var i=0; i<$scope.products.length; i++){
+			$http({
+				method : 'get',
+				url : "http://localhost:9000/LMS/book/get/" + $scope.products[i].id
+			}).success(function(dataBook){
+				dataBook.brwTcktNber += 1;
+				$http.post("http://localhost:9000/LMS/book/edit", dataBook).success(
+						function(data, status, headers, config) {
+							console.log("update ok");	        						
+						}).error(function(data, status, headers, config) {
+				});
+			})
+			
 		}
 		}
 	});
