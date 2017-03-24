@@ -7,7 +7,6 @@ app.controller("BookController", function($scope, $http) {
 	$scope.orderByMe = function(x) {
 		$scope.myOrderBy = x;
 	}
-	
 	function getData() {
 		$http({
 			method : 'get',

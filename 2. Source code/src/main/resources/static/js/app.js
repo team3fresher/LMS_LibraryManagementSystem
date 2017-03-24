@@ -27,9 +27,9 @@ app.config(function($routeProvider){
 	}).when('/user', {
             templateUrl: '/LMS/views/user.html',
             controller: 'UserHome'
-	}).when('/user/updateuser', {
+	}).when('/user/updateuser/:id', {
 	        templateUrl: '/LMS/views/admin/update_user.html',
-	        controller: 'userDetailCtr'
+	        controller: 'UserHomeDetail'
 	}).when('/cart', {
             templateUrl: '/LMS/views/cart.html',
 		controller : 'cartController'
